@@ -27,6 +27,8 @@ algorithm
 -
 sstream
 -
+cstring
+-
 
 /home/hengliy/codeHW/ecs/code.h
 iostream

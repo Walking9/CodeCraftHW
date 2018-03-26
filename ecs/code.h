@@ -48,5 +48,6 @@ public:
 
 void paint();
 string firstFit();
+string dpPath();
 
 #endif // CODE_H
