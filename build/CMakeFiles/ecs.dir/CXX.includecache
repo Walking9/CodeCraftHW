@@ -21,6 +21,8 @@ python2.7/Python.h
 -
 algorithm
 -
+sstream
+-
 
 /home/hengliy/codeHW/ecs/code.h
 iostream
@@ -97,13 +99,7 @@ iostream
 -
 string
 -
-sstream
--
-sstream
--
 cstring
--
-numeric
 -
 cmath
 -

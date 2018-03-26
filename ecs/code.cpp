@@ -9,6 +9,8 @@
 #endif
 
 #include <algorithm>
+#include <sstream>
+
 using namespace std;
 
 int flavorNum;//虚拟机规格个数
@@ -17,13 +19,13 @@ string predictEndDate;//预测结束时间
 string predictBeginTime;//预测开始时间
 string predictEndTime;//预测结束时间
 
-string predictFlag;
+string predictFlag;//预测标志 cpu/mem
 
 Server* server;//物理服务器
 vector<Flavor*> vFlavor;//待检测虚拟机格式数组
-vector<Server*> vServer;
-Date* beginDate;
-Date* nowDate;
+vector<Server*> vServer;//构建预测的物理服务器链表
+Date* beginDate;//训练数据开始时间
+Date* nowDate;//训练数据结束时间
 
 ostream & operator<<(ostream &out,const Server &server)
 {
@@ -95,16 +97,6 @@ bool cmp(Flavor* a,Flavor* b)
 {
     return a->_cpuNum<b->_cpuNum;
 }
-
-//void coutt(int n)
-//{
-//    for(int i=0;i<10;i++)
-//    {
-//        cout<<n;
-//    }
-//    cout<<endl;
-//
-//}
 
 string firstFit()
 {
@@ -193,6 +185,111 @@ string firstFit()
 
     return str;
 }
+
+
+void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int data_num)
+{
+    //物理服务器参数
+    int s1,s2,s3;
+    stringstream ssstream;
+    ssstream<<info[0];
+    //依次输出到result中，并存入res中
+    ssstream>>s1>>s2>>s3;
+    ssstream.clear();
+    server =new Server(s1,s2,s3);
+
+    //读取虚拟机个数
+    ssstream<<info[2];
+    ssstream>>flavorNum;
+    ssstream.clear();
+
+    //虚拟机格式
+    for(int i=0;i<flavorNum;i++)
+    {
+        string flavorName;
+        int cpuNum,memSize;
+        ssstream<<info[i+3];
+        ssstream>>flavorName>>cpuNum>>memSize;
+        ssstream.clear();
+        int id=atoi(flavorName.substr(6).c_str());
+        Flavor* flavor=new Flavor(id,cpuNum,memSize);
+        vFlavor.push_back(flavor);
+    }
+
+    //预测标志（cpu/mem）
+    ssstream<<info[4+flavorNum];
+    ssstream>>predictFlag;
+    ssstream.clear();
+    //预测开始时间
+    ssstream<<info[6+flavorNum];
+    ssstream>>predictBeginDate>>predictBeginTime;
+    ssstream.clear();
+    //预测结束时间
+    ssstream<<info[7+flavorNum];
+    ssstream>>predictEndDate>>predictEndTime;
+    ssstream.clear();
+
+
+
+    /*********读取训练数据**********************/
+    //先拿出第一天
+    string recordId1,flavorId1,date1,time1;
+    ssstream<<data[0];
+    ssstream>>recordId1>>flavorId1>>date1>>time1;
+    ssstream.clear();
+    beginDate=new Date(date1);
+
+    int dayCount;
+    for(int i=0;i<data_num;i++)//读取数据
+    {
+        string recordId,flavorName,date,time;//只考虑年月日
+        ssstream<<data[i];
+        ssstream>>recordId>>flavorName>>date>>time;
+        ssstream.clear();
+        int flavorId=atoi(flavorName.substr(6).c_str());
+        if(flavorId>15)//如果不是需要预测的东西
+        {
+            //cout<<"*****************************"<<endl;
+            continue;
+        }
+        else{
+            for(int i=0;i<flavorNum;i++)
+            {
+                if(flavorId==vFlavor[i]->_id)
+                {
+                    nowDate=new Date(date);
+                    dayCount=(*nowDate-*beginDate);//算出是哪一天的
+                    vFlavor[i]->dayLine[dayCount]++;//这一天的这个虚拟机的个数+1
+                }
+            }
+        }
+    }
+
+//////////////////////////////////////////////////////////
+#ifdef _DEBUG
+    cout<<"server: "<<*server;
+    cout<<"flavorNum: "<<flavorNum<<endl;
+    cout<<"flavor: "<<endl;
+    for(size_t i=0;i<vFlavor.size();i++)
+    {
+        cout<<vFlavor[i]->_id<<" "<<vFlavor[i]->_cpuNum<<" "<<vFlavor[i]->_memSize<<endl;
+    }
+
+    cout<<"predictFlag= "<<predictFlag<<endl;
+    cout<<"predict_begin= "<<predictBeginDate<<endl;
+    cout<<"predict_end= "<<predictEndDate<<endl;
+
+    cout<<*beginDate<<" ~ "<<*nowDate<<endl;
+    for(int i=0;i<flavorNum;i++)
+    {
+        cout<<*vFlavor[i];
+    }
+
+   // paint();
+
+#endif
+}
+
 
 
 

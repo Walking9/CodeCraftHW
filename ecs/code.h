@@ -23,16 +23,6 @@ public:
         _memSize=_memSize*1024;
     }
 
-//    Server(const Server& other)
-//    {
-//        this->_memSize=other._memSize;
-//        this->_flavorNum=other._flavorNum;
-//        this->_diskSize=other._diskSize;
-//        _flavorNum.resize(MAX_FLAVORS);
-//        _memSize=_memSize*1024;
-//    }
-
-
     vector<int> _flavorNum; //第n台虚拟机在这个服务器上的个数
     int _cpuNum;//物理服务器CPU核数
     int _memSize;//内存大小（GB）
