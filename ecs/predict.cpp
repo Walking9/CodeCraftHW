@@ -5,7 +5,6 @@
 #include <cmath>
 #include "code.h"
 #include "date.h"
-
 #include "predict.h"
 
 using namespace std;
@@ -30,19 +29,19 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
     initDataStruct(info,data,data_num);//构建数据结构
 
     /********训练数据与打印输出使用******************/
-
     int days=*nowDate-*beginDate;//
     int predictDays=Date(predictBeginDate)-Date(predictEndDate);//
     for(int i=0;i<flavorNum;i++)
-    {
+    {   
+        //训练每个虚拟机的数据集
         vFlavor[i]->_predictNum=ExponentialSmooth2(vFlavor[i]->_dayLine,days,predictDays);
     }
 
+    /**********装箱*************/
     string outstr=firstFit();
 
+    /*********输出**************/
     write_result(outstr.c_str(), filename);
-
-    /***************************/
 
     // 直接调用输出文件的方法输出到指定文件中(ps请注意格式的正确性，
     // 如果有解，第一行只有一个数据；第二行为空；第三行开始才是具体的数据，数据之间用一个空格分隔开)
@@ -103,8 +102,8 @@ int ExponentialSmooth2(const vector<int> data, int n, int k) {
     double Bt = (a / (1-a)) * (s2_1_new[s2_1_new.size()-1] - s2_2_new[s2_2_new.size()-1] );
     double Xt = At + Bt * forecase;
 
-
     delete[] DataHandled;
+    
 #ifdef _DEBUG
     printf("未来%d期的二次指数平滑预估值为： %lf, 均方误差为： %lf\n",forecase, Xt, MSE);
 //    for(int i=0;i<s2_2_new.size();i++)
