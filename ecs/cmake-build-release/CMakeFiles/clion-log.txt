@@ -1,0 +1,4 @@
+/home/hengliy/Downloads/CLion-2017.3.3/clion-2017.3.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" /home/hengliy/codeHW/ecs
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/hengliy/codeHW/ecs/cmake-build-release
