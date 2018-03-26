@@ -39,7 +39,7 @@ ostream & operator<<(ostream &out, Flavor &flavor)
     out<<flavor._id<<" "<<flavor._cpuNum<<" "<<flavor._memSize<<" ("<<days<<") -> ";
     for(int i=0;i<days;i++)
     {
-        out<<flavor.dayLine[i]<<",";
+        out<<flavor._dayLine[i]<<",";
     }
     out<<endl;
     return out;
@@ -55,7 +55,7 @@ void paint()
         str+=to_string(vFlavor[i]->_id)+" "+to_string(days)+" ";//to_string(vFlavor[i]->_cpuNum)+" "+to_string(vFlavor[i]->_memSize)+"("+to_string(days)+") ";
         for(int j=0;j<days;j++)
         {
-            str+=to_string(vFlavor[i]->dayLine[j])+" ";
+            str+=to_string(vFlavor[i]->_dayLine[j])+" ";
         }
         str+='\n';
     }
@@ -259,7 +259,7 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
                 {
                     nowDate=new Date(date);
                     dayCount=(*nowDate-*beginDate);//算出是哪一天的
-                    vFlavor[i]->dayLine[dayCount]++;//这一天的这个虚拟机的个数+1
+                    vFlavor[i]->_dayLine[dayCount]++;//这一天的这个虚拟机的个数+1
                 }
             }
         }

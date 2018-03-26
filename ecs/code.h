@@ -36,10 +36,10 @@ class Flavor
 public:
     Flavor(int id,int cpuNum,int memSize):
         _id(id),_cpuNum(cpuNum),_memSize(memSize){
-        dayLine.resize(MAX_DAYS);
+        _dayLine.resize(MAX_DAYS);
     }
 
-    vector<int> dayLine;//每个虚拟机对应的每一天的请求量
+    vector<int> _dayLine;//每个虚拟机对应的每一天的请求量
     int _predictNum;//预测出来的总个数
     int _id;//虚拟机规格名称1
     int _cpuNum;//CPU核数

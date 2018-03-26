@@ -35,7 +35,7 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
     int predictDays=Date(predictBeginDate)-Date(predictEndDate);//
     for(int i=0;i<flavorNum;i++)
     {
-        vFlavor[i]->_predictNum=ExponentialSmooth2(vFlavor[i]->dayLine,days,predictDays);
+        vFlavor[i]->_predictNum=ExponentialSmooth2(vFlavor[i]->_dayLine,days,predictDays);
     }
 
     string outstr=firstFit();
