@@ -45,7 +45,7 @@ public:
     int _memSize;//内存大小（MB）
 };
 
-void paint();
+void paint(vector<int> data1,int length1,vector<int>data2,int length2);
 string firstFit();
 string dpPath();
 

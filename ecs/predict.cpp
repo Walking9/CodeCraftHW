@@ -39,6 +39,7 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
     }
 
     /**********装箱*************/
+
     string outstr=firstFit();
 
     /*********输出**************/
@@ -56,11 +57,8 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
     }
 }
 
-
-
 int predict(const vector<int> data, int n,int predictDays)
 {
-    
     int ret ;
 
     ret=ExponentialSmooth2(data,n,predictDays);//指数平滑算法
@@ -71,7 +69,7 @@ int predict(const vector<int> data, int n,int predictDays)
 }
 
 
-//data格式：    int data[] = {0, 2, 1, 1, 0, 6, 2, 1 ,0, 2, 1, 4, 3, 10, 2, 3, 1, 3, 3, 2, 5, 10, 1, 2, 8, 1, 2, 4, 2, 3};
+//data格式： int data[] = {0, 2, 1, 1, 0, 6, 2, 1 ,0, 2, 1, 4, 3, 10, 2, 3, 1, 3, 3, 2, 5, 10, 1, 2, 8, 1, 2, 4, 2, 3};
 //二次指数平滑预测
 int ExponentialSmooth2(const vector<int> data, int n, int k) {
     int DataNum = n / k, tempN = n;

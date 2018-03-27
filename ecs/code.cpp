@@ -46,9 +46,10 @@ ostream & operator<<(ostream &out, Flavor &flavor)
     return out;
 }
 
-void paint(vector<int> data1,int length,vector<int>data2,int length)
+void paint(vector<int> data1,int length1,vector<int>data2,int length2)
 {
 #ifdef _DEBUG
+/*
 //    int days=*nowDate-*beginDate;
 //    string str="";
 //    for(int i=0;i<flavorNum;i++)
@@ -62,13 +63,13 @@ void paint(vector<int> data1,int length,vector<int>data2,int length)
 //    }
 
     string str="";
-    for(int i=0;i<day1;i++)
+    for(int i=0;i<length1;i++)
     {
         str+=to_string(data1[i])+" ";
     }
     str+="\n";
 
-    for(int i=0;i<day2;i++)
+    for(int i=0;i<length2;i++)
     {
         str+=to_string(data2[i])+" ";
     }
@@ -101,10 +102,9 @@ void paint(vector<int> data1,int length,vector<int>data2,int length)
     //第五步：关闭Python解释器
     Py_Finalize();
     return;
+*/
 #endif
 }
-
-
 
 
 void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int data_num)
@@ -204,7 +204,7 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
         cout<<*vFlavor[i];
     }
 
-    paint();
+    //paint();
 
 #endif
 }
@@ -451,7 +451,6 @@ string dpPath()
 
     str1+"\n";
     str+="\n"+to_string(serverNum)+"\n"+str1;
-
 
     return str;
 }

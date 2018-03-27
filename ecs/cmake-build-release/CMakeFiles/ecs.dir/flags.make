@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_FLAGS =  -O0 -Wall -g -ggdb -std=c++11   
 
-CXX_DEFINES = 
+CXX_DEFINES = -D_DEBUG
 
 CXX_INCLUDES = -I/home/hengliy/codeHW/ecs/lib 
 
