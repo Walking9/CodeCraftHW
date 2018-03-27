@@ -201,11 +201,11 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
 
 bool cmp_cpu(Flavor* a,Flavor* b)
 {
-    return a->_cpuNum>b->_cpuNum;
+    return a->_cpuNum<b->_cpuNum;
 }
 bool cmp_mem(Flavor* a,Flavor* b)
 {
-    return a->_memSize>b->_memSize;
+    return a->_memSize<b->_memSize;
 }
 
 string firstFit()
