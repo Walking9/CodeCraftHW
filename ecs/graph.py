@@ -27,7 +27,7 @@ def main():
 def paint(list):
 	for arry in list:
 
-		plt.plot(arry[2:])   #plot函数根据数字绘制出有意义的图形e
+		plt.plot(arry)   #plot函数根据数字绘制出有意义的图形e
 		plt.title("Flavor Num", fontsize = 24)      #给图表指定标题
 		plt.xlabel("Date", fontsize = 14)              #给X轴设置标题
 		plt.ylabel("Num", fontsize = 14)    #给Y轴设置标题

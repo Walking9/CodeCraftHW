@@ -19,13 +19,15 @@ string
 -
 vector
 -
-time.h
--
-list
--
 lib_io.h
 -
 python2.7/Python.h
+-
+algorithm
+-
+sstream
+-
+cstring
 -
 
 /home/hengliy/codeHW/ecs/code.h
@@ -99,15 +101,9 @@ iostream
 -
 string
 -
-sstream
--
-sstream
--
-list
--
 cstring
 -
-numeric
+cmath
 -
 code.h
 /home/hengliy/codeHW/ecs/code.h

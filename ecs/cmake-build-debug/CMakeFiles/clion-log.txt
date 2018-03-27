@@ -1,4 +1,4 @@
-/home/hengliy/Downloads/CLion-2017.3.3/clion-2017.3.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_BUILD_TYPE=debug -D_DEBUG=1 -G "CodeBlocks - Unix Makefiles" /home/hengliy/codeHW/ecs
+/home/hengliy/Downloads/CLion-2017.3.3/clion-2017.3.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/hengliy/codeHW/ecs
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/hengliy/codeHW/ecs/cmake-build-debug

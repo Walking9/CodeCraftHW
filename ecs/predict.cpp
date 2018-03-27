@@ -120,10 +120,10 @@ int ExponentialSmooth2(const vector<int> data, int n, int k) {
     
 #ifdef _DEBUG
     printf("未来%d期的二次指数平滑预估值为： %lf, 均方误差为： %lf\n",forecase, Xt, MSE);
-//    for(int i=0;i<s2_2_new.size();i++)
-//    {
-//        cout<<s2_1_new[i]<<" ";
-//    }
+    for(int i=0;i<s2_2_new.size();i++)
+    {
+        cout<<s2_1_new[i]<<" ";
+    }
     cout<<" predict num = "<<int(Xt)<<endl;
 #endif
     return (int)Xt;//4->5

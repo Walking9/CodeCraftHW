@@ -46,7 +46,7 @@ ostream & operator<<(ostream &out, Flavor &flavor)
     return out;
 }
 
-void paint()
+void paint(vector<int> data1,int length,vector<int>data2,int length)
 {
 #ifdef _DEBUG
 //    int days=*nowDate-*beginDate;
@@ -60,35 +60,47 @@ void paint()
 //        }
 //        str+='\n';
 //    }
-//
-//    write_result(str.c_str(), "../data/cpp_py.txt");
-//
-//    //第一步：初始化Python
-//    //在调用Python的提供的给C的API之前，通过执行初始化
-//    //来添加Python的内建模块、__main__、sys等
-//    Py_Initialize();
-//
-//    //检查初始化是否完成
-//    if (!Py_IsInitialized())
-//    {
-//        return;
-//    }
-//
-//    //第二步：导入sys模块
-//    PyRun_SimpleString("import sys");
-//
-//    //第三步：导入执行脚本时的命令行参数，如：./sample.py arg1 arg2
-//   // PyRun_SimpleString("sys.argv['arg1','arg2']");
-//
-//    //第四步：执行调用脚本文件命令,注意文件的路径
-//    if (PyRun_SimpleString("execfile('../graph.py')") == NULL)
-//    {
-//        return;
-//    }
-//
-//    //第五步：关闭Python解释器
-//    Py_Finalize();
-//    return;
+
+    string str="";
+    for(int i=0;i<day1;i++)
+    {
+        str+=to_string(data1[i])+" ";
+    }
+    str+="\n";
+
+    for(int i=0;i<day2;i++)
+    {
+        str+=to_string(data2[i])+" ";
+    }
+
+    write_result(str.c_str(), "../data/cpp_py.txt");
+
+    //第一步：初始化Python
+    //在调用Python的提供的给C的API之前，通过执行初始化
+    //来添加Python的内建模块、__main__、sys等
+    Py_Initialize();
+
+    //检查初始化是否完成
+    if (!Py_IsInitialized())
+    {
+        return;
+    }
+
+    //第二步：导入sys模块
+    PyRun_SimpleString("import sys");
+
+    //第三步：导入执行脚本时的命令行参数，如：./sample.py arg1 arg2
+    //PyRun_SimpleString("sys.argv['arg1','arg2']");
+
+    //第四步：执行调用脚本文件命令,注意文件的路径
+    if (PyRun_SimpleString("execfile('../graph.py')") == NULL)
+    {
+        return;
+    }
+
+    //第五步：关闭Python解释器
+    Py_Finalize();
+    return;
 #endif
 }
 
@@ -192,7 +204,7 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
         cout<<*vFlavor[i];
     }
 
-   // paint();
+    paint();
 
 #endif
 }
