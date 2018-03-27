@@ -116,7 +116,7 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
     //依次输出到result中，并存入res中
     ssstream>>s1>>s2>>s3;
     ssstream.clear();
-    server =new Server(s1,s2*1024,s3);
+    server =new Server(s1,s2,s3);
 
 
     //读取虚拟机个数
@@ -133,7 +133,7 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
         ssstream>>flavorName>>cpuNum>>memSize;
         ssstream.clear();
         int id=atoi(flavorName.substr(6).c_str());
-        Flavor* flavor=new Flavor(id,cpuNum,memSize);
+        Flavor* flavor=new Flavor(id,cpuNum,memSize/1024);
         vFlavor.push_back(flavor);
     }
 
@@ -403,6 +403,93 @@ vector<Flavor*> dp(vector<Flavor*>& vv)
     return ret;
 }
 
+
+
+vector<Flavor*> dp2(vector<Flavor*>& vv)
+{
+    //int w[MAX] = {0};   //重量/cpu
+    //int b[MAX] = {0};   //体积/mem
+    //int v[MAX] = {0};   //价值/cpu/mem
+
+    //cout<<"请输入物品个数:";
+    //cin>>n;
+
+    //cout<<"请输入背包的容量及容积:";
+    //cin>>c>>d;
+    int n,c,d;
+    n=vv.size()-1;//装入物品的个数
+    c=server->_cpuNum;//背包的容量
+    d=server->_memSize;//背包的容积
+
+    //cout<<"请依次输入各个物品的重量,体积,价值:(共"<<n<<"个)"<<endl;
+#ifdef _DEBUG
+    for(int i =1;i<=n;i++)
+    {
+        cout<<vv[i]->_id<<" ";
+    }
+#endif
+
+    int dp[100][100][100]={0};
+    //dp[i][j][k] i代表着第1到第i个物品，j代表的是重量，k代表的是容积，dp为最优价值
+    //dp[i][j][k] i代表着第1到第i个虚拟机，j代表的是cpu，k代表的是mem，dp为最优价值
+
+
+    for(int i=1;i<=n;i++)//循环所有虚拟机
+    {
+        Flavor* flavor=vv[i];
+        for(int j =1;j <=c;j++)//从小到大循环cpu
+            for(int k = 1 ;k <= d ; k++)//从小到大循环mem
+            {
+                if(flavor->_cpuNum<=j&&flavor->_memSize<=k)  //当前物品重量小于当前容量，且体积小于容积时 ，才可以考虑装入物品的问题
+                    //dp[i][j][k] = max(dp[i-1][j][k] , dp[i-1][j-w[i]][k-b[i]] + v[i]);
+                {
+                    if(predictFlag=="cpu")
+                        dp[i][j][k] = max(dp[i-1][j][k] , dp[i-1][j-flavor->_cpuNum][k-flavor->_memSize] + flavor->_cpuNum);//可优化时间
+                    else
+                        dp[i][j][k] = max(dp[i-1][j][k] , dp[i-1][j-flavor->_cpuNum][k-flavor->_memSize] + flavor->_memSize);
+                }
+                else dp[i][j][k] = dp[i-1][j][k];
+            }
+    }
+
+
+
+
+    vector<Flavor*> ret;
+    int tempc=c;
+    int tempd=d;
+    for(int i =n;i>1;i--)
+    {
+        if(dp[i][tempc][tempd]!=dp[i-1][tempc][tempd])
+        {
+            ret.push_back(vv[i]);
+            tempc -= vv[i]->_cpuNum;
+            tempd -= vv[i]->_memSize;
+            vv.erase(vv.begin()+i);//把这个选中的删了
+        }
+    }
+
+    if(dp[1][c][d]>0)//计算第一个
+    {
+        ret.push_back(vv[1]);
+        vv.erase(vv.begin()+1);
+    }
+    //x[1]=(dp[1][c][d])?1:0;
+
+#ifdef _DEBUG
+    cout<<"背包能放物品的最大价值为:"<<dp[n][c][d]<<endl;
+    cout<<"被选入背包的物品的编号,cpu和体mem,价值分别是:"<<endl;
+
+    for(size_t i=0;i<ret.size();i++)
+    {
+        cout<<"第"<<ret[i]->_id<<"个物品: "<<ret[i]->_cpuNum<<"  "<<ret[i]->_memSize<<"  "<<ret[i]->_cpuNum<<endl;
+    }
+#endif
+
+    return ret;
+}
+
+
 string dpPath()
 {
     vector<Flavor*> vv;//
@@ -432,7 +519,7 @@ string dpPath()
     while(vv.size()!=1)
     {
         memset(aa,0, sizeof(aa));
-        vector<Flavor*> temp=dp(vv);
+        vector<Flavor*> temp=dp2(vv);
         serverNum++;
 
         for(size_t i =0;i<temp.size();i++)

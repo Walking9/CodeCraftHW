@@ -40,7 +40,7 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
 
     /**********装箱*************/
 
-    string outstr=firstFit();
+    string outstr=dpPath();
 
     /*********输出**************/
     write_result(outstr.c_str(), filename);
