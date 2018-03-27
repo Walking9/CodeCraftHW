@@ -30,11 +30,12 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
 
     /********训练数据与打印输出使用******************/
     int days=*nowDate-*beginDate;//
+
     int predictDays=Date(predictBeginDate)-Date(predictEndDate);//
     for(int i=0;i<flavorNum;i++)
     {   
         //训练每个虚拟机的数据集
-        vFlavor[i]->_predictNum=ExponentialSmooth2(vFlavor[i]->_dayLine,days,predictDays);
+        vFlavor[i]->_predictNum=predict(vFlavor[i]->_dayLine,days,predictDays);
     }
 
     /**********装箱*************/
@@ -55,6 +56,19 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
     }
 }
 
+
+
+int predict(const vector<int> data, int n,int predictDays)
+{
+    
+    int ret ;
+
+    ret=ExponentialSmooth2(data,n,predictDays);//指数平滑算法
+
+    //ret=RnnPredict(data,n,predictDays);
+
+    return ret;
+}
 
 
 //data格式：    int data[] = {0, 2, 1, 1, 0, 6, 2, 1 ,0, 2, 1, 4, 3, 10, 2, 3, 1, 3, 3, 2, 5, 10, 1, 2, 8, 1, 2, 4, 2, 3};

@@ -104,7 +104,7 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
     //依次输出到result中，并存入res中
     ssstream>>s1>>s2>>s3;
     ssstream.clear();
-    server =new Server(s1,s2,s3);
+    server =new Server(s1,s2*1024,s3);
 
 
     //读取虚拟机个数
@@ -237,7 +237,7 @@ string firstFit()
     str+="\n";
 
 
-    vServer.push_back(new Server(server->_cpuNum,server->_memSize/1024,server->_diskSize));
+    vServer.push_back(new Server(server->_cpuNum,server->_memSize,server->_diskSize));
 
     for(size_t i=0;i<vFlavor.size();i++)//循环所有的虚拟机
     {
@@ -253,7 +253,7 @@ string firstFit()
                 {
                     if(j==vServer.size()-1)//且如果这个服务器是最后一个服务器了
                     {
-                        vServer.push_back(new Server(server->_cpuNum,server->_memSize/1024,server->_diskSize));//再申请一个新的物理机
+                        vServer.push_back(new Server(server->_cpuNum,server->_memSize,server->_diskSize));//再申请一个新的物理机
                     }
                     //continue;//如果此服务器不能装下这个虚拟机 就向后推动
                 }

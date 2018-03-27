@@ -20,7 +20,6 @@ public:
     Server(int cpuNum,int memSize,int diskSize):
         _cpuNum(cpuNum),_memSize(memSize),_diskSize(diskSize) {
         _flavorNum.resize(MAX_FLAVORS);
-        _memSize=_memSize*1024;
     }
 
     vector<int> _flavorNum; //第n台虚拟机在这个服务器上的个数
