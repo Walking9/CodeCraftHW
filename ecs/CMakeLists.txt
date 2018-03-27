@@ -15,8 +15,6 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../bin)
 SET(CMAKE_BUILD_TYPE "release")#release 版本使用
 if (CMAKE_BUILD_TYPE STREQUAL debug)
     add_definitions(-D_DEBUG)
-elseif()
-
 endif ()
 
 SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb -std=c++11 ")
@@ -28,7 +26,6 @@ aux_source_directory(. DIR_SRCS)
 
 # 指定生成目标
 add_executable(ecs ${DIR_SRCS})
-
 
 # 当使用画图时候解除注释
 #include_directories("-I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes")

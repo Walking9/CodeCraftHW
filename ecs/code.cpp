@@ -26,7 +26,7 @@ Server* server;//物理服务器
 vector<Flavor*> vFlavor;//待检测虚拟机格式数组
 vector<Server*> vServer;//构建预测的物理服务器链表
 Date* beginDate;//训练数据开始时间
-Date* nowDate;//训练数据结束时间
+Date* endDate;//训练数据结束时间
 
 ostream & operator<<(ostream &out,const Server &server)
 {
@@ -36,7 +36,7 @@ ostream & operator<<(ostream &out,const Server &server)
 
 ostream & operator<<(ostream &out, Flavor &flavor)
 {
-    int days=*nowDate-*beginDate;
+    int days=*endDate-*beginDate;
     out<<flavor._id<<" "<<flavor._cpuNum<<" "<<flavor._memSize<<" ("<<days<<") -> ";
     for(int i=0;i<days;i++)
     {
@@ -176,16 +176,22 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
             {
                 if(flavorId==vFlavor[i]->_id)
                 {
-                    nowDate=new Date(date);
+                    Date* nowDate=new Date(date);
                     dayCount=(*nowDate-*beginDate);//算出是哪一天的
                     vFlavor[i]->_dayLine[dayCount]++;//这一天的这个虚拟机的个数+1
                 }
             }
         }
     }
+    ssstream<<data[data_num-1];
+    ssstream>>recordId1>>flavorId1>>date1>>time1;
+    ssstream.clear();
+    endDate=new Date(date1);
+
 
 //////////////////////////////////////////////////////////
 #ifdef _DEBUG
+    cout<<"/////////////////////////////"<<endl;
     cout<<"server: "<<*server;
     cout<<"flavorNum: "<<flavorNum<<endl;
     cout<<"flavor: "<<endl;
@@ -198,7 +204,7 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
     cout<<"predict_begin= "<<predictBeginDate<<endl;
     cout<<"predict_end= "<<predictEndDate<<endl;
 
-    cout<<*beginDate<<" ~ "<<*nowDate<<endl;
+    cout<<*beginDate<<" ~ "<<*endDate<<endl;
     for(int i=0;i<flavorNum;i++)
     {
         cout<<*vFlavor[i];
@@ -213,11 +219,11 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
 
 bool cmp_cpu(Flavor* a,Flavor* b)
 {
-    return a->_cpuNum<b->_cpuNum;
+    return a->_cpuNum>b->_cpuNum;
 }
 bool cmp_mem(Flavor* a,Flavor* b)
 {
-    return a->_memSize<b->_memSize;
+    return a->_memSize>b->_memSize;
 }
 
 string firstFit()
@@ -249,13 +255,18 @@ string firstFit()
     str+="\n";
 
 
-    vServer.push_back(new Server(server->_cpuNum,server->_memSize,server->_diskSize));
-
+    int flag=1;
     for(size_t i=0;i<vFlavor.size();i++)//循环所有的虚拟机
     {
         Flavor* flavor=vFlavor[i];
         while(flavor->_predictNum)//检查此虚拟机预测的个数
         {
+            if(flag==1)
+            {
+                flag=0;
+                vServer.push_back(new Server(server->_cpuNum,server->_memSize,server->_diskSize));
+            }
+
             for(size_t j=0;j<vServer.size();j++)//循环物理服务器链表
             {
                 Server* server0=vServer[j];
@@ -316,134 +327,57 @@ int max(int x, int y)
     return x>y?x:y;
 }
 
-vector<Flavor*> dp(vector<Flavor*>& vv)
-{
-#ifdef _DEBUG
-    cout<<"dpN = ";
-    for(size_t i=0;i<vv.size();i++)
-    {
-        cout<<vv[i]->_cpuNum<<" ";
-    }
-    cout<<endl;
-#endif
-    int c=server->_cpuNum;
-    int n=vv.size()-1;
-    int m[1000][1000];
-
-    memset(m,0,sizeof(m));
-    for(int i=1;i<=n;i++)
-    {
-        for(int j=1;j<=c;j++)
-        {
-            if(j>=vv[i]->_cpuNum)
-                m[i][j]=max(m[i-1][j],m[i-1][j-vv[i]->_cpuNum]+vv[i]->_cpuNum);
-
-            else
-                m[i][j]=m[i-1][j];
-        }
-    }
-    vector<Flavor*> ret;
-    int temp=c;
-    for(size_t i=n;i>1;i--)
-    {
-        if(m[i][temp]!=m[i-1][temp])
-        {
-            ret.push_back(vv[i]);
-            temp-=vv[i]->_cpuNum;
-            vv.erase(vv.begin()+i);
-        }
-    }
-    if(m[1][temp]>0)
-    {
-        ret.push_back(vv[1]);
-        vv.erase(vv.begin()+1);
-    }
-    //x[1]=(m[1][temp]>0)?1:0;
-
-#ifdef _DEBUG
-    for(int i=0;i<=c;i++)
-    {
-        cout<<i<<" ";
-    }
-    cout<<endl;
-    for(int i=0;i<=c;i++)
-    {
-        cout<<"- ";
-    }
-    cout<<endl;
-
-    for(int i=1;i<=n;i++)
-    {
-        cout<<i<<"|";
-        for(int j=1;j<=c;j++)
-        {
-            cout<<m[i][j]<<' ';
-        }
-        cout<<endl;
-    }
-
-    cout<<"~~~~~~~~start~~~~~~~~~~~~~~~~"<<endl;
-
-    cout<<"dp end = ";
-    for(size_t i=1;i<vv.size();i++)
-    {
-        cout<<vv[i]->_cpuNum<<" ";
-    }
-    cout<<endl;
-
-    for(size_t i=0;i<ret.size();i++)
-    {
-        cout<<ret[i]->_cpuNum<<" ";
-    }
-    cout<<endl;
-
-    cout<<" "<<20-m[n][c]<<endl;
-    cout<<"~~~~~~~~~end~~~~~~~~~~~~~~~~~"<<endl;
-#endif
-    return ret;
-}
-
-
-
 vector<Flavor*> dp2(vector<Flavor*>& vv)
 {
-    //int w[MAX] = {0};   //重量/cpu
-    //int b[MAX] = {0};   //体积/mem
-    //int v[MAX] = {0};   //价值/cpu/mem
+    if(predictFlag=="cpu")  sort(vv.begin()+1,vv.end(),cmp_cpu);//先排序
+    else  sort(vv.begin()+1,vv.end(),cmp_mem);//先排序
 
-    //cout<<"请输入物品个数:";
-    //cin>>n;
-
-    //cout<<"请输入背包的容量及容积:";
-    //cin>>c>>d;
     int n,c,d;
     n=vv.size()-1;//装入物品的个数
-    c=server->_cpuNum;//背包的容量
-    d=server->_memSize;//背包的容积
+    c=server->_cpuNum;
+    d=server->_memSize;
 
-    //cout<<"请依次输入各个物品的重量,体积,价值:(共"<<n<<"个)"<<endl;
 #ifdef _DEBUG
+    cout<<endl<<"***** dp2 print *******"<<endl;
+    cout<<"准备放进去的虚拟机id = ";
     for(int i =1;i<=n;i++)
     {
         cout<<vv[i]->_id<<" ";
     }
+    cout<<endl;
 #endif
 
-    int dp[100][100][100]={0};
-    //dp[i][j][k] i代表着第1到第i个物品，j代表的是重量，k代表的是容积，dp为最优价值
+    //int dp[n+1][c+1][d+1]={0};
+
+    int*** dp;
+    //const int dpSize=70;
+    dp=new int**[n+1];
+    for(int i=0;i<n+1;i++)
+    {
+        dp[i]=new int*[c+1];
+        for(int j=0;j<c+1;j++)
+        {
+            dp[i][j]=new int[d+1];
+        }
+    }
+
     //dp[i][j][k] i代表着第1到第i个虚拟机，j代表的是cpu，k代表的是mem，dp为最优价值
+    for(int i=0;i<n+1;i++)
+        for(int j=0;j<c+1;j++)
+            for(int k=0;k<d+1;k++)
+                dp[i][j][k]=0;
 
 
     for(int i=1;i<=n;i++)//循环所有虚拟机
     {
         Flavor* flavor=vv[i];
-        for(int j =1;j <=c;j++)//从小到大循环cpu
+        for(int j =1;j<=c;j++)//从小到大循环cpu
             for(int k = 1 ;k <= d ; k++)//从小到大循环mem
             {
-                if(flavor->_cpuNum<=j&&flavor->_memSize<=k)  //当前物品重量小于当前容量，且体积小于容积时 ，才可以考虑装入物品的问题
+                if(flavor->_cpuNum<=j&&flavor->_memSize<=k)  //cpu可以放到当前物理机中，内存也可以满足的情况下，才考虑放进去
                     //dp[i][j][k] = max(dp[i-1][j][k] , dp[i-1][j-w[i]][k-b[i]] + v[i]);
                 {
-                    if(predictFlag=="cpu")
+                    if(predictFlag=="CPU")
                         dp[i][j][k] = max(dp[i-1][j][k] , dp[i-1][j-flavor->_cpuNum][k-flavor->_memSize] + flavor->_cpuNum);//可优化时间
                     else
                         dp[i][j][k] = max(dp[i-1][j][k] , dp[i-1][j-flavor->_cpuNum][k-flavor->_memSize] + flavor->_memSize);
@@ -451,9 +385,6 @@ vector<Flavor*> dp2(vector<Flavor*>& vv)
                 else dp[i][j][k] = dp[i-1][j][k];
             }
     }
-
-
-
 
     vector<Flavor*> ret;
     int tempc=c;
@@ -469,7 +400,7 @@ vector<Flavor*> dp2(vector<Flavor*>& vv)
         }
     }
 
-    if(dp[1][c][d]>0)//计算第一个
+    if(dp[1][tempc][tempd]>0)//计算第一个
     {
         ret.push_back(vv[1]);
         vv.erase(vv.begin()+1);
@@ -477,14 +408,26 @@ vector<Flavor*> dp2(vector<Flavor*>& vv)
     //x[1]=(dp[1][c][d])?1:0;
 
 #ifdef _DEBUG
-    cout<<"背包能放物品的最大价值为:"<<dp[n][c][d]<<endl;
-    cout<<"被选入背包的物品的编号,cpu和体mem,价值分别是:"<<endl;
-
+    cout<<"背包能放物品的最大("<<predictFlag<<")为:"<<dp[n][c][d]<<endl;
+    cout<<"被选入背包cpu|mem|价值分别是:"<<endl;
     for(size_t i=0;i<ret.size();i++)
     {
-        cout<<"第"<<ret[i]->_id<<"个物品: "<<ret[i]->_cpuNum<<"  "<<ret[i]->_memSize<<"  "<<ret[i]->_cpuNum<<endl;
+        if(predictFlag=="CPU")
+            cout<<"第"<<ret[i]->_id<<"个物品: "<<ret[i]->_cpuNum<<"  "<<ret[i]->_memSize<<"  "<<ret[i]->_cpuNum<<endl;
+        else
+            cout<<"第"<<ret[i]->_id<<"个物品: "<<ret[i]->_cpuNum<<"  "<<ret[i]->_memSize<<"  "<<ret[i]->_memSize<<endl;
     }
 #endif
+
+    for(int i=0;i<n+1;i++)
+    {
+        for(int j=0;j<c+1;j++)
+        {
+            delete[] dp[i][j];
+        }
+        delete[] dp[i];
+    }
+    delete dp;
 
     return ret;
 }

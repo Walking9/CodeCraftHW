@@ -21,7 +21,7 @@ extern Server* server;//物理服务器标量
 extern vector<Flavor*> vFlavor;//待检测虚拟机格式数组
 extern vector<Server*> vServer;//构建物理服务器链表
 extern Date* beginDate;//预测开始日期
-extern Date* nowDate;//预测开始日期
+extern Date* endDate;//预测开始日期
 //你要完成的功能总入口
 void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int data_num, char * filename)
 {
@@ -29,19 +29,21 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
     initDataStruct(info,data,data_num);//构建数据结构
 
     /********训练数据与打印输出使用******************/
-    int days=*nowDate-*beginDate;//
+    int days=*endDate-*beginDate;//
 
     int predictDays=Date(predictBeginDate)-Date(predictEndDate);//
     for(int i=0;i<flavorNum;i++)
     {   
         //训练每个虚拟机的数据集
+        cout<<"训练虚拟机"<<vFlavor[i]->_id<<" ";
         vFlavor[i]->_predictNum=predict(vFlavor[i]->_dayLine,days,predictDays);
     }
 
     /**********装箱*************/
 
+//    string outstr=firstFit();
     string outstr=dpPath();
-
+//
     /*********输出**************/
     write_result(outstr.c_str(), filename);
 
@@ -86,7 +88,7 @@ int ExponentialSmooth2(const vector<int> data, int n, int k) {
         x += DataHandled[i];
     x /= 3;
     double s2_1 = x, s2_2 = x;   //置s2_1  s2_2初始值
-    double a = 0.6;      //平滑系数
+    double a = 0.6;      //平滑系数0.65
     double MSE = 0, tempDouble;
 
     //先计算一次指数平滑的值
@@ -117,6 +119,7 @@ int ExponentialSmooth2(const vector<int> data, int n, int k) {
     delete[] DataHandled;
     
 #ifdef _DEBUG
+    printf("***************************************************\n");
     printf("未来%d期的二次指数平滑预估值为： %lf, 均方误差为： %lf\n",forecase, Xt, MSE);
     for(int i=0;i<s2_2_new.size();i++)
     {
@@ -124,6 +127,6 @@ int ExponentialSmooth2(const vector<int> data, int n, int k) {
     }
     cout<<" predict num = "<<int(Xt)<<endl;
 #endif
-    return (int)Xt;//4->5
+    return round(Xt);//4->5
 }
 
