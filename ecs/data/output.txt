@@ -1,5 +1,5 @@
-8
-flavor1 1
+9
+flavor1 2
 flavor2 2
 flavor3 2
 flavor4 0
@@ -7,5 +7,5 @@ flavor5 3
 
 2
 1 flavor2 2 flavor3 2 flavor5 3
-2 flavor1 1
+2 flavor1 2
 

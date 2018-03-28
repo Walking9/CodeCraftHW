@@ -26,44 +26,44 @@ extern Date* endDate;//预测开始日期
 void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int data_num, char * filename)
 {
     // 需要输出的内容
-    initDataStruct(info,data,data_num);//构建数据结构
+    initDataStruct(info, data, data_num);//构建数据结构
 
     /********训练数据与打印输出使用******************/
-    int days=*endDate-*beginDate;//
+    int days = *endDate-*beginDate;//
 
-    int predictDays=Date(predictBeginDate)-Date(predictEndDate);//
-    for(int i=0;i<flavorNum;i++)
+    int predictDays = Date(predictBeginDate) - Date(predictEndDate);//
+    for(int i=0; i<flavorNum; i++)
     {   
         //训练每个虚拟机的数据集
-        cout<<"训练虚拟机"<<vFlavor[i]->_id<<" ";
-        vFlavor[i]->_predictNum=predict(vFlavor[i]->_dayLine,days,predictDays);
+        cout << "训练虚拟机" << vFlavor[i]->_id <<" ";
+        vFlavor[i]->_predictNum = predict(vFlavor[i]->_dayLine,days,predictDays);
     }
 
     /**********装箱*************/
 
-//    string outstr=firstFit();
-    string outstr=dpPath();
+//    string outstr = firstFit();
+    string outstr = dpPath();
 //
     /*********输出**************/
     write_result(outstr.c_str(), filename);
 
     // 直接调用输出文件的方法输出到指定文件中(ps请注意格式的正确性，
     // 如果有解，第一行只有一个数据；第二行为空；第三行开始才是具体的数据，数据之间用一个空格分隔开)
-    for(size_t i=0;i<vServer.size();i++)
+    for(size_t i=0; i<vServer.size(); i++)
     {
         delete vServer[i];
     }
-    for(size_t i=0;i<vFlavor.size();i++)
+    for(size_t i=0; i<vFlavor.size(); i++)
     {
         delete vFlavor[i];
     }
 }
 
-int predict(const vector<int> data, int n,int predictDays)
+int predict(const vector<int> data, int n, int predictDays)
 {
     int ret ;
 
-    ret=ExponentialSmooth2(data,n,predictDays);//指数平滑算法
+    ret = ExponentialSmooth3(data,n, predictDays);//指数平滑算法
 
     //ret=RnnPredict(data,n,predictDays);
 
@@ -107,13 +107,24 @@ int ExponentialSmooth1(const vector<int> data, int n, int k) {
 
 //data格式： int data[] = {0, 2, 1, 1, 0, 6, 2, 1 ,0, 2, 1, 4, 3, 10, 2, 3, 1, 3, 3, 2, 5, 10, 1, 2, 8, 1, 2, 4, 2, 3};
 //二次指数平滑预测
-int ExponentialSmooth2(const vector<int> data, int n, int k) {
+//传入的数据data以天为单位, n为数组大小,参数k表示k天为一组数据, forcase表示需要预测几组数据
+//备注：n最好为k的倍数
+//     实验发现用double和用float差距比较大
+int ExponentialSmooth2(const vector<int> data, int n, int k, int forecase) {
     int DataNum = n / k, tempN = n;
+    //数据预处理
+    int avg = 0;
+    for (int i=0; i<data.size(); i++) {
+        avg += data[i];
+    }
+    avg = (int)round((double)avg/n);
+
     int *DataHandled = new int[DataNum];
     for (int i = DataNum - 1; i >= 0; i--) {
         DataHandled[i] = 0;
         for (int j = 0; j < k; j++) {
-            DataHandled[i] += data[--tempN];
+            if(0 != avg && data[--tempN] > 5*avg) DataHandled[i] += avg;
+            else DataHandled[i] += data[--tempN];
         }
     }
     vector<double> s2_1_new, s2_2_new;
@@ -145,11 +156,15 @@ int ExponentialSmooth2(const vector<int> data, int n, int k) {
         MSE += tempDouble*tempDouble;
     }
     MSE = sqrt(MSE) / DataNum;
-    int forecase = 1;       //要预测几期，暂时置1!!!!!!!!!!!!!!
+//    int forecase = 1;       //要预测几期，暂时置1!!!!!!!!!!!!!!
     double At = s2_1_new[s2_1_new.size()-1] * 2 - s2_2_new[s2_2_new.size()-1];
     double Bt = (a / (1-a)) * (s2_1_new[s2_1_new.size()-1] - s2_2_new[s2_2_new.size()-1] );
-    double Xt = At + Bt * forecase;
-
+    double Xt = 0, tmp;
+    for(int i=1; i<=forecase; i++) {
+        tmp = At + Bt * forecase;
+        tmp = tmp > 0 ? tmp : 0;
+        Xt += tmp;
+    }
     delete[] DataHandled;
     
 #ifdef _DEBUG
@@ -157,9 +172,9 @@ int ExponentialSmooth2(const vector<int> data, int n, int k) {
     printf("未来%d期的二次指数平滑预估值为： %lf, 均方误差为： %lf\n",forecase, Xt, MSE);
     for(int i=0;i<s2_2_new.size();i++)
     {
-        cout<<s2_1_new[i]<<" ";
+        cout << s2_1_new[i] <<" ";
     }
-    cout<<" predict num = "<<int(Xt)<<endl;
+    cout<<" predict num = "<<int(Xt) << endl;
 #endif
     return (int)round(Xt);//4->5
 }
@@ -168,11 +183,20 @@ int ExponentialSmooth2(const vector<int> data, int n, int k) {
 //三次指数平滑预测
 int ExponentialSmooth3(const vector<int> data, int n, int k) {
     int DataNum = n / k, tempN = n;
+    //数据预处理
+    int avg = 0;
+    for (int i=0; i<data.size(); i++) {
+        avg += data[i];
+    }
+    avg = (int)round((double)avg/n);
+
     int *DataHandled = new int[DataNum];
     for (int i = DataNum - 1; i >= 0; i--) {
         DataHandled[i] = 0;
         for (int j = 0; j < k; j++) {
-            DataHandled[i] += data[--tempN];
+            tempN--;
+            if(0 != avg && data[tempN] > 5*avg) DataHandled[i] += avg;
+            else DataHandled[i] += data[tempN];
         }
     }
     vector<double> s3_1_new, s3_2_new, s3_3_new;
@@ -180,7 +204,8 @@ int ExponentialSmooth3(const vector<int> data, int n, int k) {
     for (int i = 0; i < 3; i++)
         x += DataHandled[i];
     x /= 3;
-    double s3_1 = x, s3_2 = x, s3_3 = x;    double a = 0.6;      //平滑系数
+    double s3_1 = x, s3_2 = x, s3_3 = x;
+    double a = 0.4;      //平滑系数!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     double MSE = 0, tempDouble;
 
     //先计算一次指数平滑的值
@@ -223,7 +248,7 @@ int ExponentialSmooth3(const vector<int> data, int n, int k) {
 
 #ifdef _DEBUG
 //    printf("未来%d期的二次指数平滑预估值为： %lf, 均方误差为： %lf\n",forecase, Xt, MSE);
-    cout << "\n\n实际数据:";
+    cout << "\n实际数据:";
     for(int i=0; i<DataNum; i++) {
         cout << DataHandled[i] << " ";
     }
@@ -232,10 +257,10 @@ int ExponentialSmooth3(const vector<int> data, int n, int k) {
     for(int i=0;i<s3_3_new.size();i++) {
         cout << s3_3_new[i] <<" ";
     }
-    cout << "predict num = " << Xt << "  均方误差：" << MSE << endl;
+    cout << "predict num = " << Xt << "  均方误差：" << MSE  << "\n\n"<< endl;
 #endif
     delete[] DataHandled;
-
-    return (int)round(Xt);
+    if(Xt > 0) return (int)round(Xt);
+    else return 0;
 }
 

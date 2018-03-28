@@ -329,7 +329,7 @@ int max(int x, int y)
 
 vector<Flavor*> dp2(vector<Flavor*>& vv)
 {
-    if(predictFlag=="cpu")  sort(vv.begin()+1,vv.end(),cmp_cpu);//先排序
+    if(predictFlag=="CPU")  sort(vv.begin()+1,vv.end(),cmp_cpu);//先排序
     else  sort(vv.begin()+1,vv.end(),cmp_mem);//先排序
 
     int n,c,d;
