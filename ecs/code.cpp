@@ -228,7 +228,7 @@ bool cmp_mem(Flavor* a,Flavor* b)
 
 string firstFit()
 {
-    if(predictFlag=="cpu")  sort(vFlavor.begin(),vFlavor.end(),cmp_cpu);//先排序
+    if(predictFlag=="CPU")  sort(vFlavor.begin(),vFlavor.end(),cmp_cpu);//先排序
     else  sort(vFlavor.begin(),vFlavor.end(),cmp_mem);//先排序
 
 #ifdef _DEBUG
