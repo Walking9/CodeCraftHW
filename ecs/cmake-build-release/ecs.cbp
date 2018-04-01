@@ -8,43 +8,44 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release"/>
+				<Option working_dir="/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release"/>
+				<Option working_dir="/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release"/>
+				<Option working_dir="/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ecs">
-				<Option output="/home/brunon/CLionProjects/HW/codeHW/ecs/bin/ecs" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/../bin"/>
+				<Option output="/home/brunon/CLionProjects/codeHW/ecs/bin/ecs" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/../bin"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/brunon/CLionProjects/HW/codeHW/ecs/lib"/>
+					<Add option="-D_DEBUG"/>
+					<Add directory="/home/brunon/CLionProjects/codeHW/ecs/lib"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -55,20 +56,21 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 ecs"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 ecs"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="ecs/fast">
-				<Option output="/home/brunon/CLionProjects/HW/codeHW/ecs/bin/ecs" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/../bin"/>
+				<Option output="/home/brunon/CLionProjects/codeHW/ecs/bin/ecs" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/../bin"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/brunon/CLionProjects/HW/codeHW/ecs/lib"/>
+					<Add option="-D_DEBUG"/>
+					<Add directory="/home/brunon/CLionProjects/codeHW/ecs/lib"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
 					<Add directory="/usr/include/c++/5/backward"/>
@@ -79,38 +81,44 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 ecs/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 ecs/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/brunon/CLionProjects/codeHW/ecs/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/brunon/CLionProjects/HW/codeHW/ecs/code.cpp">
+		<Unit filename="/home/brunon/CLionProjects/codeHW/ecs/ExponentialSmooth.h">
 			<Option target="ecs"/>
 		</Unit>
-		<Unit filename="/home/brunon/CLionProjects/HW/codeHW/ecs/code.h">
+		<Unit filename="/home/brunon/CLionProjects/codeHW/ecs/PolynomialCurveFitting.h">
 			<Option target="ecs"/>
 		</Unit>
-		<Unit filename="/home/brunon/CLionProjects/HW/codeHW/ecs/date.cpp">
+		<Unit filename="/home/brunon/CLionProjects/codeHW/ecs/code.cpp">
 			<Option target="ecs"/>
 		</Unit>
-		<Unit filename="/home/brunon/CLionProjects/HW/codeHW/ecs/date.h">
+		<Unit filename="/home/brunon/CLionProjects/codeHW/ecs/code.h">
 			<Option target="ecs"/>
 		</Unit>
-		<Unit filename="/home/brunon/CLionProjects/HW/codeHW/ecs/ecs.cpp">
+		<Unit filename="/home/brunon/CLionProjects/codeHW/ecs/date.cpp">
 			<Option target="ecs"/>
 		</Unit>
-		<Unit filename="/home/brunon/CLionProjects/HW/codeHW/ecs/io.cpp">
+		<Unit filename="/home/brunon/CLionProjects/codeHW/ecs/date.h">
 			<Option target="ecs"/>
 		</Unit>
-		<Unit filename="/home/brunon/CLionProjects/HW/codeHW/ecs/predict.cpp">
+		<Unit filename="/home/brunon/CLionProjects/codeHW/ecs/ecs.cpp">
 			<Option target="ecs"/>
 		</Unit>
-		<Unit filename="/home/brunon/CLionProjects/HW/codeHW/ecs/predict.h">
+		<Unit filename="/home/brunon/CLionProjects/codeHW/ecs/io.cpp">
 			<Option target="ecs"/>
 		</Unit>
-		<Unit filename="/home/brunon/CLionProjects/HW/codeHW/ecs/CMakeLists.txt">
+		<Unit filename="/home/brunon/CLionProjects/codeHW/ecs/predict.cpp">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="/home/brunon/CLionProjects/codeHW/ecs/predict.h">
+			<Option target="ecs"/>
+		</Unit>
+		<Unit filename="/home/brunon/CLionProjects/codeHW/ecs/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -10,9 +10,17 @@
 
 ../lib/lib_time.h
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/code.cpp
+/home/brunon/CLionProjects/codeHW/ecs/ExponentialSmooth.h
+iostream
+-
+vector
+-
+cmath
+-
+
+/home/brunon/CLionProjects/codeHW/ecs/code.cpp
 code.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/code.h
+/home/brunon/CLionProjects/codeHW/ecs/code.h
 iostream
 -
 string
@@ -30,7 +38,7 @@ sstream
 cstring
 -
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/code.h
+/home/brunon/CLionProjects/codeHW/ecs/code.h
 iostream
 -
 fstream
@@ -44,9 +52,9 @@ list
 time.h
 -
 date.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/date.h
+/home/brunon/CLionProjects/codeHW/ecs/date.h
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/date.cpp
+/home/brunon/CLionProjects/codeHW/ecs/date.cpp
 iostream
 -
 string
@@ -58,23 +66,23 @@ cstring
 vector
 -
 date.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/date.h
+/home/brunon/CLionProjects/codeHW/ecs/date.h
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/date.h
+/home/brunon/CLionProjects/codeHW/ecs/date.h
 iostream
 -
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/ecs.cpp
+/home/brunon/CLionProjects/codeHW/ecs/ecs.cpp
 predict.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/predict.h
+/home/brunon/CLionProjects/codeHW/ecs/predict.h
 lib_io.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/lib_io.h
+/home/brunon/CLionProjects/codeHW/ecs/lib_io.h
 lib_time.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/lib_time.h
+/home/brunon/CLionProjects/codeHW/ecs/lib_time.h
 stdio.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/stdio.h
+/home/brunon/CLionProjects/codeHW/ecs/stdio.h
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/io.cpp
+/home/brunon/CLionProjects/codeHW/ecs/io.cpp
 stdio.h
 -
 stdlib.h
@@ -94,27 +102,23 @@ unistd.h
 signal.h
 -
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/predict.cpp
+/home/brunon/CLionProjects/codeHW/ecs/predict.cpp
 stdio.h
 -
 iostream
 -
-string
--
-cstring
--
-cmath
--
+ExponentialSmooth.h
+/home/brunon/CLionProjects/codeHW/ecs/ExponentialSmooth.h
 code.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/code.h
+/home/brunon/CLionProjects/codeHW/ecs/code.h
 date.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/date.h
+/home/brunon/CLionProjects/codeHW/ecs/date.h
 predict.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/predict.h
+/home/brunon/CLionProjects/codeHW/ecs/predict.h
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/predict.h
+/home/brunon/CLionProjects/codeHW/ecs/predict.h
 lib_io.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/lib_io.h
+/home/brunon/CLionProjects/codeHW/ecs/lib_io.h
 string
 -
 vector

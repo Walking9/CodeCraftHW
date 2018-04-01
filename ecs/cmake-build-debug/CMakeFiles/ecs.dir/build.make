@@ -43,10 +43,10 @@ RM = /home/brunon/桌面/CLion/clion-2017.2.3/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/brunon/CLionProjects/HW/codeHW/ecs
+CMAKE_SOURCE_DIR = /home/brunon/CLionProjects/codeHW/ecs
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-debug
+CMAKE_BINARY_DIR = /home/brunon/CLionProjects/codeHW/ecs/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ecs.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/ecs.dir/flags.make
 
 CMakeFiles/ecs.dir/code.cpp.o: CMakeFiles/ecs.dir/flags.make
 CMakeFiles/ecs.dir/code.cpp.o: ../code.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ecs.dir/code.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/code.cpp.o -c /home/brunon/CLionProjects/HW/codeHW/ecs/code.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/brunon/CLionProjects/codeHW/ecs/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ecs.dir/code.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/code.cpp.o -c /home/brunon/CLionProjects/codeHW/ecs/code.cpp
 
 CMakeFiles/ecs.dir/code.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/code.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brunon/CLionProjects/HW/codeHW/ecs/code.cpp > CMakeFiles/ecs.dir/code.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brunon/CLionProjects/codeHW/ecs/code.cpp > CMakeFiles/ecs.dir/code.cpp.i
 
 CMakeFiles/ecs.dir/code.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/code.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brunon/CLionProjects/HW/codeHW/ecs/code.cpp -o CMakeFiles/ecs.dir/code.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brunon/CLionProjects/codeHW/ecs/code.cpp -o CMakeFiles/ecs.dir/code.cpp.s
 
 CMakeFiles/ecs.dir/code.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/ecs.dir/code.cpp.o.provides.build: CMakeFiles/ecs.dir/code.cpp.o
 
 CMakeFiles/ecs.dir/date.cpp.o: CMakeFiles/ecs.dir/flags.make
 CMakeFiles/ecs.dir/date.cpp.o: ../date.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ecs.dir/date.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/date.cpp.o -c /home/brunon/CLionProjects/HW/codeHW/ecs/date.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/brunon/CLionProjects/codeHW/ecs/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ecs.dir/date.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/date.cpp.o -c /home/brunon/CLionProjects/codeHW/ecs/date.cpp
 
 CMakeFiles/ecs.dir/date.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/date.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brunon/CLionProjects/HW/codeHW/ecs/date.cpp > CMakeFiles/ecs.dir/date.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brunon/CLionProjects/codeHW/ecs/date.cpp > CMakeFiles/ecs.dir/date.cpp.i
 
 CMakeFiles/ecs.dir/date.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/date.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brunon/CLionProjects/HW/codeHW/ecs/date.cpp -o CMakeFiles/ecs.dir/date.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brunon/CLionProjects/codeHW/ecs/date.cpp -o CMakeFiles/ecs.dir/date.cpp.s
 
 CMakeFiles/ecs.dir/date.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/ecs.dir/date.cpp.o.provides.build: CMakeFiles/ecs.dir/date.cpp.o
 
 CMakeFiles/ecs.dir/ecs.cpp.o: CMakeFiles/ecs.dir/flags.make
 CMakeFiles/ecs.dir/ecs.cpp.o: ../ecs.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ecs.dir/ecs.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/ecs.cpp.o -c /home/brunon/CLionProjects/HW/codeHW/ecs/ecs.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/brunon/CLionProjects/codeHW/ecs/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ecs.dir/ecs.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/ecs.cpp.o -c /home/brunon/CLionProjects/codeHW/ecs/ecs.cpp
 
 CMakeFiles/ecs.dir/ecs.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/ecs.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brunon/CLionProjects/HW/codeHW/ecs/ecs.cpp > CMakeFiles/ecs.dir/ecs.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brunon/CLionProjects/codeHW/ecs/ecs.cpp > CMakeFiles/ecs.dir/ecs.cpp.i
 
 CMakeFiles/ecs.dir/ecs.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/ecs.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brunon/CLionProjects/HW/codeHW/ecs/ecs.cpp -o CMakeFiles/ecs.dir/ecs.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brunon/CLionProjects/codeHW/ecs/ecs.cpp -o CMakeFiles/ecs.dir/ecs.cpp.s
 
 CMakeFiles/ecs.dir/ecs.cpp.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/ecs.dir/ecs.cpp.o.provides.build: CMakeFiles/ecs.dir/ecs.cpp.o
 
 CMakeFiles/ecs.dir/io.cpp.o: CMakeFiles/ecs.dir/flags.make
 CMakeFiles/ecs.dir/io.cpp.o: ../io.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ecs.dir/io.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/io.cpp.o -c /home/brunon/CLionProjects/HW/codeHW/ecs/io.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/brunon/CLionProjects/codeHW/ecs/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ecs.dir/io.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/io.cpp.o -c /home/brunon/CLionProjects/codeHW/ecs/io.cpp
 
 CMakeFiles/ecs.dir/io.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/io.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brunon/CLionProjects/HW/codeHW/ecs/io.cpp > CMakeFiles/ecs.dir/io.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brunon/CLionProjects/codeHW/ecs/io.cpp > CMakeFiles/ecs.dir/io.cpp.i
 
 CMakeFiles/ecs.dir/io.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/io.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brunon/CLionProjects/HW/codeHW/ecs/io.cpp -o CMakeFiles/ecs.dir/io.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brunon/CLionProjects/codeHW/ecs/io.cpp -o CMakeFiles/ecs.dir/io.cpp.s
 
 CMakeFiles/ecs.dir/io.cpp.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/ecs.dir/io.cpp.o.provides.build: CMakeFiles/ecs.dir/io.cpp.o
 
 CMakeFiles/ecs.dir/predict.cpp.o: CMakeFiles/ecs.dir/flags.make
 CMakeFiles/ecs.dir/predict.cpp.o: ../predict.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ecs.dir/predict.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/predict.cpp.o -c /home/brunon/CLionProjects/HW/codeHW/ecs/predict.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/brunon/CLionProjects/codeHW/ecs/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ecs.dir/predict.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/predict.cpp.o -c /home/brunon/CLionProjects/codeHW/ecs/predict.cpp
 
 CMakeFiles/ecs.dir/predict.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/predict.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brunon/CLionProjects/HW/codeHW/ecs/predict.cpp > CMakeFiles/ecs.dir/predict.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/brunon/CLionProjects/codeHW/ecs/predict.cpp > CMakeFiles/ecs.dir/predict.cpp.i
 
 CMakeFiles/ecs.dir/predict.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/predict.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brunon/CLionProjects/HW/codeHW/ecs/predict.cpp -o CMakeFiles/ecs.dir/predict.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/brunon/CLionProjects/codeHW/ecs/predict.cpp -o CMakeFiles/ecs.dir/predict.cpp.s
 
 CMakeFiles/ecs.dir/predict.cpp.o.requires:
 
@@ -195,7 +195,7 @@ ecs_EXTERNAL_OBJECTS =
 ../bin/ecs: CMakeFiles/ecs.dir/predict.cpp.o
 ../bin/ecs: CMakeFiles/ecs.dir/build.make
 ../bin/ecs: CMakeFiles/ecs.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable ../bin/ecs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/brunon/CLionProjects/codeHW/ecs/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable ../bin/ecs"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ecs.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -216,6 +216,6 @@ CMakeFiles/ecs.dir/clean:
 .PHONY : CMakeFiles/ecs.dir/clean
 
 CMakeFiles/ecs.dir/depend:
-	cd /home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/brunon/CLionProjects/HW/codeHW/ecs /home/brunon/CLionProjects/HW/codeHW/ecs /home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-debug /home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-debug /home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/brunon/CLionProjects/codeHW/ecs/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/brunon/CLionProjects/codeHW/ecs /home/brunon/CLionProjects/codeHW/ecs /home/brunon/CLionProjects/codeHW/ecs/cmake-build-debug /home/brunon/CLionProjects/codeHW/ecs/cmake-build-debug /home/brunon/CLionProjects/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ecs.dir/depend
 

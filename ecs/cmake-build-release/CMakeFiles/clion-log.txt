@@ -1,4 +1,4 @@
-/home/brunon/桌面/CLion/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" /home/brunon/CLionProjects/HW/codeHW/ecs
+/home/brunon/桌面/CLion/clion-2017.2.3/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" /home/brunon/CLionProjects/codeHW/ecs
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/brunon/CLionProjects/HW/codeHW/ecs/cmake-build-release
+-- Build files have been written to: /home/brunon/CLionProjects/codeHW/ecs/cmake-build-release
