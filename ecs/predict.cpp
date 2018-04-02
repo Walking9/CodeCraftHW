@@ -4,6 +4,7 @@
 #include "code.h"
 #include "date.h"
 #include "predict.h"
+#include <sstream>
 
 using namespace std;
 
@@ -38,10 +39,37 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
     }
 
     /**********装箱*************/
+//    string outstr;
+//    stringstream ss;
+//
+//    string outstr1 = dpPath();
+//    int serverN1;
+//    ss<<outstr1;
+//    ss>>serverN1;
+//    ss.clear();
 
     string outstr = firstFit();
-//    string outstr = dpPath();
+//    int serverN0;
+//    ss<<outstr0;
+//    ss>>serverN0;
+//    ss.clear();
+
+
+//  outstr=serverN0<serverN1?outstr0:outstr1;
+
+
+//    if(serverN0<=serverN1)
+//    {
+//        outstr=outstr0;
+//        cout<<"++++++++++++++++++++++++++++++++ use first fit"<<endl;
+//    }
+//    else
+//    {
+//        outstr=outstr1;
+//        cout<<"++++++++++++++++++++++++++++++++ use dp2 path"<<endl;
+//    }
 //
+
     /*********输出**************/
     write_result(outstr.c_str(), filename);
 

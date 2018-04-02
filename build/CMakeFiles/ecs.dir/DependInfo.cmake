@@ -4,17 +4,22 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/brunon/CLionProjects/HW/codeHW/ecs/code.cpp" "/home/brunon/CLionProjects/HW/codeHW/build/CMakeFiles/ecs.dir/code.cpp.o"
-  "/home/brunon/CLionProjects/HW/codeHW/ecs/date.cpp" "/home/brunon/CLionProjects/HW/codeHW/build/CMakeFiles/ecs.dir/date.cpp.o"
-  "/home/brunon/CLionProjects/HW/codeHW/ecs/ecs.cpp" "/home/brunon/CLionProjects/HW/codeHW/build/CMakeFiles/ecs.dir/ecs.cpp.o"
-  "/home/brunon/CLionProjects/HW/codeHW/ecs/io.cpp" "/home/brunon/CLionProjects/HW/codeHW/build/CMakeFiles/ecs.dir/io.cpp.o"
-  "/home/brunon/CLionProjects/HW/codeHW/ecs/predict.cpp" "/home/brunon/CLionProjects/HW/codeHW/build/CMakeFiles/ecs.dir/predict.cpp.o"
+  "/home/hengliy/codeHW/ecs/code.cpp" "/home/hengliy/codeHW/build/CMakeFiles/ecs.dir/code.cpp.o"
+  "/home/hengliy/codeHW/ecs/date.cpp" "/home/hengliy/codeHW/build/CMakeFiles/ecs.dir/date.cpp.o"
+  "/home/hengliy/codeHW/ecs/ecs.cpp" "/home/hengliy/codeHW/build/CMakeFiles/ecs.dir/ecs.cpp.o"
+  "/home/hengliy/codeHW/ecs/io.cpp" "/home/hengliy/codeHW/build/CMakeFiles/ecs.dir/io.cpp.o"
+  "/home/hengliy/codeHW/ecs/predict.cpp" "/home/hengliy/codeHW/build/CMakeFiles/ecs.dir/predict.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "_DEBUG"
+  )
+
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/brunon/CLionProjects/HW/codeHW/ecs/lib"
+  "/home/hengliy/codeHW/ecs/lib"
   )
 
 # Targets to which this target links.

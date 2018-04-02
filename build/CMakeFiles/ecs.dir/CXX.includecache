@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,9 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/code.cpp
+/home/hengliy/codeHW/ecs/ExponentialSmooth.h
+iostream
+-
+vector
+-
+cmath
+-
+
+/home/hengliy/codeHW/ecs/code.cpp
 code.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/code.h
+/home/hengliy/codeHW/ecs/code.h
 iostream
 -
 string
@@ -25,8 +33,10 @@ sstream
 -
 cstring
 -
+numeric
+-
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/code.h
+/home/hengliy/codeHW/ecs/code.h
 iostream
 -
 fstream
@@ -40,9 +50,9 @@ list
 time.h
 -
 date.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/date.h
+/home/hengliy/codeHW/ecs/date.h
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/date.cpp
+/home/hengliy/codeHW/ecs/date.cpp
 iostream
 -
 string
@@ -54,23 +64,23 @@ cstring
 vector
 -
 date.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/date.h
+/home/hengliy/codeHW/ecs/date.h
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/date.h
+/home/hengliy/codeHW/ecs/date.h
 iostream
 -
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/ecs.cpp
+/home/hengliy/codeHW/ecs/ecs.cpp
 predict.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/predict.h
+/home/hengliy/codeHW/ecs/predict.h
 lib_io.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/lib_io.h
+/home/hengliy/codeHW/ecs/lib_io.h
 lib_time.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/lib_time.h
+/home/hengliy/codeHW/ecs/lib_time.h
 stdio.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/stdio.h
+/home/hengliy/codeHW/ecs/stdio.h
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/io.cpp
+/home/hengliy/codeHW/ecs/io.cpp
 stdio.h
 -
 stdlib.h
@@ -90,31 +100,29 @@ unistd.h
 signal.h
 -
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/lib/lib_io.h
+/home/hengliy/codeHW/ecs/lib/lib_io.h
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/lib/lib_time.h
+/home/hengliy/codeHW/ecs/lib/lib_time.h
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/predict.cpp
+/home/hengliy/codeHW/ecs/predict.cpp
 stdio.h
 -
 iostream
 -
-string
--
-cstring
--
-cmath
--
+ExponentialSmooth.h
+/home/hengliy/codeHW/ecs/ExponentialSmooth.h
 code.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/code.h
+/home/hengliy/codeHW/ecs/code.h
 date.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/date.h
+/home/hengliy/codeHW/ecs/date.h
 predict.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/predict.h
+/home/hengliy/codeHW/ecs/predict.h
+sstream
+-
 
-/home/brunon/CLionProjects/HW/codeHW/ecs/predict.h
+/home/hengliy/codeHW/ecs/predict.h
 lib_io.h
-/home/brunon/CLionProjects/HW/codeHW/ecs/lib_io.h
+/home/hengliy/codeHW/ecs/lib_io.h
 string
 -
 vector

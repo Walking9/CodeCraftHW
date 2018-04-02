@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <sstream>
 #include <cstring>
+#include <numeric>
 
 using namespace std;
 
@@ -209,9 +210,7 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
     {
         cout<<*vFlavor[i];
     }
-
     //paint();
-
 #endif
 }
 
@@ -254,9 +253,8 @@ string firstFit()
     }
     str+="\n";
 
-
     int flag=1;
-    for(size_t i=0;i<vFlavor.size();i++)//循环所有的虚拟机
+    for(int i=0;i<flavorNum;i++)//循环所有的虚拟机
     {
         Flavor* flavor=vFlavor[i];
         while(flavor->_predictNum)//检查此虚拟机预测的个数
@@ -290,6 +288,7 @@ string firstFit()
             }
         }
     }
+
 
     str+=to_string(vServer.size());
     for(size_t i=0;i<vServer.size();i++)
