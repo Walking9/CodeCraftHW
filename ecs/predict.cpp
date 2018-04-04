@@ -9,33 +9,36 @@
 using namespace std;
 
 extern int flavorNum;//虚拟机规格个数
-extern string predictBeginDate;//预测开始日期
-extern string predictBeginTime;//预测开始时间
-extern string predictEndDate;//预测结束日期
-extern string predictEndTime;//预测结束时间
+extern Date* predictBeginDate;//预测开始日期
+extern Date* predictBeginTime;//预测开始时间
+extern Date* predictEndDate;//预测结束日期
+extern Date* predictEndTime;//预测结束时间
 
 extern string predictFlag;//预测目标
 
 extern Server* server;//物理服务器标量
 extern vector<Flavor*> vFlavor;//待检测虚拟机格式数组
 extern vector<Server*> vServer;//构建物理服务器链表
-extern Date* beginDate;//预测开始日期
-extern Date* endDate;//预测开始日期
+extern Date* beginDate;//训练开始日期
+extern Date* endDate;//训练结束日期
 //你要完成的功能总入口
 void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int data_num, char * filename)
 {
-    // 需要输出的内容
+    //需要输出的内容
     initDataStruct(info, data, data_num);//构建数据结构
 
     /********训练数据与打印输出使用******************/
     int days = *endDate-*beginDate;//
+    int spaceDays=*predictBeginDate-*endDate-1;
+    int predictDays = *predictBeginDate - *predictEndDate;//
 
-    int predictDays = Date(predictBeginDate) - Date(predictEndDate);//
     for(int i=0; i<flavorNum; i++)
-    {   
+    {
+#ifdef _DEBUG
         //训练每个虚拟机的数据集
         cout << "训练虚拟机" << vFlavor[i]->_id <<" ";
-        vFlavor[i]->_predictNum = predict(vFlavor[i]->_dayLine,days,predictDays);
+#endif
+        vFlavor[i]->_predictNum = predict(vFlavor[i]->_dayLine,days,spaceDays,predictDays);
     }
 
     /**********装箱*************/
@@ -85,7 +88,7 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
     }
 }
 
-int predict(const vector<int> data, int n, int predictDays)
+int predict(const vector<int> data, int n,int spaceDays,int predictDays)
 {
     int ret ;
 
