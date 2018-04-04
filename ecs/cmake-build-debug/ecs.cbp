@@ -44,7 +44,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add option="-D_DEBUG"/>
 					<Add directory="/home/brunon/CLionProjects/codeHW/ecs/lib"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
@@ -69,7 +68,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add option="-D_DEBUG"/>
 					<Add directory="/home/brunon/CLionProjects/codeHW/ecs/lib"/>
 					<Add directory="/usr/include/c++/5"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>

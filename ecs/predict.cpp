@@ -4,6 +4,7 @@
 #include "code.h"
 #include "date.h"
 #include "predict.h"
+#include "PolynomialCurveFitting.h"
 #include <sstream>
 
 using namespace std;
@@ -44,8 +45,8 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
 //
 //    string outstr1 = dpPath();
 //    int serverN1;
-//    ss<<outstr1;
-//    ss>>serverN1;
+//    ss << outstr1;
+//    ss >> serverN1;
 //    ss.clear();
 
     string outstr = firstFit();
@@ -87,13 +88,15 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
 
 int predict(const vector<int> data, int n, int predictDays)
 {
-    int ret ;
+    int retLine;// retEx2, retEx3 ;
 
-    ret = ExponentialSmooth3(data, n, predictDays);//指数平滑算法
-
+    retLine = ExponentialSmooth3(data, n, predictDays); //指数平滑算法
+    return retLine;
+//    retEx2 = ExponentialSmooth2(data, n, predictDays, 1);
+//    retEx3 = ExponentialSmooth3(data, n, predictDays);
+//    if(retLine == retEx2) return retEx2;
+//    else return retEx3;
     //ret=RnnPredict(data,n,predictDays);
-
-    return ret;
 }
 
 

@@ -18,6 +18,7 @@ CMakeFiles/ecs.dir/io.cpp.o: ../io.cpp
 
 CMakeFiles/ecs.dir/predict.cpp.o: ../lib/lib_io.h
 CMakeFiles/ecs.dir/predict.cpp.o: ../ExponentialSmooth.h
+CMakeFiles/ecs.dir/predict.cpp.o: ../PolynomialCurveFitting.h
 CMakeFiles/ecs.dir/predict.cpp.o: ../code.h
 CMakeFiles/ecs.dir/predict.cpp.o: ../date.h
 CMakeFiles/ecs.dir/predict.cpp.o: ../predict.cpp

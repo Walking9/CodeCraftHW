@@ -1,1 +1,1 @@
-/usr/bin/c++   -O0 -Wall -g -ggdb -std=c++11   -rdynamic CMakeFiles/ecs.dir/code.cpp.o CMakeFiles/ecs.dir/date.cpp.o CMakeFiles/ecs.dir/ecs.cpp.o CMakeFiles/ecs.dir/io.cpp.o CMakeFiles/ecs.dir/predict.cpp.o  -o /home/hengliy/codeHW/bin/ecs 
+/usr/bin/c++    -O3 -Wall -std=c++11   CMakeFiles/ecs.dir/date.cpp.o CMakeFiles/ecs.dir/io.cpp.o CMakeFiles/ecs.dir/code.cpp.o CMakeFiles/ecs.dir/predict.cpp.o CMakeFiles/ecs.dir/ecs.cpp.o  -o /home/brunon/CLionProjects/codeHW/bin/ecs -rdynamic 
