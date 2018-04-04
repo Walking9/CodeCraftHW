@@ -16,12 +16,13 @@
 using namespace std;
 
 int flavorNum;//虚拟机规格个数
-string predictBeginDate;//预测开始时间
-string predictEndDate;//预测结束时间
-string predictBeginTime;//预测开始时间
-string predictEndTime;//预测结束时间
+Date* predictBeginDate;//预测开始时间
+Date* predictEndDate;//预测结束时间
+Date* predictBeginTime;//预测开始时间
+Date* predictEndTime;//预测结束时间
 
 string predictFlag;//预测标志 cpu/mem
+int spaceDays;//间隔的天数
 
 Server* server;//物理服务器
 vector<Flavor*> vFlavor;//待检测虚拟机格式数组
@@ -143,12 +144,16 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
     ssstream>>predictFlag;
     ssstream.clear();
     //预测开始时间
+    string preBeDaStr,preBeDaStrT;
+    string preEndDaStr,preEndDaStrT;
     ssstream<<info[6+flavorNum];
-    ssstream>>predictBeginDate>>predictBeginTime;
+    ssstream>>preBeDaStr>>preBeDaStrT;
+    predictBeginDate=new Date(preBeDaStr);
     ssstream.clear();
     //预测结束时间
     ssstream<<info[7+flavorNum];
-    ssstream>>predictEndDate>>predictEndTime;
+    ssstream>>preEndDaStr>>preEndDaStrT;
+    predictEndDate=new Date(preEndDaStr);
     ssstream.clear();
 
     /*********读取训练数据**********************/
@@ -189,7 +194,6 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
     ssstream.clear();
     endDate=new Date(date1);
 
-
 //////////////////////////////////////////////////////////
 #ifdef _DEBUG
     cout<<"/////////////////////////////"<<endl;
@@ -215,18 +219,139 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
 }
 
 
-
 bool cmp_cpu(Flavor* a,Flavor* b)
 {
     return a->_cpuNum>b->_cpuNum;
 }
+
 bool cmp_mem(Flavor* a,Flavor* b)
 {
     return a->_memSize>b->_memSize;
 }
 
+//1)交叉装箱算法(CF)
+//从大到小排序,先放入最大的一个,再从最右边往左依次放入物品,直到下一个物品不能放入箱子.
+//再重复上述操作直到所有物品放进去.
+string crossFit()
+{
+#ifdef _DEBUG
+    cout<<"all flavor size = ";
+    cout<<endl;
+    for(size_t i=0;i<vFlavor.size();i++)
+    {
+        cout<<" id: "<<vFlavor[i]->_id<<" = "<<vFlavor[i]->_predictNum<<"("<<vFlavor[i]->_cpuNum<<")"<<endl;
+    }
+    cout<<endl;
+#endif
+
+    //把链表拉直了
+    vector<Flavor*> vv;
+    for(size_t i=0;i<vFlavor.size();i++)
+    {
+        for(int j=0;j<vFlavor[i]->_predictNum;j++)
+        {
+            vv.push_back(vFlavor[i]);//直接把每台虚拟机的指针复制一份传进去
+        }
+    }
+    string str="";
+    str+=to_string(vv.size())+"\n";
+    for(int i =0;i<flavorNum;i++)
+    {
+        str+="flavor"+to_string(vFlavor[i]->_id)+" "+to_string(vFlavor[i]->_predictNum)+"\n";
+    }
+    str+="\n";
+
+    //针对链表指针进行降序排序
+    if(predictFlag=="CPU")  sort(vv.begin(),vv.end(),cmp_cpu);//对CPU降序
+    else  sort(vv.begin(),vv.end(),cmp_mem);//对MEM降序
+#ifdef _DEBUG
+    cout<<"()()()()()()()";
+    for(int i=0;i<vv.size();i++)
+    {
+        cout<<" "<<vv[i]->_id<<"("<<vv[i]->_cpuNum<<")";
+    }
+    cout<<endl;
+#endif
+    while (vv.size())//此处进行大循环
+    {
+        Server* server0=new Server(*server);//每进行一次循环就证明后面的flavor放进去了
+        //先放第一个节点
+
+        Flavor* flavor=*vv.begin();
+#ifdef _DEBUG
+        cout<<endl<<"#############"<<server0->_cpuNum<<" ";
+        cout<<" "<<flavor->_id<<"("<<flavor->_cpuNum<<")";
+#endif
+        //先放入最大的节点
+        server0->_cpuNum-=flavor->_cpuNum;//物理服务器cpu资源消耗
+        server0->_memSize-=flavor->_memSize;//物理服务器mem资源消耗
+        server0->_flavorNum[flavor->_id]++;//物理服务器装的某个虚拟机个数+1
+        flavor->_predictNum--;//虚拟机个数-1
+        //在从后向前循环后面的节点
+
+        for(vector<Flavor*>::iterator it=vv.end()-1;it!=vv.begin();it--)//已经把第一个放进去了,再从后向前(从小往大)装入
+        {
+            if((*it)->_cpuNum<=server0->_cpuNum&&(*it)->_memSize<=server0->_memSize)//如果两个都可以放下,就进放置
+            {
+                server0->_cpuNum-=(*it)->_cpuNum;//物理服务器cpu资源消耗
+                server0->_memSize-=(*it)->_memSize;//物理服务器mem资源消耗
+                server0->_flavorNum[(*it)->_id]++;//物理服务器装的某个虚拟机个数+1
+                (*it)->_predictNum--;//虚拟机个数-1
+                vv.erase(it);//从排序链表中摘除这个文件
+#if _DEBUG
+                cout<<" "<<(*it)->_id<<"("<<(*it)->_cpuNum<<")";
+#endif
+            }
+            else{
+                break;
+            }
+        }
+        vv.erase(vv.begin());
+        vServer.push_back(server0);
+    }
+
+    str+=to_string(vServer.size());
+    for(size_t i=0;i<vServer.size();i++)
+    {
+        str+="\n"+to_string(i+1)+" ";
+        for(size_t j=0;j<vServer[i]->_flavorNum.size();j++)
+        {
+            if(vServer[i]->_flavorNum[j]!=0)
+                str+="flavor"+to_string(j)+" "+to_string(vServer[i]->_flavorNum[j])+" ";
+        }
+    }
+
+#ifdef _DEBUG
+    cout<<"create server = "<<vServer.size()<<endl;
+    for(size_t i=0;i<vServer.size();i++)
+    {
+        cout<<"server"<<i<<" ("<<vServer[i]->_cpuNum<<") ";
+        for(size_t j=0;j<vServer[i]->_flavorNum.size();j++)
+        {
+            if(vServer[i]->_flavorNum[j]!=0)
+                cout<<"flavor"<<j<<" "<<vServer[i]->_flavorNum[j]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<str;
+#endif
+    return str;
+}
+
+
+
+//2)启发式搜索(BIF)
+string BIF()
+{
+
+}
+
+
+
+//3)首次适应算法
 string firstFit()
 {
+    //针对链表指针进行排序
     if(predictFlag=="CPU")  sort(vFlavor.begin(),vFlavor.end(),cmp_cpu);//先排序
     else  sort(vFlavor.begin(),vFlavor.end(),cmp_mem);//先排序
 
@@ -325,7 +450,7 @@ int max(int x, int y)
 {
     return x>y?x:y;
 }
-
+//4)动态规划
 vector<Flavor*> dp2(vector<Flavor*>& vv)
 {
     if(predictFlag=="CPU")  sort(vv.begin()+1,vv.end(),cmp_cpu);//先排序
@@ -442,7 +567,7 @@ string dpPath()
         for(int j=0;j<vFlavor[i]->_predictNum;j++)
         {
             predictFlavorNum++;
-            vv.push_back(vFlavor[i]);//传进去的是每台虚拟机的大小
+            vv.push_back(vFlavor[i]);//直接把每台虚拟机的指针复制一份传进去
         }
     }
 

@@ -22,6 +22,13 @@ public:
         _flavorNum.resize(MAX_FLAVORS);
     }
 
+    Server(const  Server& other){
+        _cpuNum=other._cpuNum;
+        _memSize=other._memSize;
+        _diskSize=other._diskSize;
+        _flavorNum.resize(MAX_FLAVORS);
+    }
+
     vector<int> _flavorNum; //第n台虚拟机在这个服务器上的个数
     int _cpuNum;//物理服务器CPU核数
     int _memSize;//内存大小（GB）
@@ -48,5 +55,6 @@ public:
 void paint(vector<int> data1,int length1,vector<int>data2,int length2);
 string firstFit();
 string dpPath();
+string crossFit();//交叉放置
 
 #endif // CODE_H
