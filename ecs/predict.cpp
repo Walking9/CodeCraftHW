@@ -92,7 +92,7 @@ int predict(const vector<int> data, int n,int spaceDays,int predictDays)
 {
     int ret ;
 
-    ret = ExponentialSmooth3(data,n, predictDays);//指数平滑算法
+    ret = ExponentialSmooth3(data, n, predictDays);//指数平滑算法
 
     //ret=RnnPredict(data,n,predictDays);
 

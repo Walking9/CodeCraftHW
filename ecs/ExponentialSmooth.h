@@ -53,7 +53,7 @@ int ExponentialSmooth2(const vector<int> data, int n, int k, int forecase) {
     int DataNum = n / k, tempN = n;
     //数据预处理
     int avg = 0;
-    for (size_t i=0; i<data.size(); i++) {
+    for (int i=0; i<data.size(); i++) {
         avg += data[i];
     }
     avg = (int)round((double)avg/n);
@@ -62,8 +62,9 @@ int ExponentialSmooth2(const vector<int> data, int n, int k, int forecase) {
     for (int i = DataNum - 1; i >= 0; i--) {
         DataHandled[i] = 0;
         for (int j = 0; j < k; j++) {
-            if(0 != avg && data[--tempN] > 5*avg) DataHandled[i] += avg;
-            else DataHandled[i] += data[--tempN];
+            tempN--;
+            if(0 != avg && data[tempN] > 5*avg) DataHandled[i] += avg;
+            else DataHandled[i] += data[tempN];
         }
     }
     vector<double> s2_1_new, s2_2_new;
@@ -104,18 +105,22 @@ int ExponentialSmooth2(const vector<int> data, int n, int k, int forecase) {
         tmp = tmp > 0 ? tmp : 0;
         Xt += tmp;
     }
-    delete[] DataHandled;
 
 #ifdef _DEBUG
-    printf("***************************************************\n");
-    printf("未来%d期的二次指数平滑预估值为： %lf, 均方误差为： %lf\n",forecase, Xt, MSE);
-    for(size_t i=0;i<s2_2_new.size();i++)
-    {
-        cout << s2_1_new[i] <<" ";
+    cout << "\n实际数据:";
+    for(int i=0; i<DataNum; i++) {
+        cout << DataHandled[i] << " ";
     }
-    cout<<" predict num = "<<int(Xt) << endl;
+    cout << endl;
+    cout << "指数平滑:";
+    for(int i=0;i<s2_2_new.size();i++) {
+        cout << s2_2_new[i] <<" ";
+    }
+    cout << "\npredict num = " << Xt << "  均方误差：" << MSE  << "\n\n"<< endl;
 #endif
-    return (int)round(Xt);//4->5
+    delete[] DataHandled;
+    if(Xt > 0) return (int)ceil(Xt);
+    else return 0;
 }
 
 
@@ -124,7 +129,7 @@ int ExponentialSmooth3(const vector<int> data, int n, int k) {
     int DataNum = n / k, tempN = n;
     //数据预处理
     int avg = 0;
-    for (size_t i=0; i<data.size(); i++) {
+    for (int i=0; i<data.size(); i++) {
         avg += data[i];
     }
     avg = (int)round((double)avg/n);
@@ -193,13 +198,13 @@ int ExponentialSmooth3(const vector<int> data, int n, int k) {
     }
     cout << endl;
     cout << "指数平滑:";
-    for(size_t i=0;i<s3_3_new.size();i++) {
+    for(int i=0;i<s3_3_new.size();i++) {
         cout << s3_3_new[i] <<" ";
     }
-    cout << "predict num = " << Xt << "  均方误差：" << MSE  << "\n\n"<< endl;
+    cout << "\npredict num = " << Xt << "  均方误差：" << MSE  << "\n\n"<< endl;
 #endif
     delete[] DataHandled;
-    if(Xt > 0) return (int)round(Xt);
+    if(Xt > 0) return (Xt - (int)Xt) > 0.3 ? (int)ceil(Xt) : (int)Xt;     //ceil不如round好使
     else return 0;
 }
 #endif //ECS_EXPONENTIALSMOOTH_H
