@@ -79,27 +79,23 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
 
     // 直接调用输出文件的方法输出到指定文件中(ps请注意格式的正确性，
     // 如果有解，第一行只有一个数据；第二行为空；第三行开始才是具体的数据，数据之间用一个空格分隔开)
-    for(size_t i=0; i<vServer.size(); i++)
-    {
+    for(size_t i=0; i<vServer.size(); i++) {
         delete vServer[i];
     }
-    for(size_t i=0; i<vFlavor.size(); i++)
-    {
+    for(size_t i=0; i<vFlavor.size(); i++) {
         delete vFlavor[i];
     }
 }
 
 int predict(const vector<int> data, int n,int spaceDays,int predictDays)
 {
-    int retLine;// retEx2, retEx3 ;
+//    int retLine, retSpace = 0;// retEx2, retEx3 ;
+//    vector<double> v;
+//    retLine = ExponentialSmooth2(data, n, predictDays, predictDays, v); //指数平滑算法
+//    if(0 != spaceDays) retSpace = ExponentialSmooth2(data, n, predictDays, predictDays, v);
+//    return retLine - retSpace;
 
-    retLine = ExponentialSmooth3(data, n, predictDays); //指数平滑算法
-    return retLine;
-//    retEx2 = ExponentialSmooth2(data, n, predictDays, 1);
-//    retEx3 = ExponentialSmooth3(data, n, predictDays);
-//    if(retLine == retEx2) return retEx2;
-//    else return retEx3;
-    //ret=RnnPredict(data,n,predictDays);
+    return ThreeTimeFitting(data, n, predictDays, predictDays);
 }
 
 

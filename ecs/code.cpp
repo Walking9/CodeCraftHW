@@ -338,13 +338,13 @@ string crossFit()
     return str;
 }
 
-
-
-//2)启发式搜索(BIF)
-string BIF()
-{
-
-}
+//
+//
+////2)启发式搜索(BIF)
+//string BIF()
+//{
+//
+//}
 
 
 

@@ -6,15 +6,37 @@
 
 #IncludeRegexTransform: 
 
-/home/brunon/CLionProjects/codeHW/ecs/ExponentialSmooth.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/ExpoentialSmooth.cpp
 iostream
 -
 vector
 -
 cmath
 -
+ExponentialSmooth.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/ExponentialSmooth.h
 
-/home/brunon/CLionProjects/codeHW/ecs/PolynomialCurveFitting.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/ExponentialSmooth.h
+iostream
+-
+vector
+-
+
+/home/brunon/CLionProjects/sulu/codeHW/ecs/PolynomialCurveFitting.cpp
+iostream
+-
+vector
+-
+cstring
+-
+cmath
+-
+PolynomialCurveFitting.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/PolynomialCurveFitting.h
+ExponentialSmooth.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/ExponentialSmooth.h
+
+/home/brunon/CLionProjects/sulu/codeHW/ecs/PolynomialCurveFitting.h
 iostream
 -
 vector
@@ -24,9 +46,9 @@ cstring
 cmath
 -
 
-/home/brunon/CLionProjects/codeHW/ecs/code.cpp
+/home/brunon/CLionProjects/sulu/codeHW/ecs/code.cpp
 code.h
-/home/brunon/CLionProjects/codeHW/ecs/code.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/code.h
 iostream
 -
 string
@@ -46,7 +68,7 @@ cstring
 numeric
 -
 
-/home/brunon/CLionProjects/codeHW/ecs/code.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/code.h
 iostream
 -
 fstream
@@ -60,9 +82,9 @@ list
 time.h
 -
 date.h
-/home/brunon/CLionProjects/codeHW/ecs/date.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/date.h
 
-/home/brunon/CLionProjects/codeHW/ecs/date.cpp
+/home/brunon/CLionProjects/sulu/codeHW/ecs/date.cpp
 iostream
 -
 string
@@ -74,23 +96,23 @@ cstring
 vector
 -
 date.h
-/home/brunon/CLionProjects/codeHW/ecs/date.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/date.h
 
-/home/brunon/CLionProjects/codeHW/ecs/date.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/date.h
 iostream
 -
 
-/home/brunon/CLionProjects/codeHW/ecs/ecs.cpp
+/home/brunon/CLionProjects/sulu/codeHW/ecs/ecs.cpp
 predict.h
-/home/brunon/CLionProjects/codeHW/ecs/predict.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/predict.h
 lib_io.h
-/home/brunon/CLionProjects/codeHW/ecs/lib_io.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/lib_io.h
 lib_time.h
-/home/brunon/CLionProjects/codeHW/ecs/lib_time.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/lib_time.h
 stdio.h
-/home/brunon/CLionProjects/codeHW/ecs/stdio.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/stdio.h
 
-/home/brunon/CLionProjects/codeHW/ecs/io.cpp
+/home/brunon/CLionProjects/sulu/codeHW/ecs/io.cpp
 stdio.h
 -
 stdlib.h
@@ -110,31 +132,31 @@ unistd.h
 signal.h
 -
 
-/home/brunon/CLionProjects/codeHW/ecs/lib/lib_io.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/lib/lib_io.h
 
-/home/brunon/CLionProjects/codeHW/ecs/lib/lib_time.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/lib/lib_time.h
 
-/home/brunon/CLionProjects/codeHW/ecs/predict.cpp
+/home/brunon/CLionProjects/sulu/codeHW/ecs/predict.cpp
 stdio.h
 -
 iostream
 -
 ExponentialSmooth.h
-/home/brunon/CLionProjects/codeHW/ecs/ExponentialSmooth.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/ExponentialSmooth.h
 code.h
-/home/brunon/CLionProjects/codeHW/ecs/code.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/code.h
 date.h
-/home/brunon/CLionProjects/codeHW/ecs/date.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/date.h
 predict.h
-/home/brunon/CLionProjects/codeHW/ecs/predict.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/predict.h
 PolynomialCurveFitting.h
-/home/brunon/CLionProjects/codeHW/ecs/PolynomialCurveFitting.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/PolynomialCurveFitting.h
 sstream
 -
 
-/home/brunon/CLionProjects/codeHW/ecs/predict.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/predict.h
 lib_io.h
-/home/brunon/CLionProjects/codeHW/ecs/lib_io.h
+/home/brunon/CLionProjects/sulu/codeHW/ecs/lib_io.h
 string
 -
 vector

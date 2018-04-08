@@ -46,6 +46,11 @@ int main(int argc, char *argv[])
 	release_buff(data, data_line_num);
 
     print_time("End");
-
+//    vector<int> v;
+//    v.push_back(1);
+//    v.push_back(4);
+//    v.push_back(9);
+//    v.push_back(16);
+//    ThreeTimeFitting(v, 4, 1, 4);
 }
 

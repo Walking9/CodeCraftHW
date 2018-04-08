@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o"
+  "CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o"
   "CMakeFiles/ecs.dir/code.cpp.o"
   "CMakeFiles/ecs.dir/date.cpp.o"
   "CMakeFiles/ecs.dir/ecs.cpp.o"

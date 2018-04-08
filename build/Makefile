@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/brunon/CLionProjects/codeHW/ecs
+CMAKE_SOURCE_DIR = /home/brunon/CLionProjects/sulu/codeHW/ecs
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/brunon/CLionProjects/codeHW/build
+CMAKE_BINARY_DIR = /home/brunon/CLionProjects/sulu/codeHW/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brunon/CLionProjects/codeHW/build/CMakeFiles /home/brunon/CLionProjects/codeHW/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brunon/CLionProjects/sulu/codeHW/build/CMakeFiles /home/brunon/CLionProjects/sulu/codeHW/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/brunon/CLionProjects/codeHW/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/brunon/CLionProjects/sulu/codeHW/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -122,6 +122,60 @@ ecs: cmake_check_build_system
 ecs/fast:
 	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/build
 .PHONY : ecs/fast
+
+ExpoentialSmooth.o: ExpoentialSmooth.cpp.o
+
+.PHONY : ExpoentialSmooth.o
+
+# target to build an object file
+ExpoentialSmooth.cpp.o:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o
+.PHONY : ExpoentialSmooth.cpp.o
+
+ExpoentialSmooth.i: ExpoentialSmooth.cpp.i
+
+.PHONY : ExpoentialSmooth.i
+
+# target to preprocess a source file
+ExpoentialSmooth.cpp.i:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.i
+.PHONY : ExpoentialSmooth.cpp.i
+
+ExpoentialSmooth.s: ExpoentialSmooth.cpp.s
+
+.PHONY : ExpoentialSmooth.s
+
+# target to generate assembly for a file
+ExpoentialSmooth.cpp.s:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.s
+.PHONY : ExpoentialSmooth.cpp.s
+
+PolynomialCurveFitting.o: PolynomialCurveFitting.cpp.o
+
+.PHONY : PolynomialCurveFitting.o
+
+# target to build an object file
+PolynomialCurveFitting.cpp.o:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o
+.PHONY : PolynomialCurveFitting.cpp.o
+
+PolynomialCurveFitting.i: PolynomialCurveFitting.cpp.i
+
+.PHONY : PolynomialCurveFitting.i
+
+# target to preprocess a source file
+PolynomialCurveFitting.cpp.i:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.i
+.PHONY : PolynomialCurveFitting.cpp.i
+
+PolynomialCurveFitting.s: PolynomialCurveFitting.cpp.s
+
+.PHONY : PolynomialCurveFitting.s
+
+# target to generate assembly for a file
+PolynomialCurveFitting.cpp.s:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.s
+.PHONY : PolynomialCurveFitting.cpp.s
 
 code.o: code.cpp.o
 
@@ -267,6 +321,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ecs"
+	@echo "... ExpoentialSmooth.o"
+	@echo "... ExpoentialSmooth.i"
+	@echo "... ExpoentialSmooth.s"
+	@echo "... PolynomialCurveFitting.o"
+	@echo "... PolynomialCurveFitting.i"
+	@echo "... PolynomialCurveFitting.s"
 	@echo "... code.o"
 	@echo "... code.i"
 	@echo "... code.s"

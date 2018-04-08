@@ -25,7 +25,7 @@ SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall -std=c++11")
 aux_source_directory(. DIR_SRCS)
 
 # 指定生成目标
-add_executable(ecs ${DIR_SRCS} ExponentialSmooth.h PolynomialCurveFitting.h)
+add_executable(ecs ${DIR_SRCS} ExponentialSmooth.h PolynomialCurveFitting.h ExpoentialSmooth.cpp PolynomialCurveFitting.cpp)
 
 # 当使用画图时候解除注释
 #include_directories("-I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes")
