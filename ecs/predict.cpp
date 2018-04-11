@@ -1,7 +1,5 @@
 ﻿#include <stdio.h>
 #include <iostream>
-#include <time.h>
-#include <cstdio>
 #include "ExponentialSmooth.h"
 #include "code.h"
 #include "date.h"
@@ -27,12 +25,11 @@ extern Date* endDate;//训练结束日期
 //你要完成的功能总入口
 void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int data_num, char * filename)
 {
-
     //需要输出的内容
     initDataStruct(info, data, data_num);//构建数据结构
 
     /********训练数据与打印输出使用******************/
-    int days = *endDate-*beginDate;//
+    int days = *endDate-*beginDate+1;//
     int spaceDays=*predictBeginDate-*endDate-1;
     int predictDays = *predictBeginDate - *predictEndDate;//
 
@@ -98,7 +95,8 @@ int predict(const vector<int> data, int n,int spaceDays,int predictDays)
     if(0 != spaceDays) retSpace = ExponentialSmooth22fix(data, n, predictDays);
     return retLine - retSpace;
 
-//    return ThreeTimeFittingDataProcessing(data, n, 1, predictDays);
+//    vector<int> output;
+//    return ThreeTimeFittingDataProcessing(data, n, 1, output);
 }
 
 

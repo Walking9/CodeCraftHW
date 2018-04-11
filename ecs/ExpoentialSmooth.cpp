@@ -5,6 +5,7 @@
 #include <vector>
 #include <cmath>
 #include "ExponentialSmooth.h"
+#include "PolynomialCurveFitting.h"
 
 using namespace std;
 //一次指数平滑预测
@@ -258,11 +259,13 @@ int ExponentialSmooth22fix(const vector<int> data, int n, int k) {
     int DataNum = n / k, tempN = n;
 
     int *DataHandled = new int[DataNum];
+    vector<int> output;
+    ThreeTimeFittingDataProcessing(data, n, 1, output);
     for (int i = DataNum - 1; i >= 0; i--) {
         DataHandled[i] = 0;
         for (int j = 0; j < k; j++) {
             tempN--;
-            DataHandled[i] += data[tempN];
+            DataHandled[i] += output[tempN];
         }
     }
     vector<double> s, t;
@@ -275,8 +278,8 @@ int ExponentialSmooth22fix(const vector<int> data, int n, int k) {
     //网格法求最适系数
     double Xt;
     double Differces = INTMAX_MAX;
-    for(double a=0.65; a<=0.85; a+=0.001) {
-        for(double b=0.1; b<=0.4; b+=0.001) {
+    for(double a=0.77; a<=0.85; a+=0.001) {
+        for(double b=0.13; b<=0.5; b+=0.001) {
             s.push_back(x); t.push_back(x);   //置s0 t0初始值
             for(int i=0; i<DataNum-1; i++) {
                 s.push_back(a*DataHandled[i] + (1-a)*(s[i] + t[i]));
