@@ -214,19 +214,12 @@ int ExponentialSmooth3(const vector<int> data, int n, int k) {
 
 int ExponentialSmooth22(const vector<int> data, int n, int k, int forecase) {
     int DataNum = n / k, tempN = n;
-    //数据预处理
-//    int avg = 0;
-//    for (unsigned int i=0; i<data.size(); i++) {
-//        avg += data[i];
-//    }
-//    avg = (int)round((double)avg/n);
 
     int *DataHandled = new int[DataNum];
     for (int i = DataNum - 1; i >= 0; i--) {
         DataHandled[i] = 0;
         for (int j = 0; j < k; j++) {
             tempN--;
-            //if(0 != avg && data[tempN] > 5*avg) DataHandled[i] += avg;
             DataHandled[i] += data[tempN];
         }
     }
@@ -236,8 +229,8 @@ int ExponentialSmooth22(const vector<int> data, int n, int k, int forecase) {
         x += DataHandled[i];
     x /= 3;
     s.push_back(x); t.push_back(x);   //置s0 t0初始值
-    double a = 0.62;      //平滑系数0.615
-    double b = 0.76;
+    double a = 0.72;      //平滑系数0.62  0.78
+    double b = 0.1;
 
     for(int i=0; i<DataNum; i++) {
         s.push_back(a*DataHandled[i] + (1-a)*(s[i] + t[i]));
@@ -257,6 +250,66 @@ int ExponentialSmooth22(const vector<int> data, int n, int k, int forecase) {
     cout << "\npredict num = " << Xt  << "\n\n"<< endl;
 #endif
     delete[] DataHandled;
-    if(Xt > 0) return (int)ceil(Xt + 0.15);    //得分情况：+0.2 > ceil > round > floor, 最高分76.491
+    if(Xt > 0) return (int)ceil(Xt);    //得分情况：+0.2 > ceil > round > floor, 最高分76.491
+    else return 0;
+}
+
+int ExponentialSmooth22fix(const vector<int> data, int n, int k) {
+    int DataNum = n / k, tempN = n;
+
+    int *DataHandled = new int[DataNum];
+    for (int i = DataNum - 1; i >= 0; i--) {
+        DataHandled[i] = 0;
+        for (int j = 0; j < k; j++) {
+            tempN--;
+            DataHandled[i] += data[tempN];
+        }
+    }
+    vector<double> s, t;
+    double x=0;
+    for(int i=0; i<3; i++)
+        x += DataHandled[i];
+    x /= 3;
+    double a_fix = 0.62, b_fix = 0.76;      //平滑系数0.615
+
+    //网格法求最适系数
+    double Xt;
+    double Differces = INTMAX_MAX;
+    for(double a=0.65; a<=0.85; a+=0.001) {
+        for(double b=0.1; b<=0.4; b+=0.001) {
+            s.push_back(x); t.push_back(x);   //置s0 t0初始值
+            for(int i=0; i<DataNum-1; i++) {
+                s.push_back(a*DataHandled[i] + (1-a)*(s[i] + t[i]));
+                t.push_back(b*(s[i+1] - s[i]) + (1-b)*t[i]);
+            }
+            Xt = s[s.size()-1] + t[t.size()-1];
+            if(abs(Xt-DataHandled[DataNum-1]) < Differces) {
+                Differces = abs(Xt-DataHandled[DataNum-1]);
+                a_fix = a;
+                b_fix = b;
+            }
+            s.clear();
+            t.clear();
+        }
+    }
+    //a_fix = 0.62; b_fix = 0.76;
+    s.push_back(x); t.push_back(x);   //置s0 t0初始值
+    for(int i=0; i<DataNum; i++) {
+        s.push_back(a_fix*DataHandled[i] + (1-a_fix)*(s[i] + t[i]));
+        t.push_back(b_fix*(s[i+1] - s[i]) + (1-b_fix)*t[i]);
+    }
+    Xt = s[s.size()-1] + t[t.size()-1];
+
+//
+#ifdef _DEBUG
+    cout << "\n实际数据:";
+    for(int i=0; i<DataNum; i++) {
+        cout << DataHandled[i] << " ";
+    }
+    cout << "\npredict num = " << Xt << endl;
+    cout << "a=" << a_fix << ", b=" << b_fix << "\n\n" << endl;
+#endif
+    delete[] DataHandled;
+    if(Xt > 0) return (int)ceil(Xt);
     else return 0;
 }

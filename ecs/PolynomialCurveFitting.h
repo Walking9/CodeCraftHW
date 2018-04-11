@@ -21,7 +21,7 @@ int TwoTimeFitting(const vector<int> data, int n, int k, int forecase);
 
 /***************三次曲线拟合***************/
 int ThreeTimeFitting(const vector<int> data, int n, int k, int forecase);
-
+int ThreeTimeFittingDataProcessing(const vector<int> data, int n, int k, int forecase);
 /***************一次曲线拟合*************/
 int LineFitting(const vector<int> data, int n, int k, int forecase);
 

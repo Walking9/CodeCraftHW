@@ -46,13 +46,13 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
 //    string outstr;
 //    stringstream ss;
 //
-//    string outstr1 = dpPath();
+    string outstr = dpPath();
 //    int serverN1;
 //    ss << outstr1;
 //    ss >> serverN1;
 //    ss.clear();
 
-    string outstr = firstFit();
+//    string outstr = firstFit();
 //    int serverN0;
 //    ss<<outstr0;
 //    ss>>serverN0;
@@ -91,11 +91,11 @@ int predict(const vector<int> data, int n,int spaceDays,int predictDays)
 {
 //    int retLine, retSpace = 0;// retEx2, retEx3 ;
 //    vector<double> v;
-//    retLine = ExponentialSmooth2(data, n, predictDays, predictDays, v); //指数平滑算法
-//    if(0 != spaceDays) retSpace = ExponentialSmooth2(data, n, predictDays, predictDays, v);
+//    retLine = ExponentialSmooth22fix(data, n, predictDays); //指数平滑算法
+//    if(0 != spaceDays) retSpace = ExponentialSmooth22fix(data, n, predictDays);
 //    return retLine - retSpace;
 
-    return ThreeTimeFitting(data, n, predictDays, predictDays);
+    return ThreeTimeFittingDataProcessing(data, n, 1, predictDays);
 }
 
 

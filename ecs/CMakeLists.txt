@@ -11,8 +11,8 @@ include_directories(${PROJECT_SOURCE_DIR}/lib)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../bin)
 
 # 生成debug版本
-#SET(CMAKE_BUILD_TYPE "debug") #调试输出使用
-SET(CMAKE_BUILD_TYPE "release")#release 版本使用
+SET(CMAKE_BUILD_TYPE "debug") #调试输出使用
+#SET(CMAKE_BUILD_TYPE "release")#release 版本使用
 if (CMAKE_BUILD_TYPE STREQUAL debug)
     add_definitions(-D_DEBUG)
 endif ()
@@ -25,7 +25,7 @@ SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall -std=c++11")
 aux_source_directory(. DIR_SRCS)
 
 # 指定生成目标
-add_executable(ecs ${DIR_SRCS} ExponentialSmooth.h PolynomialCurveFitting.h ExpoentialSmooth.cpp PolynomialCurveFitting.cpp)
+add_executable(ecs ${DIR_SRCS} ExponentialSmooth.h PolynomialCurveFitting.h ExpoentialSmooth.cpp PolynomialCurveFitting.cpp refuse.h)
 
 # 当使用画图时候解除注释
 #include_directories("-I/usr/include/python2.7 -I/usr/include/x86_64-linux-gnu/python2.7  -fno-strict-aliasing -Wdate-time -D_FORTIFY_SOURCE=2 -g -fdebug-prefix-map=/build/python2.7-l1RrwO/python2.7-2.7.14=. -fstack-protector-strong -Wformat -Werror=format-security  -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes")

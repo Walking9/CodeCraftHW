@@ -172,15 +172,63 @@ int ThreeTimeFitting(const vector<int> data, int n, int k, int forecase) {
 }
 
 
+int ThreeTimeFittingDataProcessing(const vector<int> data, int n, int k, int forecase) {
+    int DataNum = n / k, tempN = n;
+
+    double *arr_x = new double[DataNum];
+    double *arr_y = new double[DataNum];
+    for(int i=0; i < DataNum; i++) arr_x[i] = i+1;
+    for (int i = DataNum - 1; i >= 0; i--) {     //数据不加处理
+        arr_y[i] = 0;
+        for (int j = 0; j < k; j++) {
+            tempN--;
+            arr_y[i] += data[tempN];
+        }
+    }
+
+    double *CoefficientMatrix = new double[16];  //根据公式求4*4系数矩阵
+    CoefficientMatrix[0] = DataNum;
+    CoefficientMatrix[1] = HelperAdd(DataNum, 1, arr_y, 0);
+    CoefficientMatrix[2] = HelperAdd(DataNum, 2, arr_y, 0);
+    CoefficientMatrix[3] = HelperAdd(DataNum, 3, arr_y, 0);
+    CoefficientMatrix[4] = CoefficientMatrix[1];
+    CoefficientMatrix[5] = CoefficientMatrix[2];
+    CoefficientMatrix[6] = CoefficientMatrix[3];
+    CoefficientMatrix[7] = HelperAdd(DataNum, 4, arr_y, 0);
+    CoefficientMatrix[8] = CoefficientMatrix[2];
+    CoefficientMatrix[9] = CoefficientMatrix[3];
+    CoefficientMatrix[10] = CoefficientMatrix[7];
+    CoefficientMatrix[11] = HelperAdd(DataNum, 5, arr_y, 0);
+    CoefficientMatrix[12] = CoefficientMatrix[3];
+    CoefficientMatrix[13] = CoefficientMatrix[7];
+    CoefficientMatrix[14] = CoefficientMatrix[11];
+    CoefficientMatrix[15] = HelperAdd(DataNum, 5, arr_y, 0);
+
+    double *vectorB = new double[4];
+    for(int i=0; i<4; i++) vectorB[i] = HelperAdd(DataNum, i, arr_y, 1);
+    double *ans = new double[4];
+    SolveLinearEquations(4, CoefficientMatrix, vectorB, ans);
+    double y = ans[0] + ans[1]*(DataNum+1) + ans[2]*(DataNum+1)*(DataNum+1) + ans[3]*pow(DataNum+1, 3);
+
+#ifdef  _DEBUG
+    cout << "\nx: ";
+    for(int i=0; i<DataNum; i++) cout << arr_x[i] << " ";
+    cout << "\ny: ";
+    for(int i=0; i<DataNum; i++) cout << arr_y[i] << " ";
+    printf("\n拟合方程为：y = %lf + %lfx + %lfx2 + %lfx3 \n",ans[0], ans[1], ans[2], ans[3]);
+    for(int i=0; i<DataNum+1; i++) cout << ans[0] + ans[1]*(i+1) + ans[2]*(i+1)*(i+1) + ans[3]*pow(i+1, 3) << " ";
+#endif
+
+    delete[] ans;
+    delete[] vectorB;
+    delete[] CoefficientMatrix;
+    if(y < 0) return 0;
+    else return (int)ceil(y);
+}
+
 /***************一次曲线拟合*************/
 int LineFitting(const vector<int> data, int n, int k, int forecase) {
     int DataNum = n / k, tempN = n;
-    //数据预处理
-    int avg = 0;
-    for (unsigned int i=0; i<data.size(); i++) {
-        avg += data[i];
-    }
-    avg = (int)round((double)avg/n);
 
     int *arr_x = new int[DataNum];
     int *arr_y = new int[DataNum];
@@ -189,8 +237,7 @@ int LineFitting(const vector<int> data, int n, int k, int forecase) {
         arr_y[i] = 0;
         for (int j = 0; j < k; j++) {
             tempN--;
-            if(0 != avg && data[tempN] > 5*avg) arr_y[i] += avg;
-            else arr_y[i] += data[tempN];
+            arr_y[i] += data[tempN];
         }
     }
 

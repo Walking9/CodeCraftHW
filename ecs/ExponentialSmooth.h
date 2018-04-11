@@ -23,6 +23,8 @@ int ExponentialSmooth1(const vector<int> data, int n, int k);
 int ExponentialSmooth2(const vector<int> data, int n, int k, int forecase, vector<double >& s2_2_new);
 //三次指数平滑预测
 int ExponentialSmooth3(const vector<int> data, int n, int k);
+//int ExponentialSmooth3fix(const vector<int> data, int n, int k);
 int ExponentialSmooth22(const vector<int> data, int n, int k, int forecase);   //二次指数平滑另一种公式
+int ExponentialSmooth22fix(const vector<int> data, int n, int k);
 
 #endif //ECS_EXPONENTIALSMOOTH_H
