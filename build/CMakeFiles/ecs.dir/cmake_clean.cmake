@@ -1,13 +1,13 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/ecs.dir/date.cpp.o"
-  "CMakeFiles/ecs.dir/io.cpp.o"
-  "CMakeFiles/ecs.dir/code.cpp.o"
-  "CMakeFiles/ecs.dir/predict.cpp.o"
-  "CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o"
-  "CMakeFiles/ecs.dir/ecs.cpp.o"
   "CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o"
-  "/home/brunon/CLionProjects/sulu/codeHW/bin/ecs.pdb"
-  "/home/brunon/CLionProjects/sulu/codeHW/bin/ecs"
+  "CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o"
+  "CMakeFiles/ecs.dir/code.cpp.o"
+  "CMakeFiles/ecs.dir/date.cpp.o"
+  "CMakeFiles/ecs.dir/ecs.cpp.o"
+  "CMakeFiles/ecs.dir/io.cpp.o"
+  "CMakeFiles/ecs.dir/predict.cpp.o"
+  "/home/hengliy/codeHW/bin/ecs.pdb"
+  "/home/hengliy/codeHW/bin/ecs"
 )
 
 # Per-language clean rules from dependency scanning.

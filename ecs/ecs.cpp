@@ -14,6 +14,8 @@ int main(int argc, char *argv[])
 #ifdef _DEBUG
     char *input_file = "../data/input1.txt";//输入文件
     char *data_file = "../data/TrainData_2015.1.1_2015.2.19.txt";//数据文件
+//    char *data_file = "../data/data_2015_1.txt";//数据文件
+
     char *output_file = "../data/output.txt";//输出文件
 #else
     char *data_file = argv[1];//数据文件

@@ -10,7 +10,7 @@
 #include "date.h"
 using namespace std;
 
-#define MAX_DAYS 100
+#define MAX_DAYS 200
 #define MAX_FLAVORS 16
 
 class Server

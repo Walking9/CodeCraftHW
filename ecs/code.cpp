@@ -38,7 +38,7 @@ ostream & operator<<(ostream &out,const Server &server)
 
 ostream & operator<<(ostream &out, Flavor &flavor)
 {
-    int days=*endDate-*beginDate;
+    int days=*endDate-*beginDate+1;
     out<<flavor._id<<" "<<flavor._cpuNum<<" "<<flavor._memSize<<" ("<<days<<") -> ";
     for(int i=0;i<days;i++)
     {
@@ -229,6 +229,22 @@ bool cmp_mem(Flavor* a,Flavor* b)
     return a->_memSize>b->_memSize;
 }
 
+
+void sortRand(vector<Flavor*>& vv)
+{
+    srand((unsigned)time(NULL));
+    int count=vv.size()+1;
+    vector<Flavor*> temp;
+    while(count--!=1)
+    {
+        int x=rand()%count;
+        temp.push_back(vv[x]);
+        vv.erase(vv.begin()+x);
+    }
+    vv=temp;
+}
+
+
 //1)交叉装箱算法(CF)
 //从大到小排序,先放入最大的一个,再从最右边往左依次放入物品,直到下一个物品不能放入箱子.
 //再重复上述操作直到所有物品放进去.
@@ -351,10 +367,12 @@ string crossFit()
 //3)首次适应算法
 string firstFit()
 {
-    //针对链表指针进行排序
-    if(predictFlag=="CPU")  sort(vFlavor.begin(),vFlavor.end(),cmp_cpu);//先排序
-    else  sort(vFlavor.begin(),vFlavor.end(),cmp_mem);//先排序
+//    //针对链表指针进行排序
+//    if(predictFlag=="CPU")  sort(vFlavor.begin(),vFlavor.end(),cmp_cpu);//先排序
+//    else  sort(vFlavor.begin(),vFlavor.end(),cmp_mem);//先排序
 
+
+    sortRand(vFlavor);
 #ifdef _DEBUG
     cout<<"all flavor size = ";
     cout<<endl;
@@ -455,12 +473,33 @@ vector<Flavor*> dp2(vector<Flavor*>& vv)
 {
     if(predictFlag=="CPU")  sort(vv.begin()+1,vv.end(),cmp_cpu);//先排序
     else  sort(vv.begin()+1,vv.end(),cmp_mem);//先排序
+//    for(int i=0;i<vv.size()-1;i++)
+//    {
+//        cout<<vv[i]->_id<<" ";
+//    }
+//    cout<<"||||||||||||||||||||||||"<<endl;
+
+//    srand((unsigned)time(NULL));
+//    int count=vv.size()+1;
+//    vector<Flavor*> temp;
+//    while(count--!=1)
+//    {
+//        int x=rand()%count+1;
+//        temp.push_back(vv[x]);
+//        vv.erase(vv.begin()+x);
+//    }
+//    vv=temp;
+
+//    for(int i=0;i<vv.size()-1;i++)
+//    {
+//        cout<<vv[i]->_id<<" ";
+//    }
+//    cout<<"||||||||||||||||||||||||"<<endl;
 
     int n,c,d;
     n=vv.size()-1;//装入物品的个数
     c=server->_cpuNum;
     d=server->_memSize;
-
 #ifdef _DEBUG
     cout<<endl<<"***** dp2 print *******"<<endl;
     cout<<"准备放进去的虚拟机id = ";
