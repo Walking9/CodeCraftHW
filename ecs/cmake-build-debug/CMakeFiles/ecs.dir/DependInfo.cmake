@@ -4,20 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/brunon/CLionProjects/sulu/codeHW/ecs/ExpoentialSmooth.cpp" "/home/brunon/CLionProjects/sulu/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o"
-  "/home/brunon/CLionProjects/sulu/codeHW/ecs/PolynomialCurveFitting.cpp" "/home/brunon/CLionProjects/sulu/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o"
-  "/home/brunon/CLionProjects/sulu/codeHW/ecs/code.cpp" "/home/brunon/CLionProjects/sulu/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/code.cpp.o"
-  "/home/brunon/CLionProjects/sulu/codeHW/ecs/date.cpp" "/home/brunon/CLionProjects/sulu/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/date.cpp.o"
-  "/home/brunon/CLionProjects/sulu/codeHW/ecs/ecs.cpp" "/home/brunon/CLionProjects/sulu/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/ecs.cpp.o"
-  "/home/brunon/CLionProjects/sulu/codeHW/ecs/io.cpp" "/home/brunon/CLionProjects/sulu/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/io.cpp.o"
-  "/home/brunon/CLionProjects/sulu/codeHW/ecs/predict.cpp" "/home/brunon/CLionProjects/sulu/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/predict.cpp.o"
+  "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/ExpoentialSmooth.cpp" "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o"
+  "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/PolynomialCurveFitting.cpp" "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o"
+  "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/code.cpp" "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/code.cpp.o"
+  "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/date.cpp" "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/date.cpp.o"
+  "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/ecs.cpp" "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/ecs.cpp.o"
+  "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/io.cpp" "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/io.cpp.o"
+  "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/predict.cpp" "/home/hengliy/fsdajlfjsdalksdjaflk/codeHW/ecs/cmake-build-debug/CMakeFiles/ecs.dir/predict.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
-
-# Preprocessor definitions for this target.
-set(CMAKE_TARGET_DEFINITIONS_CXX
-  "_DEBUG"
-  )
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

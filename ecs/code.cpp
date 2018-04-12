@@ -51,7 +51,7 @@ ostream & operator<<(ostream &out, Flavor &flavor)
 void paint(vector<int> data1,int length1,vector<int>data2,int length2)
 {
 #ifdef _DEBUG
-/*
+    /*
 //    int days=*nowDate-*beginDate;
 //    string str="";
 //    for(int i=0;i<flavorNum;i++)
@@ -471,8 +471,8 @@ int max(int x, int y)
 //4)动态规划
 vector<Flavor*> dp2(vector<Flavor*>& vv)
 {
-    if(predictFlag=="CPU")  sort(vv.begin()+1,vv.end(),cmp_cpu);//先排序
-    else  sort(vv.begin()+1,vv.end(),cmp_mem);//先排序
+//    if(predictFlag=="CPU")  sort(vv.begin()+1,vv.end(),cmp_cpu);//先排序
+//    else  sort(vv.begin()+1,vv.end(),cmp_mem);//先排序
 //    for(int i=0;i<vv.size()-1;i++)
 //    {
 //        cout<<vv[i]->_id<<" ";
@@ -599,7 +599,7 @@ vector<Flavor*> dp2(vector<Flavor*>& vv)
 string dpPath()
 {
     vector<Flavor*> vv;//
-    vv.push_back(new Flavor(0,0,0));//动态规划  要多加一个0
+
     int predictFlavorNum=0;
     for(size_t i=0;i<vFlavor.size();i++)
     {
@@ -609,6 +609,21 @@ string dpPath()
             vv.push_back(vFlavor[i]);//直接把每台虚拟机的指针复制一份传进去
         }
     }
+    for(int i=0;i<vv.size();i++)
+    {
+        cout<<vv[i]->_id<<" ";
+    }
+    cout<<"||||||||||||||||||||||||"<<endl;
+
+    sortRand(vv);
+
+    for(int i=0;i<vv.size();i++)
+    {
+        cout<<vv[i]->_id<<" ";
+    }
+    cout<<"||||||||||||||||||||||||"<<endl;
+
+    vv.insert(vv.begin(),new Flavor(0,0,0));//动态规划  要多加一个0
 
     string str="";
     str+=to_string(predictFlavorNum)+"\n";
@@ -625,7 +640,9 @@ string dpPath()
     while(vv.size()!=1)
     {
         memset(aa,0, sizeof(aa));
+
         vector<Flavor*> temp=dp2(vv);
+
         serverNum++;
 
         for(size_t i =0;i<temp.size();i++)
