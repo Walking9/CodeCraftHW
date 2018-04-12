@@ -172,7 +172,7 @@ int ThreeTimeFitting(const vector<int> data, int n, int k, int forecase) {
 }
 
 
-void ThreeTimeFittingDataProcessing(const vector<int> data, int n, int k, vector<int>& output) {
+void ThreeTimeFittingDataProcessing(const vector<int> data, int n, int k, double Dividing, vector<int>& output) {
     int DataNum = n / k, tempN = n;
 
     double *arr_x = new double[DataNum];
@@ -210,7 +210,7 @@ void ThreeTimeFittingDataProcessing(const vector<int> data, int n, int k, vector
     SolveLinearEquations(4, CoefficientMatrix, vectorB, ans);
 
     for(int i=0; i<DataNum; i++) {
-        if(abs(arr_y[i] - (ans[0] + ans[1]*(i+1) + ans[2]*(i+1)*(i+1) + ans[3]*pow(i+1, 3))) > 5)
+        if(abs(arr_y[i] - (ans[0] + ans[1]*(i+1) + ans[2]*(i+1)*(i+1) + ans[3]*pow(i+1, 3))) > Dividing)
             output.push_back((int)ceil(ans[0] + ans[1]*(i+1) + ans[2]*(i+1)*(i+1) + ans[3]*pow(i+1, 3)));
         else output.push_back((int)arr_y[i]);
     }
