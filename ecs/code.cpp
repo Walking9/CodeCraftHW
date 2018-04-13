@@ -12,6 +12,8 @@
 #include <sstream>
 #include <cstring>
 #include <numeric>
+#include <algorithm>
+#include <cmath>
 
 using namespace std;
 
@@ -269,6 +271,11 @@ string crossFit()
             vv.push_back(vFlavor[i]);//直接把每台虚拟机的指针复制一份传进去
         }
     }
+
+    //////////////////
+    sortRand(vv);
+    //////////////////
+
     string str="";
     str+=to_string(vv.size())+"\n";
     for(int i =0;i<flavorNum;i++)
@@ -278,8 +285,8 @@ string crossFit()
     str+="\n";
 
     //针对链表指针进行降序排序
-    if(predictFlag=="CPU")  sort(vv.begin(),vv.end(),cmp_cpu);//对CPU降序
-    else  sort(vv.begin(),vv.end(),cmp_mem);//对MEM降序
+//    if(predictFlag=="CPU")  sort(vv.begin(),vv.end(),cmp_cpu);//对CPU降序
+//    else  sort(vv.begin(),vv.end(),cmp_mem);//对MEM降序
 #ifdef _DEBUG
     cout<<"()()()()()()()";
     for(int i=0;i<vv.size();i++)
@@ -368,11 +375,11 @@ string crossFit()
 string firstFit()
 {
 //    //针对链表指针进行排序
-//    if(predictFlag=="CPU")  sort(vFlavor.begin(),vFlavor.end(),cmp_cpu);//先排序
-//    else  sort(vFlavor.begin(),vFlavor.end(),cmp_mem);//先排序
-
-
-    sortRand(vFlavor);
+    if(predictFlag=="CPU")  sort(vFlavor.begin(),vFlavor.end(),cmp_cpu);//先排序
+    else  sort(vFlavor.begin(),vFlavor.end(),cmp_mem);//先排序
+    //////////////////
+    //sortRand(vFlavor);
+    //////////////////
 #ifdef _DEBUG
     cout<<"all flavor size = ";
     cout<<endl;
@@ -463,7 +470,6 @@ string firstFit()
     return str;
 }
 
-
 int max(int x, int y)
 {
     return x>y?x:y;
@@ -471,6 +477,22 @@ int max(int x, int y)
 //4)动态规划
 vector<Flavor*> dp2(vector<Flavor*>& vv)
 {
+
+//    if(predictFlag=="CPU")  sort(vv.begin()+1,vv.end(),cmp_cpu);//先排序
+//    else  sort(vv.begin()+1,vv.end(),cmp_mem);//先排序
+
+//    srand((unsigned)time(NULL));
+//    int count=vv.size()+1;
+//    vector<Flavor*> temp;
+//    while(count--!=1)
+//    {
+//        int x=rand()%count;
+//        temp.push_back(vv[x]);
+//        vv.erase(vv.begin()+x);
+//    }
+//    vv=temp;
+//
+
     if(predictFlag=="CPU")  sort(vv.begin()+1,vv.end(),cmp_cpu);//先排序
     else  sort(vv.begin()+1,vv.end(),cmp_mem);//先排序
 //    for(int i=0;i<vv.size()-1;i++)
@@ -501,13 +523,13 @@ vector<Flavor*> dp2(vector<Flavor*>& vv)
     c=server->_cpuNum;
     d=server->_memSize;
 #ifdef _DEBUG
-    cout<<endl<<"***** dp2 print *******"<<endl;
-    cout<<"准备放进去的虚拟机id = ";
-    for(int i =1;i<=n;i++)
-    {
-        cout<<vv[i]->_id<<" ";
-    }
-    cout<<endl;
+//    cout<<endl<<"***** dp2 print *******"<<endl;
+//    cout<<"准备放进去的虚拟机id = ";
+//    for(int i =1;i<=n;i++)
+//    {
+//        cout<<vv[i]->_id<<" ";
+//    }
+//    cout<<endl;
 #endif
 
     //int dp[n+1][c+1][d+1]={0};
@@ -571,15 +593,15 @@ vector<Flavor*> dp2(vector<Flavor*>& vv)
     //x[1]=(dp[1][c][d])?1:0;
 
 #ifdef _DEBUG
-    cout<<"背包能放物品的最大("<<predictFlag<<")为:"<<dp[n][c][d]<<endl;
-    cout<<"被选入背包cpu|mem|价值分别是:"<<endl;
-    for(size_t i=0;i<ret.size();i++)
-    {
-        if(predictFlag=="CPU")
-            cout<<"第"<<ret[i]->_id<<"个物品: "<<ret[i]->_cpuNum<<"  "<<ret[i]->_memSize<<"  "<<ret[i]->_cpuNum<<endl;
-        else
-            cout<<"第"<<ret[i]->_id<<"个物品: "<<ret[i]->_cpuNum<<"  "<<ret[i]->_memSize<<"  "<<ret[i]->_memSize<<endl;
-    }
+//    cout<<"背包能放物品的最大("<<predictFlag<<")为:"<<dp[n][c][d]<<endl;
+//    cout<<"被选入背包cpu|mem|价值分别是:"<<endl;
+//    for(size_t i=0;i<ret.size();i++)
+//    {
+//        if(predictFlag=="CPU")
+//            cout<<"第"<<ret[i]->_id<<"个物品: "<<ret[i]->_cpuNum<<"  "<<ret[i]->_memSize<<"  "<<ret[i]->_cpuNum<<endl;
+//        else
+//            cout<<"第"<<ret[i]->_id<<"个物品: "<<ret[i]->_cpuNum<<"  "<<ret[i]->_memSize<<"  "<<ret[i]->_memSize<<endl;
+//    }
 #endif
 
     for(int i=0;i<n+1;i++)
@@ -595,7 +617,6 @@ vector<Flavor*> dp2(vector<Flavor*>& vv)
     return ret;
 }
 
-
 string dpPath()
 {
     vector<Flavor*> vv;//
@@ -610,6 +631,11 @@ string dpPath()
         }
     }
 
+    ////////////
+    //sortRand(vv);
+    ////////////
+
+    vv.insert(vv.begin(),new Flavor(0,0,0));//动态规划  要多加一个0
     string str="";
     str+=to_string(predictFlavorNum)+"\n";
     for(int i=0;i<flavorNum;i++)
@@ -644,6 +670,210 @@ string dpPath()
 
     str1+"\n";
     str+="\n"+to_string(serverNum)+"\n"+str1;
+
+    return str;
+}
+
+
+
+string srandFit()
+{
+    //针对链表指针进行排序
+    //////////////////
+    //sortRand(vFlavor);
+    //////////////////
+    srand((unsigned)time(NULL));
+#ifdef _DEBUG
+    cout<<"all flavor size = ";
+    cout<<endl;
+    for(size_t i=0;i<vFlavor.size();i++)
+    {
+        cout<<" id: "<<vFlavor[i]->_id<<" = "<<vFlavor[i]->_predictNum<<endl;
+    }
+    cout<<endl;
+#endif
+
+    vector<Flavor*> vv;//
+
+    int predictFlavorNum=0;
+    for(size_t i=0;i<vFlavor.size();i++)
+    {
+        for(int j=0;j<vFlavor[i]->_predictNum;j++)
+        {
+            predictFlavorNum++;
+            vv.push_back(vFlavor[i]);//直接把每台虚拟机的指针复制一份传进去
+        }
+    }
+
+//    if(predictFlag=="CPU")  sort(vv.begin(),vv.end(),cmp_cpu);//先排序
+//    else  sort(vv.begin(),vv.end(),cmp_mem);//先排序
+
+    string str="";
+    str+=to_string(vv.size())+"\n";
+    for(int i =0;i<flavorNum;i++)
+    {
+        str+="flavor"+to_string(vFlavor[i]->_id)+" "+to_string(vFlavor[i]->_predictNum)+"\n";
+    }
+    str+="\n";
+
+
+    //fall down fire
+    double min_server = vv.size() + 1;
+    vector<Server*> res_servers;  //用于存放最好结果（服务器使用数量最少）
+
+    double T=100.0;//temp start
+    double Tmin=1;//temp end
+    double r=0.9999;//down rate
+    vector<int> play;//dice(shaizi)
+    for(size_t i=0;i<vv.size();i++)
+    {
+        play.push_back(i);
+    }
+
+
+    int count=0;
+    while(T>Tmin)//once a result to best grade
+    {
+        count++;
+        if(vv.size()==0) break;
+        //random_shuffle(play.begin(),play.end());//play dice
+        sortRand(vv);
+        vector<Flavor*> newVFlavor =vv;//
+
+//        if(newVFlavor.size()>=2)
+//        {
+//            Flavor* temp=newVFlavor[play[0]];
+//            newVFlavor[play[0]]=newVFlavor[play[1]];
+//            newVFlavor[play[1]]=temp;
+//        }
+//        vector<Flavor*> tempVFlavor=newVFlavor;
+
+        vector<Server*> servers;
+
+        servers.push_back(new Server(*server));
+        for(size_t i=0;i<newVFlavor.size();i++)//循环所有的虚拟机
+        {
+            Flavor* flavor=newVFlavor[i];
+
+            for(size_t j=0;j<servers.size();j++)//循环物理服务器链表
+            {
+                Server* server0=servers[j];
+                // if(flavor->_predictNum==0)   continue;//如果这个虚拟机没有了
+
+                if(flavor->_cpuNum>server0->_cpuNum||flavor->_memSize>server0->_memSize)//如果这个物理服务器不能装下这个虚拟机了
+                {
+                    if(j==servers.size()-1)//且如果这个服务器是最后一个服务器了
+                    {
+                        servers.push_back(new Server(*server));//再申请一个新的物理机
+                    }
+                    //continue;//如果此服务器不能装下这个虚拟机 就向后推动
+                }
+                else//如果装下这个虚拟机
+                {
+                    server0->_cpuNum-=flavor->_cpuNum;//物理服务器cpu资源消耗
+                    server0->_memSize-=flavor->_memSize;//物理服务器mem资源消耗
+                    server0->_flavorNum[flavor->_id]++;//物理服务器装的某个虚拟机个数+1
+                    break;
+                }
+            }
+        }
+
+
+//==================================================================================================
+//        newVFlavor.insert(newVFlavor.begin(),new Flavor(0,0,0));//动态规划  要多加一个0
+//
+//        while(newVFlavor.size()!=1)
+//        {
+//            vector<Flavor*> temp=dp2(newVFlavor);
+//
+//            Server* newServer=new Server(*server);
+//
+//            for(size_t i=0;i<temp.size();i++)
+//            {
+//                newServer->_flavorNum[temp[i]->_id]++;
+//                newServer->_cpuNum-=temp[i]->_cpuNum;
+//                newServer->_memSize-=temp[i]->_memSize;
+//            }
+//
+//            servers.push_back(newServer);
+//        }
+
+        ////////////////////////////////////////////////////////////////
+        //计算本次放置虚拟机耗费服务器评价分数(double型)
+        //如果使用了N个服务器，则前N-1个服务器贡献分数为1，第N个服务器分数为资源利用率
+        //模拟退火就是得到取得分数最小的放置方式
+        double server_num;
+        //对于题目关心CPU还是MEM，需要分开讨论，资源利用率计算方法不同
+        if (predictFlag == "CPU")
+        {
+            double rate=1-(*(servers.end()-1))->_cpuNum / static_cast<double>(server->_cpuNum);
+            server_num = servers.size() - 1 +rate;
+
+//            for(vector<Server*>::iterator it=servers.begin();it!=servers.end();it++)
+//            {
+//                server_num+=(*it)->_cpuNum;//static_cast<double>(server->_cpuNum);
+//            }
+//            server_num/=static_cast<double>(server->_cpuNum)*(servers.size()-1);
+
+        }
+        else
+        {
+            double rate=1-(*(servers.end()-1))->_memSize / static_cast<double>(server->_memSize);
+            server_num = servers.size() - 1 +rate;
+
+//            for(vector<Server*>::iterator it=servers.begin();it!=servers.end();it++)
+//            {
+//                server_num+=(*it)->_cpuNum;//static_cast<double>(server->_cpuNum);
+//            }
+//            server_num/=static_cast<double>(server->_cpuNum)*(servers.size()-1);
+        }
+
+        //如果分数更低，则保存结果
+        if (server_num < min_server) {
+            min_server = server_num;
+            res_servers = servers;
+            //vv = tempVFlavor;
+        }
+            //如果分数更高，则以一定概率保存结果，防止优化陷入局部最优解
+//        else {
+//            if (exp((min_server - server_num) / T) > rand() / RAND_MAX)
+//            {
+//                min_server = server_num;
+//                res_servers = servers;
+//               // vv = newVFlavor;
+//            }
+//        }
+
+        T = r * T;  //一次循环结束，温度降低
+    }
+    cout<<endl<<"%%%%%%%%%%%%%%%%%%%%%%"<<count<<endl;
+
+    str+=to_string(res_servers.size());
+    for(size_t i=0;i<res_servers.size();i++)
+    {
+        str+="\n"+to_string(i+1)+" ";//ith server
+        for(size_t j=0;j<res_servers[i]->_flavorNum.size();j++)
+        {
+            if(res_servers[i]->_flavorNum[j]!=0)
+                str+="flavor"+to_string(j)+" "+to_string(res_servers[i]->_flavorNum[j])+" ";
+        }
+    }
+
+
+#ifdef _DEBUG
+    cout<<"create server = "<<res_servers.size()<<endl;
+    for(size_t i=0;i<res_servers.size();i++)
+    {
+        cout<<"server"<<i<<" ("<<res_servers[i]->_cpuNum<<") ";
+        for(size_t j=0;j<res_servers[i]->_flavorNum.size();j++)
+        {
+            if(res_servers[i]->_flavorNum[j]!=0)
+                cout<<"flavor"<<j<<" "<<res_servers[i]->_flavorNum[j]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<str;
+#endif
 
     return str;
 }

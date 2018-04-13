@@ -46,7 +46,7 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
 //    string outstr;
 //    stringstream ss;
 //
-    string outstr = dpPath();
+    string outstr = srandFit();
 //    int serverN1;
 //    ss << outstr1;
 //    ss >> serverN1;

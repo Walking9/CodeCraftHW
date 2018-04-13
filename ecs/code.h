@@ -56,5 +56,6 @@ void paint(vector<int> data1,int length1,vector<int>data2,int length2);
 string firstFit();
 string dpPath();
 string crossFit();//交叉放置
+string srandFit();
 
 #endif // CODE_H
