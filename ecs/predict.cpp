@@ -94,9 +94,6 @@ int predict(const vector<int> data, int n,int spaceDays,int predictDays)
     retLine = ExponentialSmooth3fix(data, n, predictDays); //指数平滑算法
     if(0 != spaceDays) retSpace = ExponentialSmooth3fix(data, n, predictDays);
     return retLine - retSpace;
-
-//    vector<int> output;
-//    return ThreeTimeFittingDataProcessing(data, n, 1, output);
 }
 
 

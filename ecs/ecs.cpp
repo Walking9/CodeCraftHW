@@ -6,9 +6,9 @@
 int main(int argc, char *argv[])
 {
     print_time("Begin");
-	char *data[MAX_DATA_NUM];//最大数据
+    char *data[MAX_DATA_NUM];//最大数据
     char *info[MAX_INFO_NUM];//最大信息
-	int data_line_num;
+    int data_line_num;
     int info_line_num;
 
 #ifdef _DEBUG
@@ -45,14 +45,8 @@ int main(int argc, char *argv[])
     predict_server(info, data, data_line_num, output_file);//预测
 
     release_buff(info, info_line_num);
-	release_buff(data, data_line_num);
+    release_buff(data, data_line_num);
 
     print_time("End");
-//    vector<int> v;
-//    v.push_back(1);
-//    v.push_back(4);
-//    v.push_back(9);
-//    v.push_back(16);
-//    ThreeTimeFitting(v, 4, 1, 4);
 }
 

@@ -12,7 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.5.1/CMakeSystem.cmake"
   "CMakeFiles/feature_tests.c"
   "CMakeFiles/feature_tests.cxx"
-  "/home/brunon/CLionProjects/sulu/codeHW/ecs/CMakeLists.txt"
+  "/home/brunon/CLionProjects/codeHW/ecs/CMakeLists.txt"
   "/usr/share/cmake-3.5/Modules/CMakeCCompiler.cmake.in"
   "/usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c"
   "/usr/share/cmake-3.5/Modules/CMakeCInformation.cmake"

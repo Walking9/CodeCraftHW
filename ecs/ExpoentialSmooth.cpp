@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <algorithm>
 #include "ExponentialSmooth.h"
 #include "PolynomialCurveFitting.h"
 
@@ -41,14 +42,13 @@ int ExponentialSmooth1(const vector<int> data, int n, int k) {
     return (int)round(s1[s1.size()-1]);
 }
 
-
 //data格式： int data[] = {0, 2, 1, 1, 0, 6, 2, 1 ,0, 2, 1, 4, 3, 10, 2, 3, 1, 3, 3, 2, 5, 10, 1, 2, 8, 1, 2, 4, 2, 3};
 //二次指数平滑预测
 //传入的数据data以天为单位, n为数组大小,参数k表示k天为一组数据, forcase表示需要预测几组数据
 //备注：n最好为k的倍数
 //     实验发现用double和用float差距比较大
 //s2_2_new 是平滑后的数据
-int ExponentialSmooth2(const vector<int> data, int n, int k, int forecase, vector<double>& s2_2_new) {
+int ExponentialSmooth2(const vector<int> data, int n, int k, vector<double>& s2_2_new) {
     int DataNum = n / k, tempN = n;
     //数据预处理
 //    int avg = 0;
@@ -118,14 +118,13 @@ int ExponentialSmooth2(const vector<int> data, int n, int k, int forecase, vecto
     cout << "\npredict num = " << Xt << "  均方误差：" << MSE  << "\n\n"<< endl;
 #endif
     delete[] DataHandled;
-    if(Xt > 0) return (int)ceil(Xt+0.2 + (forecase/k-1)*Xt);    //得分情况：+0.2 > ceil > round > floor, 最高分75.598
+    if(Xt > 0) return (int)ceil(Xt+0.2);    //得分情况：+0.2 > ceil > round > floor, 最高分75.598
     else return 0;
 //    if(Xt > 0) return (Xt - (int)Xt) > 0.4 ? (int)ceil(Xt) : (int)Xt;     //ceil不如round好使,这样的方法掉分。。
 //    else return 0;
 //    if(Xt > 0) return (int)round(Xt);
 //    else return 0;
 }
-
 
 //三次指数平滑预测
 int ExponentialSmooth3(const vector<int> data, int n, int k) {
@@ -194,11 +193,12 @@ int ExponentialSmooth3(const vector<int> data, int n, int k) {
     double Xt = At + Bt*forecase + Ct*forecase*forecase;
 
 #ifdef _DEBUG
-//    printf("未来%d期的二次指数平滑预估值为： %lf, 均方误差为： %lf\n",forecase, Xt, MSE);
+    //    printf("未来%d期的二次指数平滑预估值为： %lf, 均方误差为： %lf\n",forecase, Xt, MSE);
     cout << "\n实际数据:";
     for(int i=0; i<DataNum; i++) {
         cout << DataHandled[i] << " ";
     }
+
     cout << endl;
     cout << "指数平滑:";
     for(int i=0;i<s3_3_new.size();i++) {
@@ -211,18 +211,45 @@ int ExponentialSmooth3(const vector<int> data, int n, int k) {
     else return 0;
 }
 
+//Tukey‘s test方法对数据异常值处理
+void DataProcessing(const vector<int> input, int n, int Domain, vector<int>& output) {
+    int avg = 0;
+    for (int i=0; i<n; i++) {
+        avg += input[i];
+    }
+    avg = (int)round((double)avg/n);
 
-//三次指数平滑预测
+    vector<int> data;
+    for(int i=0; i<n; i++) data.push_back(input[i]);
+    sort(data.begin(), data.end());
+    cout << "\nsort: ";
+    for(unsigned int i=0; i<data.size(); i++) {
+        cout << data[i] << " ";
+    }
+    int Q1 = data[data.size()/4];
+    //int Q2 = data[data.size()/2];
+    int Q3 = data[data.size()*3/4];
+    int maxValuation = Q3 + Domain*(Q3-Q1);
+    if(maxValuation == 0) maxValuation = 1;
+    for(int i=0; i<n; i++) {
+        if(input[i] > maxValuation && i>0) output.push_back(input[i-1]);
+        else output.push_back(input[i]);
+    }
+}
+
+//三次指数平滑预测改进
 int ExponentialSmooth3fix(const vector<int> data, int n, int k) {
     int DataNum = n / k, tempN = n;
-    //数据预处理............................没有好的方法暂时不对数据预处理了
     int avg = 0;
-    for (unsigned int i=0; i<data.size(); i++) {
+    for (int i=0; i<n; i++) {
         avg += data[i];
     }
     avg = (int)round((double)avg/n);
 
     int *DataHandled = new int[DataNum];
+    vector<int> output;
+//    DataProcessing(data, n, 5, output);
+//    ThreeTimeFittingDataProcessing(data, n,  1, 11, output);
     for (int i = DataNum - 1; i >= 0; i--) {
         DataHandled[i] = 0;
         for (int j = 0; j < k; j++) {
@@ -232,42 +259,25 @@ int ExponentialSmooth3fix(const vector<int> data, int n, int k) {
         }
     }
     vector<double> s3_1_new, s3_2_new, s3_3_new;
-    double x = 0;
-    for (int i = 0; i < 3; i++)
-        x += DataHandled[i];
-    x /= 3;
-    double s3_1 = x, s3_2 = x, s3_3 = x;  //初始化s值
+    double x = DataHandled[0];
+    double s3_1 = x, s3_2 = x, s3_3 = x;//初始化s值
     double a_fit = 0.4;      //平滑系数!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     double Differces = INTMAX_MAX;
     double Xt;
 
-    for(double a=0.4; a<=0.75; a+=0.001) {
-        //先计算一次指数平滑的值
+    for(double a=0.4; a<=0.72; a+=0.0001) {     //0.4 ~ 0.72
         for (int i = 0; i < DataNum-1; i++) {
             if (0 == i) {
                 s3_1_new.push_back(a * DataHandled[i] + (1 - a) * s3_1);
-            } else {
-                s3_1_new.push_back(a * DataHandled[i] + (1 - a) * s3_1_new[i - 1]);
-            }
-        }
-
-        //再计算二次指数平滑的值
-        for (int i = 0; i < DataNum-1; i++) {
-            if (0 == i) {
                 s3_2_new.push_back(a * s3_1_new[i] + (1 - a) * s3_2);
-            } else {
-                s3_2_new.push_back(a * s3_1_new[i] + (1 - a) * s3_2_new[i - 1]);
-            }
-        }
-
-        //后计算三次指数平滑值
-        for (int i = 0; i < DataNum-1; i++) {
-            if (0 == i) {
                 s3_3_new.push_back(a * s3_2_new[i] + (1 - a) * s3_3);
             } else {
+                s3_1_new.push_back(a * DataHandled[i] + (1 - a) * s3_1_new[i - 1]);
+                s3_2_new.push_back(a * s3_1_new[i] + (1 - a) * s3_2_new[i - 1]);
                 s3_3_new.push_back(a * s3_2_new[i] + (1 - a) * s3_3_new[i - 1]);
             }
         }
+
         s3_1 = s3_1_new[s3_1_new.size() - 1];
         s3_2 = s3_2_new[s3_2_new.size() - 1];
         s3_3 = s3_3_new[s3_3_new.size() - 1];
@@ -285,29 +295,14 @@ int ExponentialSmooth3fix(const vector<int> data, int n, int k) {
         s3_3_new.clear();
     }
 
-    //先计算一次指数平滑的值
     for (int i = 0; i < DataNum; i++) {
         if (0 == i) {
             s3_1_new.push_back(a_fit * DataHandled[i] + (1 - a_fit) * s3_1);
-        } else {
-            s3_1_new.push_back(a_fit * DataHandled[i] + (1 - a_fit) * s3_1_new[i - 1]);
-        }
-    }
-
-    //再计算二次指数平滑的值
-    for (int i = 0; i < DataNum; i++) {
-        if (0 == i) {
             s3_2_new.push_back(a_fit * s3_1_new[i] + (1 - a_fit) * s3_2);
-        } else {
-            s3_2_new.push_back(a_fit * s3_1_new[i] + (1 - a_fit) * s3_2_new[i - 1]);
-        }
-    }
-
-    //后计算三次指数平滑值
-    for (int i = 0; i < DataNum; i++) {
-        if (0 == i) {
             s3_3_new.push_back(a_fit * s3_2_new[i] + (1 - a_fit) * s3_3);
         } else {
+            s3_1_new.push_back(a_fit * DataHandled[i] + (1 - a_fit) * s3_1_new[i - 1]);
+            s3_2_new.push_back(a_fit * s3_1_new[i] + (1 - a_fit) * s3_2_new[i - 1]);
             s3_3_new.push_back(a_fit * s3_2_new[i] + (1 - a_fit) * s3_3_new[i - 1]);
         }
     }
@@ -333,11 +328,12 @@ int ExponentialSmooth3fix(const vector<int> data, int n, int k) {
     cout << "\npredict num = " << Xt << " a_fit："  << a_fit << "\n\n"<< endl;
 #endif
     delete[] DataHandled;
-    if(Xt > 0) return (Xt - (int)Xt) >= 0.45 ? (int)ceil(Xt) : (int)Xt;     //0.35~0.45 > round > ceil, 最高分76.182(不对数据处理76.173)
+    if(Xt > 0) return (int)round(Xt+0.1);
     else return 0;
 }
 
-int ExponentialSmooth22(const vector<int> data, int n, int k, int forecase) {
+//二次指数平滑另一种公式
+int ExponentialSmooth22(const vector<int> data, int n, int k) {
     int DataNum = n / k, tempN = n;
 
     int *DataHandled = new int[DataNum];
@@ -362,10 +358,7 @@ int ExponentialSmooth22(const vector<int> data, int n, int k, int forecase) {
         t.push_back(b*(s[i+1] - s[i]) + (1-b)*t[i]);
     }
 
-    double Xt = 0;
-    for(int i=0; i<forecase/k; i++) {
-        Xt += s[s.size()-1] + (i+1)*t[t.size()-1];
-    }
+    double Xt = s[s.size()-1] + t[t.size()-1];   //预测后一期
 //
 #ifdef _DEBUG
     cout << "\n实际数据:";
@@ -384,7 +377,7 @@ int ExponentialSmooth22fix(const vector<int> data, int n, int k) {
 
     int *DataHandled = new int[DataNum];
     vector<int> output;
-    ThreeTimeFittingDataProcessing(data, n, 1, 60, output);
+    //ThreeTimeFittingDataProcessing(data, n, 1, 60, output);  //数据处理
     for (int i = DataNum - 1; i >= 0; i--) {
         DataHandled[i] = 0;
         for (int j = 0; j < k; j++) {
@@ -401,8 +394,8 @@ int ExponentialSmooth22fix(const vector<int> data, int n, int k) {
     //网格法求最适系数
     double Xt;
     double Differces = INTMAX_MAX;
-    for(double a=0.7; a<=0.86; a+=0.0015) {
-        for(double b=0.13; b<=0.5; b+=0.0015) {
+    for(double a=0.77; a<=0.85; a+=0.0015) {
+        for(double b=0.13; b<=0.4; b+=0.0015) {
             s.push_back(x); t.push_back(x);   //置s0 t0初始值
             for(int i=0; i<DataNum-1; i++) {
                 s.push_back(a*DataHandled[i] + (1-a)*(s[i] + t[i]));

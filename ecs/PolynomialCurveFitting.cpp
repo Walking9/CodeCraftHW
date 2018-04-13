@@ -12,8 +12,7 @@ using namespace std;
 
 
 /***************二次曲线拟合***************/
-double SolveDeterminant(int n, double *arr)    //递归解n阶行列式函数, 行列式用一维数组存放
-{
+double SolveDeterminant(int n, double *arr){    //递归解n阶行列式函数, 行列式用一维数组存放
     if (n == 1)
         return arr[0];
     double *arr_son = new double[(n - 1)*(n - 1)];//创建n-1阶的代数余子式阵
@@ -59,12 +58,12 @@ void SolveLinearEquations(int n, double *arr, double *vectorB, double *ans) {   
     }
 }
 
-int TwoTimeFitting(const vector<int> data, int n, int k, int forecase) {
+int TwoTimeFitting(const vector<int> data, int n, int k) {
     int DataNum = n / k;
 
     double *arr_x = new double[DataNum];
     double *arr_y = new double[DataNum];
-    for(int i=0; i < DataNum; i++) arr_x[i] = i+1;
+    for (int i = 0; i < DataNum; i++) arr_x[i] = i + 1;
 //    for (int i = DataNum - 1; i >= 0; i--) {     //数据不加处理
 //        arr_y[i] = 0;
 //        for (int j = 0; j < k; j++) {
@@ -73,8 +72,8 @@ int TwoTimeFitting(const vector<int> data, int n, int k, int forecase) {
 //        }
 //    }
     vector<double> vector_y;
-    ExponentialSmooth2(data, n, k, forecase, vector_y);
-    for(unsigned int i=0; i<vector_y.size(); i++) {       //对数据用指数平滑处理
+    ExponentialSmooth2(data, n, k, vector_y);
+    for (unsigned int i = 0; i < vector_y.size(); i++) {       //对数据用指数平滑处理
         arr_y[i] = vector_y[i];
     }
 
@@ -90,29 +89,28 @@ int TwoTimeFitting(const vector<int> data, int n, int k, int forecase) {
     CoefficientMatrix[8] = HelperAdd(DataNum, 4, arr_y, 0);
 
     double *vectorB = new double[3];
-    for(int i=0; i<3; i++) vectorB[i] = HelperAdd(DataNum, i, arr_y, 1);
+    for (int i = 0; i < 3; i++) vectorB[i] = HelperAdd(DataNum, i, arr_y, 1);
     double *ans = new double[3];
     SolveLinearEquations(3, CoefficientMatrix, vectorB, ans);
-    double y = ans[0] + ans[1]*(DataNum+1) + ans[2]*(DataNum+1)*(DataNum+1);
+    double y = ans[0] + ans[1] * (DataNum + 1) + ans[2] * (DataNum + 1) * (DataNum + 1);
 
 #ifdef  _DEBUG
     cout << "\nx: ";
-    for(int i=0; i<DataNum; i++) cout << arr_x[i] << " ";
+    for (int i = 0; i < DataNum; i++) cout << arr_x[i] << " ";
     cout << "\ny: ";
-    for(int i=0; i<DataNum; i++) cout << arr_y[i] << " ";
-    printf("\n拟合方程为：y = %lf + %lfx + %lfx2 \n",ans[0], ans[1], ans[2]);
-    printf("if forecase = %d, y=%lf \n\n", forecase, y);
+    for (int i = 0; i < DataNum; i++) cout << arr_y[i] << " ";
+    printf("\n拟合方程为：y = %lf + %lfx + %lfx2 \n", ans[0], ans[1], ans[2]);
+    printf("y=%lf \n\n", y);
 #endif
 
     delete[] ans;
     delete[] vectorB;
     delete[] CoefficientMatrix;
-    if(y < 0) return 0;
-    else return (int)ceil(y);
+    if (y < 0) return 0;
+    else return (int) ceil(y);
 }
 
-
-int ThreeTimeFitting(const vector<int> data, int n, int k, int forecase) {
+int ThreeTimeFitting(const vector<int> data, int n, int k) {
     int DataNum = n / k;
 
     double *arr_x = new double[DataNum];
@@ -126,7 +124,7 @@ int ThreeTimeFitting(const vector<int> data, int n, int k, int forecase) {
 //        }
 //    }
     vector<double> vector_y;
-    ExponentialSmooth2(data, n, k, forecase, vector_y);
+    ExponentialSmooth2(data, n, k, vector_y);
     for(unsigned int i=0; i<vector_y.size(); i++) {       //对数据用二次指数平滑处理
         arr_y[i] = vector_y[i];
     }
@@ -161,7 +159,7 @@ int ThreeTimeFitting(const vector<int> data, int n, int k, int forecase) {
     cout << "\ny: ";
     for(int i=0; i<DataNum; i++) cout << arr_y[i] << " ";
     printf("\n拟合方程为：y = %lf + %lfx + %lfx2 + %lfx3 \n",ans[0], ans[1], ans[2], ans[3]);
-    printf("if forecase = %d, y=%lf \n\n", forecase, y);
+    printf("y=%lf \n\n", y);
 #endif
 
     delete[] ans;
@@ -170,7 +168,6 @@ int ThreeTimeFitting(const vector<int> data, int n, int k, int forecase) {
     if(y < 0) return 0;
     else return (int)ceil(y);
 }
-
 
 void ThreeTimeFittingDataProcessing(const vector<int> data, int n, int k, double Dividing, vector<int>& output) {
     int DataNum = n / k, tempN = n;
@@ -210,9 +207,10 @@ void ThreeTimeFittingDataProcessing(const vector<int> data, int n, int k, double
     SolveLinearEquations(4, CoefficientMatrix, vectorB, ans);
 
     for(int i=0; i<DataNum; i++) {
-        if(abs(arr_y[i] - (ans[0] + ans[1]*(i+1) + ans[2]*(i+1)*(i+1) + ans[3]*pow(i+1, 3))) > Dividing)
-            output.push_back((int)ceil(ans[0] + ans[1]*(i+1) + ans[2]*(i+1)*(i+1) + ans[3]*pow(i+1, 3)));
-        else output.push_back((int)arr_y[i]);
+        if((abs(arr_y[i] - (ans[0] + ans[1]*(i+1) + ans[2]*(i+1)*(i+1) + ans[3]*pow(i+1, 3)))) > Dividing)
+//            output.push_back((int)ceil(ans[0] + ans[1]*(i+1) + ans[2]*(i+1)*(i+1) + ans[3]*pow(i+1, 3)));
+            output.push_back(data[i-1]);
+        else output.push_back(data[i]);
     }
 
 #ifdef  _DEBUG
@@ -231,7 +229,7 @@ void ThreeTimeFittingDataProcessing(const vector<int> data, int n, int k, double
 }
 
 /***************一次曲线拟合*************/
-int LineFitting(const vector<int> data, int n, int k, int forecase) {
+int LineFitting(const vector<int> data, int n, int k) {
     int DataNum = n / k, tempN = n;
 
     int *arr_x = new int[DataNum];
@@ -255,8 +253,7 @@ int LineFitting(const vector<int> data, int n, int k, int forecase) {
     double a, b;
     b = ((double)sumX*sumY/N - sumXY) / (sumX*sumX/N - sumX2);
     a = ((double)sumY - b*sumX)/N;
-    double y = 0;
-    for(int i=N+1; i<=N+forecase; i++) y += (a + b*(N+1));
+    double y = a + b*(N+1);
 #ifdef _DEBUG
     cout << "\nx: ";
     for(int i=0; i<DataNum; i++) cout << arr_x[i] << " ";
@@ -264,7 +261,7 @@ int LineFitting(const vector<int> data, int n, int k, int forecase) {
     for(int i=0; i<DataNum; i++) cout << arr_y[i] << " ";
 
     printf("\n拟合方程为：y = %lf + %lfx \n",a, b);
-    printf("if forecase = %d, y=%lf \n\n", forecase, y);
+    printf("y=%lf \n\n", y);
 #endif
     delete[] arr_x;
     delete[] arr_y;

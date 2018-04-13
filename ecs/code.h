@@ -18,7 +18,7 @@ class Server
     friend ostream & operator<<(ostream &,const Server &);
 public:
     Server(int cpuNum,int memSize,int diskSize):
-        _cpuNum(cpuNum),_memSize(memSize),_diskSize(diskSize) {
+            _cpuNum(cpuNum),_memSize(memSize),_diskSize(diskSize) {
         _flavorNum.resize(MAX_FLAVORS);
     }
 
@@ -41,7 +41,7 @@ class Flavor
     friend ostream & operator<<(ostream &out, Flavor &flavor);
 public:
     Flavor(int id,int cpuNum,int memSize):
-        _id(id),_cpuNum(cpuNum),_memSize(memSize){
+            _id(id),_cpuNum(cpuNum),_memSize(memSize){
         _dayLine.resize(MAX_DAYS);
     }
 
