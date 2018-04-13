@@ -232,7 +232,7 @@ void DataProcessing(const vector<int> input, int n, int Domain, vector<int>& out
     int maxValuation = Q3 + Domain*(Q3-Q1);
     if(maxValuation == 0) maxValuation = 1;
     for(int i=0; i<n; i++) {
-        if(input[i] > maxValuation && i>0) output.push_back(input[i-1]);
+        if(input[i] > maxValuation && i>0) output.push_back((int)round(0.4*input[i]));   //用avg81.507   //*0.4 83.87!!
         else output.push_back(input[i]);
     }
 }
@@ -377,11 +377,13 @@ int ExponentialSmooth22fix(const vector<int> data, int n, int k) {
 
     int *DataHandled = new int[DataNum];
     vector<int> output;
-    //ThreeTimeFittingDataProcessing(data, n, 1, 60, output);  //数据处理
+    DataProcessing(data, n, 4, output);
+    //ThreeTimeFittingDataProcessing(data, n, 1, output);
     for (int i = DataNum - 1; i >= 0; i--) {
         DataHandled[i] = 0;
         for (int j = 0; j < k; j++) {
-            DataHandled[i] += data[tempN--];
+            tempN--;
+            DataHandled[i] += output[tempN];
         }
     }
     vector<double> s, t;
@@ -394,8 +396,8 @@ int ExponentialSmooth22fix(const vector<int> data, int n, int k) {
     //网格法求最适系数
     double Xt;
     double Differces = INTMAX_MAX;
-    for(double a=0.77; a<=0.85; a+=0.0015) {
-        for(double b=0.13; b<=0.4; b+=0.0015) {
+    for(double a=0.77; a<=0.85; a+=0.001) {
+        for(double b=0.13; b<=0.5; b+=0.001) {
             s.push_back(x); t.push_back(x);   //置s0 t0初始值
             for(int i=0; i<DataNum-1; i++) {
                 s.push_back(a*DataHandled[i] + (1-a)*(s[i] + t[i]));
@@ -419,7 +421,6 @@ int ExponentialSmooth22fix(const vector<int> data, int n, int k) {
     }
     Xt = s[s.size()-1] + t[t.size()-1];
 
-//
 #ifdef _DEBUG
     cout << "\n实际数据:";
     for(int i=0; i<DataNum; i++) {

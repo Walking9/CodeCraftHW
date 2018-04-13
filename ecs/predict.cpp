@@ -91,8 +91,8 @@ int predict(const vector<int> data, int n,int spaceDays,int predictDays)
 {
     int retLine, retSpace = 0;// retEx2, retEx3 ;
     vector<double> v;
-    retLine = ExponentialSmooth3fix(data, n, predictDays); //指数平滑算法
-    if(0 != spaceDays) retSpace = ExponentialSmooth3fix(data, n, predictDays);
+    retLine = ExponentialSmooth22fix(data, n, predictDays); //指数平滑算法
+    if(0 != spaceDays) retSpace = ExponentialSmooth22fix(data, n, predictDays);
     return retLine - retSpace;
 }
 
