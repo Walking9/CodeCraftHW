@@ -358,7 +358,7 @@ int ExponentialSmooth22(const vector<int> data, int n, int k) {
         t.push_back(b*(s[i+1] - s[i]) + (1-b)*t[i]);
     }
 
-    double Xt = s[s.size()-1] + t[t.size()-1];   //预测后一期
+    double Xt = s[s.size()-1] + t[t.size()-1];   //预测后一期l
 //
 #ifdef _DEBUG
     cout << "\n实际数据:";
@@ -396,7 +396,7 @@ int ExponentialSmooth22fix(const vector<int> data, int n, int k) {
     //网格法求最适系数
     double Xt;
     double Differces = INTMAX_MAX;
-    for(double a=0.77; a<=0.85; a+=0.001) {
+    for(double a=0.7; a<=0.85; a+=0.001) {    //0.77-237.1   0.7-238.1
         for(double b=0.13; b<=0.5; b+=0.001) {
             s.push_back(x); t.push_back(x);   //置s0 t0初始值
             for(int i=0; i<DataNum-1; i++) {
