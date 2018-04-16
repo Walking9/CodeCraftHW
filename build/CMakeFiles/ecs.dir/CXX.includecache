@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/hengliy/bbbbb/codeHW/ecs/ExpoentialSmooth.cpp
+/home/hengliy/codeHW/final/codeHW/ecs/ExpoentialSmooth.cpp
 iostream
 -
 vector
@@ -16,17 +16,17 @@ cmath
 algorithm
 -
 ExponentialSmooth.h
-/home/hengliy/bbbbb/codeHW/ecs/ExponentialSmooth.h
+/home/hengliy/codeHW/final/codeHW/ecs/ExponentialSmooth.h
 PolynomialCurveFitting.h
-/home/hengliy/bbbbb/codeHW/ecs/PolynomialCurveFitting.h
+/home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.h
 
-/home/hengliy/bbbbb/codeHW/ecs/ExponentialSmooth.h
+/home/hengliy/codeHW/final/codeHW/ecs/ExponentialSmooth.h
 iostream
 -
 vector
 -
 
-/home/hengliy/bbbbb/codeHW/ecs/PolynomialCurveFitting.cpp
+/home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.cpp
 iostream
 -
 vector
@@ -36,11 +36,11 @@ cstring
 cmath
 -
 PolynomialCurveFitting.h
-/home/hengliy/bbbbb/codeHW/ecs/PolynomialCurveFitting.h
+/home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.h
 ExponentialSmooth.h
-/home/hengliy/bbbbb/codeHW/ecs/ExponentialSmooth.h
+/home/hengliy/codeHW/final/codeHW/ecs/ExponentialSmooth.h
 
-/home/hengliy/bbbbb/codeHW/ecs/PolynomialCurveFitting.h
+/home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.h
 iostream
 -
 vector
@@ -50,9 +50,9 @@ cstring
 cmath
 -
 
-/home/hengliy/bbbbb/codeHW/ecs/code.cpp
+/home/hengliy/codeHW/final/codeHW/ecs/code.cpp
 code.h
-/home/hengliy/bbbbb/codeHW/ecs/code.h
+/home/hengliy/codeHW/final/codeHW/ecs/code.h
 iostream
 -
 string
@@ -76,7 +76,7 @@ algorithm
 cmath
 -
 
-/home/hengliy/bbbbb/codeHW/ecs/code.h
+/home/hengliy/codeHW/final/codeHW/ecs/code.h
 iostream
 -
 fstream
@@ -90,9 +90,9 @@ list
 time.h
 -
 date.h
-/home/hengliy/bbbbb/codeHW/ecs/date.h
+/home/hengliy/codeHW/final/codeHW/ecs/date.h
 
-/home/hengliy/bbbbb/codeHW/ecs/date.cpp
+/home/hengliy/codeHW/final/codeHW/ecs/date.cpp
 iostream
 -
 string
@@ -104,23 +104,23 @@ cstring
 vector
 -
 date.h
-/home/hengliy/bbbbb/codeHW/ecs/date.h
+/home/hengliy/codeHW/final/codeHW/ecs/date.h
 
-/home/hengliy/bbbbb/codeHW/ecs/date.h
+/home/hengliy/codeHW/final/codeHW/ecs/date.h
 iostream
 -
 
-/home/hengliy/bbbbb/codeHW/ecs/ecs.cpp
+/home/hengliy/codeHW/final/codeHW/ecs/ecs.cpp
 predict.h
-/home/hengliy/bbbbb/codeHW/ecs/predict.h
+/home/hengliy/codeHW/final/codeHW/ecs/predict.h
 lib_io.h
-/home/hengliy/bbbbb/codeHW/ecs/lib_io.h
+/home/hengliy/codeHW/final/codeHW/ecs/lib_io.h
 lib_time.h
-/home/hengliy/bbbbb/codeHW/ecs/lib_time.h
+/home/hengliy/codeHW/final/codeHW/ecs/lib_time.h
 stdio.h
-/home/hengliy/bbbbb/codeHW/ecs/stdio.h
+/home/hengliy/codeHW/final/codeHW/ecs/stdio.h
 
-/home/hengliy/bbbbb/codeHW/ecs/io.cpp
+/home/hengliy/codeHW/final/codeHW/ecs/io.cpp
 stdio.h
 -
 stdlib.h
@@ -140,31 +140,31 @@ unistd.h
 signal.h
 -
 
-/home/hengliy/bbbbb/codeHW/ecs/lib/lib_io.h
+/home/hengliy/codeHW/final/codeHW/ecs/lib/lib_io.h
 
-/home/hengliy/bbbbb/codeHW/ecs/lib/lib_time.h
+/home/hengliy/codeHW/final/codeHW/ecs/lib/lib_time.h
 
-/home/hengliy/bbbbb/codeHW/ecs/predict.cpp
+/home/hengliy/codeHW/final/codeHW/ecs/predict.cpp
 stdio.h
 -
 iostream
 -
 ExponentialSmooth.h
-/home/hengliy/bbbbb/codeHW/ecs/ExponentialSmooth.h
+/home/hengliy/codeHW/final/codeHW/ecs/ExponentialSmooth.h
 code.h
-/home/hengliy/bbbbb/codeHW/ecs/code.h
+/home/hengliy/codeHW/final/codeHW/ecs/code.h
 date.h
-/home/hengliy/bbbbb/codeHW/ecs/date.h
+/home/hengliy/codeHW/final/codeHW/ecs/date.h
 predict.h
-/home/hengliy/bbbbb/codeHW/ecs/predict.h
+/home/hengliy/codeHW/final/codeHW/ecs/predict.h
 PolynomialCurveFitting.h
-/home/hengliy/bbbbb/codeHW/ecs/PolynomialCurveFitting.h
+/home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.h
 sstream
 -
 
-/home/hengliy/bbbbb/codeHW/ecs/predict.h
+/home/hengliy/codeHW/final/codeHW/ecs/predict.h
 lib_io.h
-/home/hengliy/bbbbb/codeHW/ecs/lib_io.h
+/home/hengliy/codeHW/final/codeHW/ecs/lib_io.h
 string
 -
 vector

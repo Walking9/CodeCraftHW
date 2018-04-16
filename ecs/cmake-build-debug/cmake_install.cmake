@@ -1,4 +1,4 @@
-# Install script for directory: /home/hengliy/bbbbb/codeHW/ecs
+# Install script for directory: /home/hengliy/codeHW/final/codeHW/ecs
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/hengliy/bbbbb/codeHW/ecs/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/hengliy/codeHW/final/codeHW/ecs/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

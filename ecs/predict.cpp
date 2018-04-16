@@ -42,39 +42,11 @@ void predict_server(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM], int da
         vFlavor[i]->_predictNum = predict(vFlavor[i]->_dayLine,days,spaceDays,predictDays);
     }
 
-    /**********装箱*************/
-//    string outstr;
-//    stringstream ss;
-//
-    string outstr = srandFit();
-//    int serverN1;
-//    ss << outstr1;
-//    ss >> serverN1;
-//    ss.clear();
+    /**********装箱****************************/
 
-//    string outstr = firstFit();
-//    int serverN0;
-//    ss<<outstr0;
-//    ss>>serverN0;
-//    ss.clear();
+    string outstr = dpPath();
 
-
-//  outstr=serverN0<serverN1?outstr0:outstr1;
-
-
-//    if(serverN0<=serverN1)
-//    {
-//        outstr=outstr0;
-//        cout<<"++++++++++++++++++++++++++++++++ use first fit"<<endl;
-//    }
-//    else
-//    {
-//        outstr=outstr1;
-//        cout<<"++++++++++++++++++++++++++++++++ use dp2 path"<<endl;
-//    }
-//
-
-    /*********输出**************/
+    /*********输出*****************************/
     write_result(outstr.c_str(), filename);
 
     // 直接调用输出文件的方法输出到指定文件中(ps请注意格式的正确性，

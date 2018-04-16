@@ -523,13 +523,13 @@ vector<Flavor*> dp2(vector<Flavor*>& vv)
     c=server->_cpuNum;
     d=server->_memSize;
 #ifdef _DEBUG
-//    cout<<endl<<"***** dp2 print *******"<<endl;
-//    cout<<"准备放进去的虚拟机id = ";
-//    for(int i =1;i<=n;i++)
-//    {
-//        cout<<vv[i]->_id<<" ";
-//    }
-//    cout<<endl;
+    cout<<endl<<"***** dp2 print *******"<<endl;
+    cout<<"准备放进去的虚拟机id = ";
+    for(int i =1;i<=n;i++)
+    {
+        cout<<vv[i]->_id<<" ";
+    }
+    cout<<endl;
 #endif
 
     //int dp[n+1][c+1][d+1]={0};
@@ -620,13 +620,12 @@ vector<Flavor*> dp2(vector<Flavor*>& vv)
 string dpPath()
 {
     vector<Flavor*> vv;//
-    vv.push_back(new Flavor(0,0,0));//动态规划  要多加一个0
-    int predictFlavorNum=0;
+    int predictNum=0;
     for(size_t i=0;i<vFlavor.size();i++)
     {
         for(int j=0;j<vFlavor[i]->_predictNum;j++)
         {
-            predictFlavorNum++;
+            predictNum++;
             vv.push_back(vFlavor[i]);//直接把每台虚拟机的指针复制一份传进去
         }
     }
@@ -636,44 +635,98 @@ string dpPath()
     ////////////
 
     vv.insert(vv.begin(),new Flavor(0,0,0));//动态规划  要多加一个0
+
+    vector<Server*> servers;
+
+    while(vv.size()!=1) {
+        vector<Flavor *> temp = dp2(vv);
+
+        Server *newServer = new Server(*server);
+
+        for (size_t i = 0; i < temp.size(); i++) {
+            newServer->_flavorNum[temp[i]->_id]++;
+            newServer->_cpuNum -= temp[i]->_cpuNum;
+            newServer->_memSize -= temp[i]->_memSize;
+        }
+
+        servers.push_back(newServer);
+    }
+
+
+
+    Server* serverEnd=(*(servers.end()-1));
+    int breakFlavor=0;
+    if(predictFlag=="CPU")
+    {
+        if((1-serverEnd->_cpuNum / static_cast<double>(server->_cpuNum))<0.5){
+            cout<<endl<<"++++++++++++"<<1-serverEnd->_cpuNum / static_cast<double>(server->_cpuNum)<<endl;
+            for(size_t j=0;j<serverEnd->_flavorNum.size();j++)
+            {
+                if(serverEnd->_flavorNum[j]!=0)
+                {
+                    for(size_t k=0;k<vFlavor.size();k++)
+                    {
+                        if(vFlavor[k]->_id==j)
+                        {
+                            breakFlavor+=serverEnd->_flavorNum[j];
+                            vFlavor[k]->_predictNum-=serverEnd->_flavorNum[j];
+                            break;
+                        }
+                    }
+                }
+            }
+            servers.erase(servers.end()-1);
+        }
+    } else{
+        if((1-serverEnd->_memSize / static_cast<double>(server->_memSize))<0.5){
+            cout<<endl<<"++++++++++++"<<1-serverEnd->_memSize / static_cast<double>(server->_memSize)<<endl;
+            for(size_t j=0;j<serverEnd->_flavorNum.size();j++)
+            {
+                if(serverEnd->_flavorNum[j]!=0)
+                {
+                    for(size_t k=0;k<vFlavor.size();k++)
+                    {
+                        if(vFlavor[k]->_id==j)
+                        {
+                            breakFlavor+=serverEnd->_flavorNum[j];
+                            vFlavor[k]->_predictNum-=serverEnd->_flavorNum[j];
+                            break;
+                        }
+                    }
+                }
+            }
+            servers.erase(servers.end()-1);
+        }
+
+    }
+
     string str="";
-    str+=to_string(predictFlavorNum)+"\n";
-    for(int i=0;i<flavorNum;i++)
+
+    str+=to_string(predictNum-breakFlavor)+"\n";
+    for(int i =0;i<flavorNum;i++)
     {
         str+="flavor"+to_string(vFlavor[i]->_id)+" "+to_string(vFlavor[i]->_predictNum)+"\n";
     }
+    str+="\n";
 
-    int serverNum=0;
-
-    int aa[MAX_FLAVORS];
-
-    string str1="";
-    while(vv.size()!=1)
+    str+=to_string(servers.size());
+    for(size_t i=0;i<servers.size();i++)
     {
-        memset(aa,0, sizeof(aa));
-        vector<Flavor*> temp=dp2(vv);
-        serverNum++;
-
-        for(size_t i =0;i<temp.size();i++)
+        str+="\n"+to_string(i+1)+" ";//ith server
+        for(size_t j=0;j<servers[i]->_flavorNum.size();j++)
         {
-            aa[temp[i]->_id]++;
+            if(servers[i]->_flavorNum[j]!=0)
+                str+="flavor"+to_string(j)+" "+to_string(servers[i]->_flavorNum[j])+" ";
         }
-
-        str1+=to_string(serverNum);
-        for(int i=1;i<MAX_FLAVORS;i++)
-        {
-            if(aa[i])
-                str1+=" flavor"+to_string(i)+" "+to_string(aa[i]);
-        }
-        str1+="\n";
     }
 
-    str1+"\n";
-    str+="\n"+to_string(serverNum)+"\n"+str1;
+    for(size_t i=0;i<servers.size();i++)
+    {
+        delete servers[i];
+    }
 
     return str;
 }
-
 
 
 string srandFit()
@@ -721,9 +774,9 @@ string srandFit()
     double min_server = vv.size() + 1;
     vector<Server*> res_servers;  //用于存放最好结果（服务器使用数量最少）
 
-    double T=100.0;//temp start
+    double T=500.0;//temp start
     double Tmin=1;//temp end
-    double r=0.9999;//down rate
+    double r=0.99999;//down rate
     vector<int> play;//dice(shaizi)
     for(size_t i=0;i<vv.size();i++)
     {
@@ -731,22 +784,31 @@ string srandFit()
     }
 
 
+
     int count=0;
     while(T>Tmin)//once a result to best grade
     {
         count++;
         if(vv.size()==0) break;
-        //random_shuffle(play.begin(),play.end());//play dice
-        sortRand(vv);
+        random_shuffle(play.begin(),play.end());//play dice
+        //sortRand(vv);
+
+
         vector<Flavor*> newVFlavor =vv;//
 
-//        if(newVFlavor.size()>=2)
+        if(newVFlavor.size()>=2)
+        {
+            Flavor* temp=newVFlavor[play[0]];
+            newVFlavor[play[0]]=newVFlavor[play[1]];
+            newVFlavor[play[1]]=temp;
+        }
+
+//        for(int i=0;i<vv.size();i++)
 //        {
-//            Flavor* temp=newVFlavor[play[0]];
-//            newVFlavor[play[0]]=newVFlavor[play[1]];
-//            newVFlavor[play[1]]=temp;
+//            cout<<vv[i]->_id<<" ";
 //        }
-//        vector<Flavor*> tempVFlavor=newVFlavor;
+//        cout<<endl;
+
 
         vector<Server*> servers;
 
@@ -829,10 +891,14 @@ string srandFit()
         }
 
         //如果分数更低，则保存结果
+//
+
+
         if (server_num < min_server) {
             min_server = server_num;
             res_servers = servers;
-            //vv = tempVFlavor;
+            cout<<endl<<"#########"<<server_num<<endl;
+            vv = newVFlavor;
         }
             //如果分数更高，则以一定概率保存结果，防止优化陷入局部最优解
 //        else {
@@ -840,10 +906,9 @@ string srandFit()
 //            {
 //                min_server = server_num;
 //                res_servers = servers;
-//               // vv = newVFlavor;
+//                vv = newVFlavor;
 //            }
 //        }
-
         T = r * T;  //一次循环结束，温度降低
     }
     cout<<endl<<"%%%%%%%%%%%%%%%%%%%%%%"<<count<<endl;

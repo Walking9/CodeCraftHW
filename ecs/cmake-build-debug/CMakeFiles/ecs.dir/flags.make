@@ -6,5 +6,5 @@ CXX_FLAGS =  -O3 -Wall -std=c++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/hengliy/bbbbb/codeHW/ecs/lib 
+CXX_INCLUDES = -I/home/hengliy/codeHW/final/codeHW/ecs/lib 
 
