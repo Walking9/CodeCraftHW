@@ -377,20 +377,20 @@ int ExponentialSmooth22fix(const vector<int> data, int n, int k) {
 
     int *DataHandled = new int[DataNum];
     vector<int> output;
-    DataProcessing(data, n, 4, output);
+//    DataProcessing(data, n, 4, output);
     //ThreeTimeFittingDataProcessing(data, n, 1, output);
     for (int i = DataNum - 1; i >= 0; i--) {
         DataHandled[i] = 0;
         for (int j = 0; j < k; j++) {
             tempN--;
-            DataHandled[i] += output[tempN];
+            DataHandled[i] += data[tempN];
         }
     }
     vector<double> s, t;
     double x=0;
-    for(int i=0; i<3; i++)
+    for(int i=0; i<1; i++)
         x += DataHandled[i];
-    x /= 3;
+    x /= 1;
     double a_fix = 0.62, b_fix = 0.76;      //平滑系数0.615
 
     //网格法求最适系数

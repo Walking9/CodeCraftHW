@@ -5,6 +5,7 @@
 #ifndef ECS_DATE_H
 #define ECS_DATE_H
 
+#include <string>
 #include <iostream>
 using namespace std;
 
@@ -48,4 +49,6 @@ private:
     int _day;
 };
 
+time_t StringToDatetime(string str);
+string DatetimeToString(time_t time);
 #endif //ECS_DATE_H

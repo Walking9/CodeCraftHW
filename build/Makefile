@@ -177,33 +177,6 @@ PolynomialCurveFitting.cpp.s:
 	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.s
 .PHONY : PolynomialCurveFitting.cpp.s
 
-code.o: code.cpp.o
-
-.PHONY : code.o
-
-# target to build an object file
-code.cpp.o:
-	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/code.cpp.o
-.PHONY : code.cpp.o
-
-code.i: code.cpp.i
-
-.PHONY : code.i
-
-# target to preprocess a source file
-code.cpp.i:
-	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/code.cpp.i
-.PHONY : code.cpp.i
-
-code.s: code.cpp.s
-
-.PHONY : code.s
-
-# target to generate assembly for a file
-code.cpp.s:
-	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/code.cpp.s
-.PHONY : code.cpp.s
-
 date.o: date.cpp.o
 
 .PHONY : date.o
@@ -257,6 +230,60 @@ ecs.s: ecs.cpp.s
 ecs.cpp.s:
 	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/ecs.cpp.s
 .PHONY : ecs.cpp.s
+
+fit.o: fit.cpp.o
+
+.PHONY : fit.o
+
+# target to build an object file
+fit.cpp.o:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/fit.cpp.o
+.PHONY : fit.cpp.o
+
+fit.i: fit.cpp.i
+
+.PHONY : fit.i
+
+# target to preprocess a source file
+fit.cpp.i:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/fit.cpp.i
+.PHONY : fit.cpp.i
+
+fit.s: fit.cpp.s
+
+.PHONY : fit.s
+
+# target to generate assembly for a file
+fit.cpp.s:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/fit.cpp.s
+.PHONY : fit.cpp.s
+
+init.o: init.cpp.o
+
+.PHONY : init.o
+
+# target to build an object file
+init.cpp.o:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/init.cpp.o
+.PHONY : init.cpp.o
+
+init.i: init.cpp.i
+
+.PHONY : init.i
+
+# target to preprocess a source file
+init.cpp.i:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/init.cpp.i
+.PHONY : init.cpp.i
+
+init.s: init.cpp.s
+
+.PHONY : init.s
+
+# target to generate assembly for a file
+init.cpp.s:
+	$(MAKE) -f CMakeFiles/ecs.dir/build.make CMakeFiles/ecs.dir/init.cpp.s
+.PHONY : init.cpp.s
 
 io.o: io.cpp.o
 
@@ -327,15 +354,18 @@ help:
 	@echo "... PolynomialCurveFitting.o"
 	@echo "... PolynomialCurveFitting.i"
 	@echo "... PolynomialCurveFitting.s"
-	@echo "... code.o"
-	@echo "... code.i"
-	@echo "... code.s"
 	@echo "... date.o"
 	@echo "... date.i"
 	@echo "... date.s"
 	@echo "... ecs.o"
 	@echo "... ecs.i"
 	@echo "... ecs.s"
+	@echo "... fit.o"
+	@echo "... fit.i"
+	@echo "... fit.s"
+	@echo "... init.o"
+	@echo "... init.i"
+	@echo "... init.s"
 	@echo "... io.o"
 	@echo "... io.i"
 	@echo "... io.s"

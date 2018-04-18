@@ -9,11 +9,6 @@ CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o: ../ExponentialSmooth.h
 CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o: ../PolynomialCurveFitting.cpp
 CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o: ../PolynomialCurveFitting.h
 
-CMakeFiles/ecs.dir/code.cpp.o: ../lib/lib_io.h
-CMakeFiles/ecs.dir/code.cpp.o: ../code.cpp
-CMakeFiles/ecs.dir/code.cpp.o: ../code.h
-CMakeFiles/ecs.dir/code.cpp.o: ../date.h
-
 CMakeFiles/ecs.dir/date.cpp.o: ../date.cpp
 CMakeFiles/ecs.dir/date.cpp.o: ../date.h
 
@@ -22,13 +17,26 @@ CMakeFiles/ecs.dir/ecs.cpp.o: ../lib/lib_time.h
 CMakeFiles/ecs.dir/ecs.cpp.o: ../ecs.cpp
 CMakeFiles/ecs.dir/ecs.cpp.o: ../predict.h
 
+CMakeFiles/ecs.dir/fit.cpp.o: ../lib/lib_io.h
+CMakeFiles/ecs.dir/fit.cpp.o: ../date.h
+CMakeFiles/ecs.dir/fit.cpp.o: ../fit.cpp
+CMakeFiles/ecs.dir/fit.cpp.o: ../fit.h
+CMakeFiles/ecs.dir/fit.cpp.o: ../init.h
+
+CMakeFiles/ecs.dir/init.cpp.o: ../lib/lib_io.h
+CMakeFiles/ecs.dir/init.cpp.o: ../date.h
+CMakeFiles/ecs.dir/init.cpp.o: ../fit.h
+CMakeFiles/ecs.dir/init.cpp.o: ../init.cpp
+CMakeFiles/ecs.dir/init.cpp.o: ../init.h
+
 CMakeFiles/ecs.dir/io.cpp.o: ../io.cpp
 
 CMakeFiles/ecs.dir/predict.cpp.o: ../lib/lib_io.h
 CMakeFiles/ecs.dir/predict.cpp.o: ../ExponentialSmooth.h
 CMakeFiles/ecs.dir/predict.cpp.o: ../PolynomialCurveFitting.h
-CMakeFiles/ecs.dir/predict.cpp.o: ../code.h
 CMakeFiles/ecs.dir/predict.cpp.o: ../date.h
+CMakeFiles/ecs.dir/predict.cpp.o: ../fit.h
+CMakeFiles/ecs.dir/predict.cpp.o: ../init.h
 CMakeFiles/ecs.dir/predict.cpp.o: ../predict.cpp
 CMakeFiles/ecs.dir/predict.cpp.o: ../predict.h
 

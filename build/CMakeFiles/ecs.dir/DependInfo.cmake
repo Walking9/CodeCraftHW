@@ -6,9 +6,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/hengliy/codeHW/final/codeHW/ecs/ExpoentialSmooth.cpp" "/home/hengliy/codeHW/final/codeHW/build/CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o"
   "/home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.cpp" "/home/hengliy/codeHW/final/codeHW/build/CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o"
-  "/home/hengliy/codeHW/final/codeHW/ecs/code.cpp" "/home/hengliy/codeHW/final/codeHW/build/CMakeFiles/ecs.dir/code.cpp.o"
   "/home/hengliy/codeHW/final/codeHW/ecs/date.cpp" "/home/hengliy/codeHW/final/codeHW/build/CMakeFiles/ecs.dir/date.cpp.o"
   "/home/hengliy/codeHW/final/codeHW/ecs/ecs.cpp" "/home/hengliy/codeHW/final/codeHW/build/CMakeFiles/ecs.dir/ecs.cpp.o"
+  "/home/hengliy/codeHW/final/codeHW/ecs/fit.cpp" "/home/hengliy/codeHW/final/codeHW/build/CMakeFiles/ecs.dir/fit.cpp.o"
+  "/home/hengliy/codeHW/final/codeHW/ecs/init.cpp" "/home/hengliy/codeHW/final/codeHW/build/CMakeFiles/ecs.dir/init.cpp.o"
   "/home/hengliy/codeHW/final/codeHW/ecs/io.cpp" "/home/hengliy/codeHW/final/codeHW/build/CMakeFiles/ecs.dir/io.cpp.o"
   "/home/hengliy/codeHW/final/codeHW/ecs/predict.cpp" "/home/hengliy/codeHW/final/codeHW/build/CMakeFiles/ecs.dir/predict.cpp.o"
   )

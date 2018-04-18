@@ -17,18 +17,23 @@ def main():
 	if arry == None:
 		return None
 
-	for a in arry:
-		x=a.split(" ")
-		x = [ int( x ) for x in x if x ]
-		list.append(x)
-	
-	paint(list)
+	titleName =arry[0]
 
-def paint(list):
+	x=arry[1].split(" ")
+	x = [ int( x ) for x in x if x ]
+	list.append(x)
+
+	x=arry[2].split(" ")
+	x = [ int( x ) for x in x if x ]
+	list.append(x)
+	
+	paint(list,titleName)
+
+def paint(list,titleName):
 	for arry in list:
 
 		plt.plot(arry)   #plot函数根据数字绘制出有意义的图形e
-		plt.title("Flavor Num", fontsize = 24)      #给图表指定标题
+		plt.title(titleName, fontsize = 24)      #给图表指定标题
 		plt.xlabel("Date", fontsize = 14)              #给X轴设置标题
 		plt.ylabel("Num", fontsize = 14)    #给Y轴设置标题
 		#plt.tick_params(axis = 'both', labelsize = 14)  
