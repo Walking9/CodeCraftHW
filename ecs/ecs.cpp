@@ -13,7 +13,8 @@ int main(int argc, char *argv[])
 
 #ifdef _DEBUG
     char *input_file = "../data/contest1/input1.txt";//输入文件
-    char *data_file = "../data/contest1/TrainData_2015.12.txt";//数据文件
+    //char *data_file = "../data/contest1/TrainData_2015.12.txt";//数据文件
+    char *data_file = "../data/contest1/data_2015_1.txt";//数据文件
 //    char *data_file = "../data/contest0/TrainData_2015.1.1_2015.2.19.txt";
 //    char *data_file = "../data/data_2015_1.txt";//数据文件
 

@@ -5,7 +5,7 @@
 #include "init.h"
 
 string firstFit();
-
+string dpPath();
 string getPrintStr(int predictFlavorNum,vector<Server*>& servers);
 
 #endif // CODE_H

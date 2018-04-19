@@ -40,12 +40,13 @@ class Server
 {
     friend ostream & operator<<(ostream &,const Server &);
 public:
-    Server(string name,int cpuNum,int memSize,int diskSize):
-            _name(name),_cpuNum(cpuNum),_memSize(memSize),_diskSize(diskSize) {
+    Server(int id,string name,int cpuNum,int memSize,int diskSize):
+            _id(id),_name(name),_cpuNum(cpuNum),_memSize(memSize),_diskSize(diskSize) {
         _flavorNum.resize(MAX_FLAVORS+1);
     }
 
     Server(const  Server& other){
+        _id=other._id;
         _name=other._name;
         _cpuNum=other._cpuNum;
         _memSize=other._memSize;
@@ -54,6 +55,7 @@ public:
     }
 
     vector<int> _flavorNum; //第n台虚拟机在这个服务器上的个数
+    int _id;
     string _name;
     int _cpuNum;//物理服务器CPU核数
     int _memSize;//内存大小（GB）

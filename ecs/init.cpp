@@ -77,7 +77,7 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
         ssstream<<info[i+1];
         ssstream>>serverName>>cpuNum>>memSize>>Disk;
         ssstream.clear();
-        vServer.push_back(new Server(serverName,cpuNum,memSize,Disk));
+        vServer.push_back(new Server(i,serverName,cpuNum,memSize,Disk));
     }
 
     int flavorNum;//虚拟机规格个数
@@ -225,14 +225,14 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
     cout<<endl;
 
     //paint(vFlavor[0]->_timeLine,vFlavor[0]->_timeLine.size(),vFlavor[0]->_timeLine,vFlavor[0]->_timeLine.size());
-    paint1("flavor ",vFlavor[0]->_hourLine,predicetHours);
+    //paint1("flavor ",vFlavor[0]->_hourLine,predicetHours);
 
 #endif
 }
 
 void paint1(string name,vector<int> data1,int length1)
 {
-
+/*
 #ifdef _DEBUG
 
     string str="";
@@ -279,12 +279,12 @@ void paint1(string name,vector<int> data1,int length1)
     return;
 
 #endif
-
+*/
 }
 
 void paint2(vector<int> data1,int length1,vector<int>data2,int length2)
 {
-
+/*
 #ifdef _DEBUG
 
     string str="";
@@ -330,5 +330,5 @@ void paint2(vector<int> data1,int length1,vector<int>data2,int length2)
     return;
 
 #endif
-
+*/
 }
