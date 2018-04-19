@@ -134,7 +134,7 @@ int max(int x, int y)
 //4)动态规划
 vector<Flavor*> dp2(Server* server,vector<Flavor*>& vv)
 {
-    //sort(vv.begin()+1,vv.end(),cmp_flavor);//对flavor降序
+    sort(vv.begin()+1,vv.end(),cmp_flavor);//对flavor降序
 
     int n,c,d;
     n=vv.size()-1;//装入物品的个数
@@ -180,10 +180,7 @@ vector<Flavor*> dp2(Server* server,vector<Flavor*>& vv)
                 if(flavor->_cpuNum<=j&&flavor->_memSize<=k)  //cpu可以放到当前物理机中，内存也可以满足的情况下，才考虑放进去
                     //dp[i][j][k] = max(dp[i-1][j][k] , dp[i-1][j-w[i]][k-b[i]] + v[i]);
                 {
-                    if(predictFlag=="CPU")
-                        dp[i][j][k] = max(dp[i-1][j][k] , dp[i-1][j-flavor->_cpuNum][k-flavor->_memSize] + flavor->_cpuNum);//可优化时间
-                    else
-                        dp[i][j][k] = max(dp[i-1][j][k] , dp[i-1][j-flavor->_cpuNum][k-flavor->_memSize] + flavor->_memSize);
+                    dp[i][j][k] = max(dp[i-1][j][k] , dp[i-1][j-flavor->_cpuNum][k-flavor->_memSize] + (flavor->_cpuNum+flavor->_memSize));//可优化时间
                 }
                 else dp[i][j][k] = dp[i-1][j][k];
             }

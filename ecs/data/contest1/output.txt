@@ -6,10 +6,10 @@ flavor4 1
 flavor5 3
 
 General 1
-General-1 flavor4 1  flavor5 1 
+General-1 flavor2 1  flavor3 1 
 
 Large-Memory 1
-Large-Memory-1 flavor2 1  flavor3 1  flavor5 2 
+Large-Memory-1 flavor4 1  flavor5 3 
 
 High-Performance 0
 
