@@ -12,9 +12,12 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/../bin)
 
 # 生成debug版本
 #SET(CMAKE_BUILD_TYPE "debug") #调试输出使用
-SET(CMAKE_BUILD_TYPE "release")#release 版本使用
-if (CMAKE_BUILD_TYPE STREQUAL debug)
+#SET(CMAKE_BUILD_TYPE "Release")#release 版本使用
+
+if (CMAKE_BUILD_TYPE STREQUAL Debug)
     add_definitions(-D_DEBUG)
+else()
+    SET(CMAKE_BUILD_TYPE Release)#release 版本使用
 endif ()
 
 SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb -std=c++11 ")

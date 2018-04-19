@@ -212,10 +212,7 @@ vector<Flavor*> dp2(Server* server,vector<Flavor*>& vv)
     cout<<"被选入背包cpu|mem|价值分别是:"<<endl;
     for(size_t i=0;i<ret.size();i++)
     {
-        if(predictFlag=="CPU")
-            cout<<"第"<<ret[i]->_id<<"个物品: "<<ret[i]->_cpuNum<<"  "<<ret[i]->_memSize<<"  "<<ret[i]->_cpuNum<<endl;
-        else
-            cout<<"第"<<ret[i]->_id<<"个物品: "<<ret[i]->_cpuNum<<"  "<<ret[i]->_memSize<<"  "<<ret[i]->_memSize<<endl;
+        cout<<"第"<<ret[i]->_id<<"个物品: "<<ret[i]->_cpuNum+ret[i]->_memSize<<endl;
     }
 #endif
 
