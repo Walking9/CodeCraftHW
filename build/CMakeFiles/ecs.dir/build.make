@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hengliy/codeHW/final/codeHW/ecs
+CMAKE_SOURCE_DIR = /home/hengliy/codeHW2/codeHW/ecs
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hengliy/codeHW/final/codeHW/build
+CMAKE_BINARY_DIR = /home/hengliy/codeHW2/codeHW/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ecs.dir/depend.make
@@ -58,17 +58,17 @@ include CMakeFiles/ecs.dir/progress.make
 include CMakeFiles/ecs.dir/flags.make
 
 CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o: CMakeFiles/ecs.dir/flags.make
-CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o: /home/hengliy/codeHW/final/codeHW/ecs/ExpoentialSmooth.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW/final/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o -c /home/hengliy/codeHW/final/codeHW/ecs/ExpoentialSmooth.cpp
+CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o: /home/hengliy/codeHW2/codeHW/ecs/ExpoentialSmooth.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW2/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o -c /home/hengliy/codeHW2/codeHW/ecs/ExpoentialSmooth.cpp
 
 CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW/final/codeHW/ecs/ExpoentialSmooth.cpp > CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW2/codeHW/ecs/ExpoentialSmooth.cpp > CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.i
 
 CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW/final/codeHW/ecs/ExpoentialSmooth.cpp -o CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW2/codeHW/ecs/ExpoentialSmooth.cpp -o CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.s
 
 CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o.requires:
 
@@ -82,17 +82,17 @@ CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o.provides.build: CMakeFiles/ecs.dir/Exp
 
 
 CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o: CMakeFiles/ecs.dir/flags.make
-CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o: /home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW/final/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o -c /home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.cpp
+CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o: /home/hengliy/codeHW2/codeHW/ecs/PolynomialCurveFitting.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW2/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o -c /home/hengliy/codeHW2/codeHW/ecs/PolynomialCurveFitting.cpp
 
 CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.cpp > CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW2/codeHW/ecs/PolynomialCurveFitting.cpp > CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.i
 
 CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.cpp -o CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW2/codeHW/ecs/PolynomialCurveFitting.cpp -o CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.s
 
 CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o.requires:
 
@@ -106,17 +106,17 @@ CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o.provides.build: CMakeFiles/ecs.d
 
 
 CMakeFiles/ecs.dir/date.cpp.o: CMakeFiles/ecs.dir/flags.make
-CMakeFiles/ecs.dir/date.cpp.o: /home/hengliy/codeHW/final/codeHW/ecs/date.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW/final/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ecs.dir/date.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/date.cpp.o -c /home/hengliy/codeHW/final/codeHW/ecs/date.cpp
+CMakeFiles/ecs.dir/date.cpp.o: /home/hengliy/codeHW2/codeHW/ecs/date.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW2/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ecs.dir/date.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/date.cpp.o -c /home/hengliy/codeHW2/codeHW/ecs/date.cpp
 
 CMakeFiles/ecs.dir/date.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/date.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW/final/codeHW/ecs/date.cpp > CMakeFiles/ecs.dir/date.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW2/codeHW/ecs/date.cpp > CMakeFiles/ecs.dir/date.cpp.i
 
 CMakeFiles/ecs.dir/date.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/date.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW/final/codeHW/ecs/date.cpp -o CMakeFiles/ecs.dir/date.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW2/codeHW/ecs/date.cpp -o CMakeFiles/ecs.dir/date.cpp.s
 
 CMakeFiles/ecs.dir/date.cpp.o.requires:
 
@@ -130,17 +130,17 @@ CMakeFiles/ecs.dir/date.cpp.o.provides.build: CMakeFiles/ecs.dir/date.cpp.o
 
 
 CMakeFiles/ecs.dir/ecs.cpp.o: CMakeFiles/ecs.dir/flags.make
-CMakeFiles/ecs.dir/ecs.cpp.o: /home/hengliy/codeHW/final/codeHW/ecs/ecs.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW/final/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ecs.dir/ecs.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/ecs.cpp.o -c /home/hengliy/codeHW/final/codeHW/ecs/ecs.cpp
+CMakeFiles/ecs.dir/ecs.cpp.o: /home/hengliy/codeHW2/codeHW/ecs/ecs.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW2/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ecs.dir/ecs.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/ecs.cpp.o -c /home/hengliy/codeHW2/codeHW/ecs/ecs.cpp
 
 CMakeFiles/ecs.dir/ecs.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/ecs.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW/final/codeHW/ecs/ecs.cpp > CMakeFiles/ecs.dir/ecs.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW2/codeHW/ecs/ecs.cpp > CMakeFiles/ecs.dir/ecs.cpp.i
 
 CMakeFiles/ecs.dir/ecs.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/ecs.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW/final/codeHW/ecs/ecs.cpp -o CMakeFiles/ecs.dir/ecs.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW2/codeHW/ecs/ecs.cpp -o CMakeFiles/ecs.dir/ecs.cpp.s
 
 CMakeFiles/ecs.dir/ecs.cpp.o.requires:
 
@@ -154,17 +154,17 @@ CMakeFiles/ecs.dir/ecs.cpp.o.provides.build: CMakeFiles/ecs.dir/ecs.cpp.o
 
 
 CMakeFiles/ecs.dir/fit.cpp.o: CMakeFiles/ecs.dir/flags.make
-CMakeFiles/ecs.dir/fit.cpp.o: /home/hengliy/codeHW/final/codeHW/ecs/fit.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW/final/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ecs.dir/fit.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/fit.cpp.o -c /home/hengliy/codeHW/final/codeHW/ecs/fit.cpp
+CMakeFiles/ecs.dir/fit.cpp.o: /home/hengliy/codeHW2/codeHW/ecs/fit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW2/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ecs.dir/fit.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/fit.cpp.o -c /home/hengliy/codeHW2/codeHW/ecs/fit.cpp
 
 CMakeFiles/ecs.dir/fit.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/fit.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW/final/codeHW/ecs/fit.cpp > CMakeFiles/ecs.dir/fit.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW2/codeHW/ecs/fit.cpp > CMakeFiles/ecs.dir/fit.cpp.i
 
 CMakeFiles/ecs.dir/fit.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/fit.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW/final/codeHW/ecs/fit.cpp -o CMakeFiles/ecs.dir/fit.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW2/codeHW/ecs/fit.cpp -o CMakeFiles/ecs.dir/fit.cpp.s
 
 CMakeFiles/ecs.dir/fit.cpp.o.requires:
 
@@ -178,17 +178,17 @@ CMakeFiles/ecs.dir/fit.cpp.o.provides.build: CMakeFiles/ecs.dir/fit.cpp.o
 
 
 CMakeFiles/ecs.dir/init.cpp.o: CMakeFiles/ecs.dir/flags.make
-CMakeFiles/ecs.dir/init.cpp.o: /home/hengliy/codeHW/final/codeHW/ecs/init.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW/final/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ecs.dir/init.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/init.cpp.o -c /home/hengliy/codeHW/final/codeHW/ecs/init.cpp
+CMakeFiles/ecs.dir/init.cpp.o: /home/hengliy/codeHW2/codeHW/ecs/init.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW2/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ecs.dir/init.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/init.cpp.o -c /home/hengliy/codeHW2/codeHW/ecs/init.cpp
 
 CMakeFiles/ecs.dir/init.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/init.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW/final/codeHW/ecs/init.cpp > CMakeFiles/ecs.dir/init.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW2/codeHW/ecs/init.cpp > CMakeFiles/ecs.dir/init.cpp.i
 
 CMakeFiles/ecs.dir/init.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/init.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW/final/codeHW/ecs/init.cpp -o CMakeFiles/ecs.dir/init.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW2/codeHW/ecs/init.cpp -o CMakeFiles/ecs.dir/init.cpp.s
 
 CMakeFiles/ecs.dir/init.cpp.o.requires:
 
@@ -202,17 +202,17 @@ CMakeFiles/ecs.dir/init.cpp.o.provides.build: CMakeFiles/ecs.dir/init.cpp.o
 
 
 CMakeFiles/ecs.dir/io.cpp.o: CMakeFiles/ecs.dir/flags.make
-CMakeFiles/ecs.dir/io.cpp.o: /home/hengliy/codeHW/final/codeHW/ecs/io.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW/final/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ecs.dir/io.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/io.cpp.o -c /home/hengliy/codeHW/final/codeHW/ecs/io.cpp
+CMakeFiles/ecs.dir/io.cpp.o: /home/hengliy/codeHW2/codeHW/ecs/io.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW2/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ecs.dir/io.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/io.cpp.o -c /home/hengliy/codeHW2/codeHW/ecs/io.cpp
 
 CMakeFiles/ecs.dir/io.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/io.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW/final/codeHW/ecs/io.cpp > CMakeFiles/ecs.dir/io.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW2/codeHW/ecs/io.cpp > CMakeFiles/ecs.dir/io.cpp.i
 
 CMakeFiles/ecs.dir/io.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/io.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW/final/codeHW/ecs/io.cpp -o CMakeFiles/ecs.dir/io.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW2/codeHW/ecs/io.cpp -o CMakeFiles/ecs.dir/io.cpp.s
 
 CMakeFiles/ecs.dir/io.cpp.o.requires:
 
@@ -226,17 +226,17 @@ CMakeFiles/ecs.dir/io.cpp.o.provides.build: CMakeFiles/ecs.dir/io.cpp.o
 
 
 CMakeFiles/ecs.dir/predict.cpp.o: CMakeFiles/ecs.dir/flags.make
-CMakeFiles/ecs.dir/predict.cpp.o: /home/hengliy/codeHW/final/codeHW/ecs/predict.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW/final/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ecs.dir/predict.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/predict.cpp.o -c /home/hengliy/codeHW/final/codeHW/ecs/predict.cpp
+CMakeFiles/ecs.dir/predict.cpp.o: /home/hengliy/codeHW2/codeHW/ecs/predict.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hengliy/codeHW2/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ecs.dir/predict.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ecs.dir/predict.cpp.o -c /home/hengliy/codeHW2/codeHW/ecs/predict.cpp
 
 CMakeFiles/ecs.dir/predict.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ecs.dir/predict.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW/final/codeHW/ecs/predict.cpp > CMakeFiles/ecs.dir/predict.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hengliy/codeHW2/codeHW/ecs/predict.cpp > CMakeFiles/ecs.dir/predict.cpp.i
 
 CMakeFiles/ecs.dir/predict.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ecs.dir/predict.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW/final/codeHW/ecs/predict.cpp -o CMakeFiles/ecs.dir/predict.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hengliy/codeHW2/codeHW/ecs/predict.cpp -o CMakeFiles/ecs.dir/predict.cpp.s
 
 CMakeFiles/ecs.dir/predict.cpp.o.requires:
 
@@ -263,21 +263,21 @@ ecs_OBJECTS = \
 # External object files for target ecs
 ecs_EXTERNAL_OBJECTS =
 
-/home/hengliy/codeHW/final/codeHW/bin/ecs: CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o
-/home/hengliy/codeHW/final/codeHW/bin/ecs: CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o
-/home/hengliy/codeHW/final/codeHW/bin/ecs: CMakeFiles/ecs.dir/date.cpp.o
-/home/hengliy/codeHW/final/codeHW/bin/ecs: CMakeFiles/ecs.dir/ecs.cpp.o
-/home/hengliy/codeHW/final/codeHW/bin/ecs: CMakeFiles/ecs.dir/fit.cpp.o
-/home/hengliy/codeHW/final/codeHW/bin/ecs: CMakeFiles/ecs.dir/init.cpp.o
-/home/hengliy/codeHW/final/codeHW/bin/ecs: CMakeFiles/ecs.dir/io.cpp.o
-/home/hengliy/codeHW/final/codeHW/bin/ecs: CMakeFiles/ecs.dir/predict.cpp.o
-/home/hengliy/codeHW/final/codeHW/bin/ecs: CMakeFiles/ecs.dir/build.make
-/home/hengliy/codeHW/final/codeHW/bin/ecs: CMakeFiles/ecs.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hengliy/codeHW/final/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable /home/hengliy/codeHW/final/codeHW/bin/ecs"
+/home/hengliy/codeHW2/codeHW/bin/ecs: CMakeFiles/ecs.dir/ExpoentialSmooth.cpp.o
+/home/hengliy/codeHW2/codeHW/bin/ecs: CMakeFiles/ecs.dir/PolynomialCurveFitting.cpp.o
+/home/hengliy/codeHW2/codeHW/bin/ecs: CMakeFiles/ecs.dir/date.cpp.o
+/home/hengliy/codeHW2/codeHW/bin/ecs: CMakeFiles/ecs.dir/ecs.cpp.o
+/home/hengliy/codeHW2/codeHW/bin/ecs: CMakeFiles/ecs.dir/fit.cpp.o
+/home/hengliy/codeHW2/codeHW/bin/ecs: CMakeFiles/ecs.dir/init.cpp.o
+/home/hengliy/codeHW2/codeHW/bin/ecs: CMakeFiles/ecs.dir/io.cpp.o
+/home/hengliy/codeHW2/codeHW/bin/ecs: CMakeFiles/ecs.dir/predict.cpp.o
+/home/hengliy/codeHW2/codeHW/bin/ecs: CMakeFiles/ecs.dir/build.make
+/home/hengliy/codeHW2/codeHW/bin/ecs: CMakeFiles/ecs.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hengliy/codeHW2/codeHW/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable /home/hengliy/codeHW2/codeHW/bin/ecs"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ecs.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/ecs.dir/build: /home/hengliy/codeHW/final/codeHW/bin/ecs
+CMakeFiles/ecs.dir/build: /home/hengliy/codeHW2/codeHW/bin/ecs
 
 .PHONY : CMakeFiles/ecs.dir/build
 
@@ -297,6 +297,6 @@ CMakeFiles/ecs.dir/clean:
 .PHONY : CMakeFiles/ecs.dir/clean
 
 CMakeFiles/ecs.dir/depend:
-	cd /home/hengliy/codeHW/final/codeHW/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hengliy/codeHW/final/codeHW/ecs /home/hengliy/codeHW/final/codeHW/ecs /home/hengliy/codeHW/final/codeHW/build /home/hengliy/codeHW/final/codeHW/build /home/hengliy/codeHW/final/codeHW/build/CMakeFiles/ecs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/hengliy/codeHW2/codeHW/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hengliy/codeHW2/codeHW/ecs /home/hengliy/codeHW2/codeHW/ecs /home/hengliy/codeHW2/codeHW/build /home/hengliy/codeHW2/codeHW/build /home/hengliy/codeHW2/codeHW/build/CMakeFiles/ecs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ecs.dir/depend
 

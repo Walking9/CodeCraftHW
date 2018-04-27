@@ -27,7 +27,7 @@ extern int predictDays;
 
 bool cmp_server(Server* servera,Server* serserb)
 {
-	return (servera->_cpuNum+servera->_memSize)<(serserb->_cpuNum+serserb->_memSize);
+    return (servera->_cpuNum+servera->_memSize)<(serserb->_cpuNum+serserb->_memSize);
 }
 
 bool cmp_flavor(Flavor* flavora,Flavor* flavorb)
@@ -38,7 +38,7 @@ bool cmp_flavor(Flavor* flavora,Flavor* flavorb)
 //《尺寸可变的装箱问题的近似算法研究》
 string firstFit()
 {
-	vector<Flavor*> vv;//
+    vector<Flavor*> vv;//
     int predictNum=0;
     for(size_t i=0;i<vFlavor.size();i++)
     {
@@ -78,29 +78,29 @@ string firstFit()
         for(size_t j=0;j<servers.size();j++)
         {
             Server* server=servers[j];
-        	//是否能够放进去
-           if((server->_cpuNum>=flavor->_cpuNum)&&(server->_memSize>=flavor->_memSize))
-           {
-               server->putFlavor(flavor);
-               break;//如果已经放进去了，就不管别的了。
-           }
-           else{
-               if(j==servers.size()-1)//如果找到最后一个都没有放进去
-               {
-                   Server* newServer;
-                   //找出这个虚拟机的最小物理机类型
-                   for(size_t k=0;k<vServer.size();k++)
-                   {
-                       if(vServer[k]->_cpuNum>=flavor->_cpuNum&&vServer[k]->_memSize>=flavor->_cpuNum)
-                       {
-                           newServer=new Server(*vServer[k]);
-                           break;
-                       }
-                   }
-                   newServer->putFlavor(flavor);
-                   servers.push_back(newServer);
-                   break;
-               }
+            //是否能够放进去
+            if((server->_cpuNum>=flavor->_cpuNum)&&(server->_memSize>=flavor->_memSize))
+            {
+                server->putFlavor(flavor);
+                break;//如果已经放进去了，就不管别的了。
+            }
+            else{
+                if(j==servers.size()-1)//如果找到最后一个都没有放进去
+                {
+                    Server* newServer;
+                    //找出这个虚拟机的最小物理机类型
+                    for(size_t k=0;k<vServer.size();k++)
+                    {
+                        if(vServer[k]->_cpuNum>=flavor->_cpuNum&&vServer[k]->_memSize>=flavor->_cpuNum)
+                        {
+                            newServer=new Server(*vServer[k]);
+                            break;
+                        }
+                    }
+                    newServer->putFlavor(flavor);
+                    servers.push_back(newServer);
+                    break;
+                }
             }
 
         }
@@ -141,13 +141,13 @@ vector<Flavor*> dp2(Server* server,vector<Flavor*>& vv)
     c=server->_cpuNum;
     d=server->_memSize;
 #ifdef _DEBUG
-    cout<<endl<<"***** dp2 print *******"<<endl;
-    cout<<"准备放进去的虚拟机id = ";
-    for(int i =1;i<=n;i++)
-    {
-        cout<<vv[i]->_id<<" ";
-    }
-    cout<<endl;
+//    cout<<endl<<"***** dp2 print *******"<<endl;
+//    cout<<"准备放进去的虚拟机id = ";
+//    for(int i =1;i<=n;i++)
+//    {
+//        cout<<vv[i]->_id<<" ";
+//    }
+//    cout<<endl;
 #endif
 
     //int dp[n+1][c+1][d+1]={0};
@@ -208,12 +208,12 @@ vector<Flavor*> dp2(Server* server,vector<Flavor*>& vv)
     //x[1]=(dp[1][c][d])?1:0;
 
 #ifdef _DEBUG
-    cout<<"背包能放物品的最大("<<predictFlag<<")为:"<<dp[n][c][d]<<endl;
-    cout<<"被选入背包cpu|mem|价值分别是:"<<endl;
-    for(size_t i=0;i<ret.size();i++)
-    {
-        cout<<"第"<<ret[i]->_id<<"个物品: "<<ret[i]->_cpuNum+ret[i]->_memSize<<endl;
-    }
+//    cout<<"背包能放物品的最大("<<predictFlag<<")为:"<<dp[n][c][d]<<endl;
+//    cout<<"被选入背包cpu|mem|价值分别是:"<<endl;
+//    for(size_t i=0;i<ret.size();i++)
+//    {
+//        cout<<"第"<<ret[i]->_id<<"个物品: "<<ret[i]->_cpuNum+ret[i]->_memSize<<endl;
+//    }
 #endif
 
     for(int i=0;i<n+1;i++)
@@ -231,6 +231,9 @@ vector<Flavor*> dp2(Server* server,vector<Flavor*>& vv)
 
 
 string dpPath() {
+#ifdef _DEBUG
+    cout<<endl<<"~~~~dp~~~~"<<endl;
+#endif
     vector<Flavor *> vv;//
     int predictNum = 0;
     for (size_t i = 0; i < vFlavor.size(); i++) {
@@ -316,10 +319,11 @@ string dpPath() {
     }
     */
 
-
-
     string str=getPrintStr(predictNum,servers);
-
+#ifdef _DEBUG
+    string debugStr=getDebugStr(predictNum,servers);
+    cout<<debugStr<<endl;
+#endif
     for(size_t i=0;i<servers.size();i++)
     {
         delete servers[i];
@@ -367,5 +371,48 @@ string getPrintStr(int predictNum,vector<Server*>& servers)
 
     return str;
 }
+
+string getDebugStr(int predictNum,vector<Server*>& servers)
+{
+    string str="";
+    str+=to_string(predictNum)+"\n";
+    for(size_t i =0;i<vFlavor.size();i++)
+    {
+        str+="flavor"+to_string(vFlavor[i]->_id)+" "+to_string(vFlavor[i]->_predictNum)+"\n";
+    }
+
+//    vector<Server*> generalServers;
+//    vector<Server*> largeMemoryServers;
+//    vector<Server*> highPerformanceServers;
+
+    vector<vector<Server*> > vvserver(vServer.size());
+    //组装三个数组
+    for(vector<Server*>::iterator server=servers.begin();server!=servers.end();server++)
+    {
+        for(size_t i=0;i<vServer.size();i++)
+            if((*server)->_name==vServer[i]->_name)
+                vvserver[i].push_back(*server);
+    }
+
+    for(size_t i=0;i<vServer.size();i++)
+    {
+        str += "\n";
+        str +=vServer[i]->_name+" " + to_string(vvserver[i].size()) + "\n";
+        for (size_t k = 0; k < vvserver[i].size(); k++) {
+            Server *server = vvserver[i][k];
+            str +=vServer[i]->_name+"-" + to_string(k + 1);
+            for (size_t j = 1; j < MAX_FLAVORS + 1; j++) {
+                if (server->_flavorNum[j] != 0)
+                    str += " flavor" + to_string(j) + " " + to_string(server->_flavorNum[j]) + " ";
+            }
+            double rate=(1-server->_cpuNum/static_cast<double>(vServer[i]->_cpuNum))+(1-server->_memSize/static_cast<double>(vServer[i]->_memSize));
+            str +=" ["+to_string(server->_cpuNum)+","+to_string(server->_memSize)+"] ("+to_string(rate)+")";
+            str += "\n";//注意我这里在结尾换行了，有可能369
+        }
+    }
+
+    return str;
+}
+
 
 

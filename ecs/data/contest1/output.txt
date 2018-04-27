@@ -1,15 +1,32 @@
-6
-flavor1 0
-flavor2 1
-flavor3 1
-flavor4 1
-flavor5 3
+349
+flavor1 65
+flavor2 67
+flavor3 2
+flavor4 8
+flavor5 30
+flavor6 9
+flavor7 11
+flavor8 48
+flavor9 35
+flavor10 4
+flavor11 19
+flavor12 28
+flavor13 0
+flavor14 4
+flavor15 12
+flavor16 1
+flavor17 4
+flavor18 2
 
 General 1
-General-1 flavor2 1  flavor3 1 
+General-1 flavor1 12  flavor6 5  flavor11 9 
 
-Large-Memory 1
-Large-Memory-1 flavor4 1  flavor5 3 
+Large-Memory 0
 
-High-Performance 0
+High-Performance 5
+High-Performance-1 flavor5 20  flavor8 16 
+High-Performance-2 flavor3 1  flavor5 9  flavor8 13  flavor10 3  flavor15 8  flavor18 2 
+High-Performance-3 flavor4 8  flavor5 1  flavor8 16  flavor9 19  flavor10 1  flavor14 1  flavor15 4 
+High-Performance-4 flavor1 22  flavor2 41  flavor3 1  flavor6 2  flavor8 3  flavor9 16  flavor12 1  flavor14 3 
+High-Performance-5 flavor1 31  flavor2 26  flavor6 2  flavor7 11  flavor11 10  flavor12 27  flavor16 1  flavor17 4 
 

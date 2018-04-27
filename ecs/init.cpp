@@ -10,6 +10,9 @@
 #include "fit.h"
 #include "date.h"
 #include <sstream>
+#include <numeric>
+#include <lib_time.h>
+
 using namespace std;
 
 Date* trainBeginDate;//训练数据开始时间
@@ -48,6 +51,7 @@ ostream & operator<<(ostream &out, Flavor &flavor)
     {
         out<<flavor._dayLine[i]<<",";
     }
+    out<<"["<<accumulate(flavor._dayLine.begin(),flavor._dayLine.begin()+trainDays,0)<<"]";
     out<<endl;
     return out;
 }
@@ -116,6 +120,7 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
     predictEndDate=new Date(preEndDaStr);
     ssstream.clear();
 
+
     /*********读取训练数据**********************/
     //先拿出第一天
     string recordId1,flavorId1,date1,time1;
@@ -127,7 +132,6 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
     *trainBeginTime = StringToDatetime(date1+" "+time1);
     trainBeginDate=new Date(date1);
 
-    time_t preTime=*trainBeginTime;
     for(int i=0;i<data_num;i++)//读取数据
     {
         string recordId,flavorName,date,time;//只考虑年月日
@@ -149,15 +153,14 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
                     Date nowDate(date);
                     int dayCount=(nowDate-*trainBeginDate);//算出是哪一天的
                     vFlavor[i]->_dayLine[dayCount]++;//这一天的这个虚拟机的个数+1
-
-                    time_t nowTime=StringToDatetime(nowTimeStr);
-                    int timeCount=(int)difftime(nowTime,preTime);
-                    int hourCount=(int)difftime(nowTime,*trainBeginTime);
-                    preTime=nowTime;
-                    cout<<timeCount<<endl;
-                    vFlavor[i]->_timeLine.push_back(timeCount);
-
-                    vFlavor[i]->_hourLine[hourCount/3600]++;
+//
+//                    time_t nowTime=StringToDatetime(nowTimeStr);
+//                    int timeCount=(int)difftime(nowTime,preTime);
+//                    int hourCount=(int)difftime(nowTime,*trainBeginTime);
+//                    preTime=nowTime;
+//                    vFlavor[i]->_timeLine.push_back(timeCount);
+//
+//                    vFlavor[i]->_hourLine[hourCount/3600]++;
                 }
             }
         }
@@ -192,6 +195,7 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
         cout<<*vFlavor[i];
     }
 
+    /*
     cout<<"~~~~timeLine("<<flavorNum<<")~~~~"<<endl;
     for(size_t i=0;i<vFlavor.size();i++)
     {
@@ -213,7 +217,7 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
             cout<<flavor->_hourLine[j]<<",";
         cout<<endl;
     }
-
+    */
     cout<<endl;
 
     cout<<"Train Date = ("<<trainDays<<")-> "<<*trainBeginDate<<" ~ "<<*trainEndDate<<endl;
@@ -225,7 +229,12 @@ void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int dat
     cout<<endl;
 
     //paint(vFlavor[0]->_timeLine,vFlavor[0]->_timeLine.size(),vFlavor[0]->_timeLine,vFlavor[0]->_timeLine.size());
-    //paint1("flavor ",vFlavor[0]->_hourLine,predicetHours);
+
+
+//    for(size_t i=0;i<vFlavor.size();i++)
+//    {
+//        paint1("flavor"+to_string(vFlavor[i]->_id)+" ",vFlavor[i]->_dayLine,trainDays);
+//    }
 
 #endif
 }
@@ -331,4 +340,229 @@ void paint2(vector<int> data1,int length1,vector<int>data2,int length2)
 
 #endif
 */
+}
+
+int printTest(char* str)
+{
+    print_time("Begin");
+    char *data[MAX_DATA_NUM];//最大数据
+    char *info[MAX_INFO_NUM];//最大信息
+    int data_line_num;
+    int info_line_num;
+
+//  char *input_file = "../data/contest1/input1.txt";//输入文件
+    char *input_file = "../data/contest1/input_3hosttypes_5flavors_1week.txt";
+//  char *data_file = "../data/contest1/TrainData_2015.12.txt";//数据文件
+
+//  char *data_file = "../data/contest1/allData.txt";//数据文件
+    char *data_file = str;//数据文件
+
+//    char *data_file = "../data/contest0/TrainData_2015.1.1_2015.2.19.txt";
+//    char *data_file = "../data/data_2015_1.txt";//数据文件
+
+    //char *data_file = "../data/data_2016_1.txt";//数据文件
+    data_line_num = read_file(data, MAX_DATA_NUM, data_file);//读取数据
+
+    printf("data file line num is :%d \n", data_line_num);
+    if (data_line_num == 0)
+    {
+        printf("Please input valid data file.\n");
+        return -1;
+    }
+
+    info_line_num = read_file(info, MAX_INFO_NUM, input_file);//读取输入文件
+
+    printf("input file line num is :%d \n", info_line_num);
+    if (info_line_num == 0)
+    {
+        printf("Please input valid info file.\n");
+        return -1;
+    }
+
+    Test(info, data, data_line_num);//预测
+
+    release_buff(info, info_line_num);
+    release_buff(data, data_line_num);
+
+    print_time("End");
+
+    return 0;
+}
+
+
+
+void Test(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int data_num)
+{
+
+    vFlavor.clear();
+    vServer.clear();
+    //物理服务器参数
+    int serverNum;
+    string serverName;
+    int cpuNum,memSize,Disk;
+    stringstream ssstream;
+    ssstream<<info[0];
+    //依次输出到result中，并存入res中
+    ssstream>>serverNum;
+    ssstream.clear();
+
+    for(int i=0;i<serverNum;i++)
+    {
+        ssstream<<info[i+1];
+        ssstream>>serverName>>cpuNum>>memSize>>Disk;
+        ssstream.clear();
+        vServer.push_back(new Server(i,serverName,cpuNum,memSize,Disk));
+    }
+
+    int flavorNum;//虚拟机规格个数
+    //读取虚拟机个数
+    ssstream<<info[serverNum+2];
+    ssstream>>flavorNum;
+    ssstream.clear();
+
+    //虚拟机格式
+    for(int i=0;i<flavorNum;i++)
+    {
+        string flavorName;
+        int cpuNum,memSize;
+        ssstream<<info[3+serverNum+i];
+        ssstream>>flavorName>>cpuNum>>memSize;
+        ssstream.clear();
+        int id=atoi(flavorName.substr(6).c_str());
+        Flavor* flavor=new Flavor(id,cpuNum,memSize/1024);
+        vFlavor.push_back(flavor);
+    }
+
+    //预测标志（cpu/mem）
+//    ssstream<<info[4+flavorNum+serverNum];
+//    ssstream>>predictFlag;
+//    ssstream.clear();
+    //预测开始时间
+    string preBeDaStr,preBeDaStrT;
+    string preEndDaStr,preEndDaStrT;
+    ssstream<<info[4+flavorNum+serverNum];
+    ssstream>>preBeDaStr>>preBeDaStrT;
+    predictBeginDate=new Date(preBeDaStr);
+    ssstream.clear();
+    //预测结束时间
+    ssstream<<info[5+flavorNum+serverNum];
+    ssstream>>preEndDaStr>>preEndDaStrT;
+    predictEndDate=new Date(preEndDaStr);
+    ssstream.clear();
+
+
+    /*********读取训练数据**********************/
+    //先拿出第一天
+    string recordId1,flavorId1,date1,time1;
+    ssstream<<data[0];
+    ssstream>>recordId1>>flavorId1>>date1>>time1;
+    ssstream.clear();
+
+    trainBeginTime=new time_t();
+    *trainBeginTime = StringToDatetime(date1+" "+time1);
+    trainBeginDate=new Date(date1);
+
+    for(int i=0;i<data_num;i++)//读取数据
+    {
+        string recordId,flavorName,date,time;//只考虑年月日
+        ssstream<<data[i];
+        ssstream>>recordId>>flavorName>>date>>time;
+        string nowTimeStr=date+" "+time;
+        ssstream.clear();
+        int flavorId=atoi(flavorName.substr(6).c_str());
+
+        if(flavorId>MAX_FLAVORS)//如果不是需要预测的东西
+        {
+            continue;
+        }
+        else{
+            for(int i=0;i<flavorNum;i++)
+            {
+                if(flavorId==vFlavor[i]->_id)
+                {
+                    Date nowDate(date);
+                    int dayCount=(nowDate-*trainBeginDate);//算出是哪一天的
+                    vFlavor[i]->_dayLine[dayCount]++;//这一天的这个虚拟机的个数+1
+//
+//                    time_t nowTime=StringToDatetime(nowTimeStr);
+//                    int timeCount=(int)difftime(nowTime,preTime);
+//                    int hourCount=(int)difftime(nowTime,*trainBeginTime);
+//                    preTime=nowTime;
+//                    vFlavor[i]->_timeLine.push_back(timeCount);
+//
+//                    vFlavor[i]->_hourLine[hourCount/3600]++;
+                }
+            }
+        }
+    }
+
+    ssstream<<data[data_num-1];
+    ssstream>>recordId1>>flavorId1>>date1>>time1;
+    ssstream.clear();
+    trainEndDate=new Date(date1);
+    trainEndTime=new time_t();
+    *trainEndTime =StringToDatetime(date1+" "+time1);
+    predicetHours=((int)difftime(*trainEndTime,*trainBeginTime))/3600;
+
+    trainDays = *trainEndDate-*trainBeginDate+1;//
+    spaceDays = *predictBeginDate-*trainEndDate-1;
+    predictDays = *predictBeginDate - *predictEndDate+1;//
+
+//////////////////////////////////////////////////////////
+#ifdef _DEBUG
+    cout<<"/////////////////////////////"<<endl;
+    cout<<"~~~~servers("<<serverNum<<")~~~~"<<endl;
+    for(size_t i=0;i<vServer.size();i++)
+    {
+        cout<<*vServer[i];
+    }
+
+    cout<<endl;
+
+    cout<<"~~~~flavors("<<flavorNum<<")~~~~"<<endl;
+    for(size_t i=0;i<vFlavor.size();i++)
+    {
+        cout<<*vFlavor[i];
+    }
+
+    /*
+    cout<<"~~~~timeLine("<<flavorNum<<")~~~~"<<endl;
+    for(size_t i=0;i<vFlavor.size();i++)
+    {
+        Flavor* flavor=vFlavor[i];
+        int days=*trainEndDate-*trainBeginDate+1;
+        cout<<flavor->_id<<" "<<flavor->_cpuNum<<" "<<flavor->_memSize<<" ("<<flavor->_timeLine.size()<<") -> ";
+        for(int j=0;j<flavor->_timeLine.size();j++)
+            cout<<flavor->_timeLine[j]<<",";
+        cout<<endl;
+    }
+
+    cout<<"~~~~hourLine("<<flavorNum<<")~~~~"<<endl;
+    for(size_t i=0;i<vFlavor.size();i++)
+    {
+        Flavor* flavor=vFlavor[i];
+        int days=*trainEndDate-*trainBeginDate+1;
+        cout<<flavor->_id<<" "<<flavor->_cpuNum<<" "<<flavor->_memSize<<" ("<<predicetHours<<") -> ";
+        for(int j=0;j<predicetHours;j++)
+            cout<<flavor->_hourLine[j]<<",";
+        cout<<endl;
+    }
+    */
+    cout<<endl;
+
+    cout<<"Train Date = ("<<trainDays<<")-> "<<*trainBeginDate<<" ~ "<<*trainEndDate<<endl;
+
+    cout<<"spaceDays = ("<<spaceDays<<")"<<endl;
+
+    cout<<"Predict Date = ("<<predictDays<<")-> "<<*predictBeginDate<<" ~ "<<*predictEndDate<<endl;
+
+    cout<<endl;
+
+    //paint(vFlavor[0]->_timeLine,vFlavor[0]->_timeLine.size(),vFlavor[0]->_timeLine,vFlavor[0]->_timeLine.size());
+    for(size_t i=0;i<vFlavor.size();i++)
+    {
+        paint1("flavor"+to_string(vFlavor[i]->_id)+" ",vFlavor[i]->_dayLine,trainDays);
+    }
+
+#endif
 }

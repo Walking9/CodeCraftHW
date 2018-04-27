@@ -3,12 +3,25 @@ General 56 128 1200
 Large-Memory 84 256 2400
 High-Performance 112 192 3600
 
-5
+18
 flavor1 1 1024
 flavor2 1 2048
-flavor4 2 2048
-flavor5 2 4096
-flavor8 4 8192
+flavor3 2 2048
+flavor4 2 4096
+flavor5 4 8192
+flavor6 1 1024
+flavor7 1 2048
+flavor8 2 2048
+flavor9 2 4096
+flavor10 4 8192
+flavor11 1 1024
+flavor12 1 2048
+flavor13 2 2048
+flavor14 2 4096
+flavor15 4 8192
+flavor16 1 1024
+flavor17 1 2048
+flavor18 2 2048
 
 2016-01-08 00:00:00
 2016-01-14 23:59:59

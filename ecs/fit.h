@@ -7,5 +7,5 @@
 string firstFit();
 string dpPath();
 string getPrintStr(int predictFlavorNum,vector<Server*>& servers);
-
+string getDebugStr(int predictNum,vector<Server*>& servers);
 #endif // CODE_H

@@ -68,4 +68,8 @@ void paint2(std::vector<int> data1, int length1, std::vector<int>data2, int leng
 
 void initDataStruct(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int data_num);
 
+int printTest(char* str);
+
+void Test(char * info[MAX_INFO_NUM], char * data[MAX_DATA_NUM],int data_num);
+
 #endif //ECS_READ_H

@@ -7,8 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ecs.dir/init.cpp.o"
   "CMakeFiles/ecs.dir/io.cpp.o"
   "CMakeFiles/ecs.dir/predict.cpp.o"
-  "/home/hengliy/codeHW/final/codeHW/bin/ecs.pdb"
-  "/home/hengliy/codeHW/final/codeHW/bin/ecs"
+  "/home/hengliy/codeHW2/codeHW/bin/ecs.pdb"
+  "/home/hengliy/codeHW2/codeHW/bin/ecs"
 )
 
 # Per-language clean rules from dependency scanning.

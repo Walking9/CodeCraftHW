@@ -222,10 +222,10 @@ void DataProcessing(const vector<int> input, int n, int Domain, vector<int>& out
     vector<int> data;
     for(int i=0; i<n; i++) data.push_back(input[i]);
     sort(data.begin(), data.end());
-    cout << "\nsort: ";
-    for(unsigned int i=0; i<data.size(); i++) {
-        cout << data[i] << " ";
-    }
+//    cout << "\nsort: ";
+//    for(unsigned int i=0; i<data.size(); i++) {
+//        cout << data[i] << " ";
+//    }
     int Q1 = data[data.size()/4];
     //int Q2 = data[data.size()/2];
     int Q3 = data[data.size()*3/4];
@@ -377,7 +377,7 @@ int ExponentialSmooth22fix(const vector<int> data, int n, int k) {
 
     int *DataHandled = new int[DataNum];
     vector<int> output;
-//    DataProcessing(data, n, 4, output);
+    DataProcessing(data, n, 4, output);
     //ThreeTimeFittingDataProcessing(data, n, 1, output);
     for (int i = DataNum - 1; i >= 0; i--) {
         DataHandled[i] = 0;

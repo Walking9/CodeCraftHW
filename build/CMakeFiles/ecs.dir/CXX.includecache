@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/hengliy/codeHW/final/codeHW/ecs/ExpoentialSmooth.cpp
+/home/hengliy/codeHW2/codeHW/ecs/ExpoentialSmooth.cpp
 iostream
 -
 vector
@@ -16,17 +16,17 @@ cmath
 algorithm
 -
 ExponentialSmooth.h
-/home/hengliy/codeHW/final/codeHW/ecs/ExponentialSmooth.h
+/home/hengliy/codeHW2/codeHW/ecs/ExponentialSmooth.h
 PolynomialCurveFitting.h
-/home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.h
+/home/hengliy/codeHW2/codeHW/ecs/PolynomialCurveFitting.h
 
-/home/hengliy/codeHW/final/codeHW/ecs/ExponentialSmooth.h
+/home/hengliy/codeHW2/codeHW/ecs/ExponentialSmooth.h
 iostream
 -
 vector
 -
 
-/home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.cpp
+/home/hengliy/codeHW2/codeHW/ecs/PolynomialCurveFitting.cpp
 iostream
 -
 vector
@@ -36,11 +36,11 @@ cstring
 cmath
 -
 PolynomialCurveFitting.h
-/home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.h
+/home/hengliy/codeHW2/codeHW/ecs/PolynomialCurveFitting.h
 ExponentialSmooth.h
-/home/hengliy/codeHW/final/codeHW/ecs/ExponentialSmooth.h
+/home/hengliy/codeHW2/codeHW/ecs/ExponentialSmooth.h
 
-/home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.h
+/home/hengliy/codeHW2/codeHW/ecs/PolynomialCurveFitting.h
 iostream
 -
 vector
@@ -50,7 +50,7 @@ cstring
 cmath
 -
 
-/home/hengliy/codeHW/final/codeHW/ecs/date.cpp
+/home/hengliy/codeHW2/codeHW/ecs/date.cpp
 iostream
 -
 string
@@ -62,55 +62,59 @@ cstring
 vector
 -
 date.h
-/home/hengliy/codeHW/final/codeHW/ecs/date.h
+/home/hengliy/codeHW2/codeHW/ecs/date.h
 ctime
 -
 
-/home/hengliy/codeHW/final/codeHW/ecs/date.h
+/home/hengliy/codeHW2/codeHW/ecs/date.h
 string
 -
 iostream
 -
 
-/home/hengliy/codeHW/final/codeHW/ecs/ecs.cpp
+/home/hengliy/codeHW2/codeHW/ecs/ecs.cpp
 predict.h
-/home/hengliy/codeHW/final/codeHW/ecs/predict.h
+/home/hengliy/codeHW2/codeHW/ecs/predict.h
 lib_io.h
-/home/hengliy/codeHW/final/codeHW/ecs/lib_io.h
+/home/hengliy/codeHW2/codeHW/ecs/lib_io.h
 lib_time.h
-/home/hengliy/codeHW/final/codeHW/ecs/lib_time.h
+/home/hengliy/codeHW2/codeHW/ecs/lib_time.h
 stdio.h
-/home/hengliy/codeHW/final/codeHW/ecs/stdio.h
+/home/hengliy/codeHW2/codeHW/ecs/stdio.h
 
-/home/hengliy/codeHW/final/codeHW/ecs/fit.cpp
+/home/hengliy/codeHW2/codeHW/ecs/fit.cpp
 fit.h
-/home/hengliy/codeHW/final/codeHW/ecs/fit.h
+/home/hengliy/codeHW2/codeHW/ecs/fit.h
 date.h
-/home/hengliy/codeHW/final/codeHW/ecs/date.h
+/home/hengliy/codeHW2/codeHW/ecs/date.h
 algorithm
 -
 init.h
-/home/hengliy/codeHW/final/codeHW/ecs/init.h
+/home/hengliy/codeHW2/codeHW/ecs/init.h
 
-/home/hengliy/codeHW/final/codeHW/ecs/fit.h
+/home/hengliy/codeHW2/codeHW/ecs/fit.h
 vector
 -
 init.h
-/home/hengliy/codeHW/final/codeHW/ecs/init.h
+/home/hengliy/codeHW2/codeHW/ecs/init.h
 
-/home/hengliy/codeHW/final/codeHW/ecs/init.cpp
+/home/hengliy/codeHW2/codeHW/ecs/init.cpp
 python2.7/Python.h
 -
 init.h
-/home/hengliy/codeHW/final/codeHW/ecs/init.h
+/home/hengliy/codeHW2/codeHW/ecs/init.h
 fit.h
-/home/hengliy/codeHW/final/codeHW/ecs/fit.h
+/home/hengliy/codeHW2/codeHW/ecs/fit.h
 date.h
-/home/hengliy/codeHW/final/codeHW/ecs/date.h
+/home/hengliy/codeHW2/codeHW/ecs/date.h
 sstream
 -
+numeric
+-
+lib_time.h
+-
 
-/home/hengliy/codeHW/final/codeHW/ecs/init.h
+/home/hengliy/codeHW2/codeHW/ecs/init.h
 lib_io.h
 -
 vector
@@ -118,7 +122,7 @@ vector
 iostream
 -
 
-/home/hengliy/codeHW/final/codeHW/ecs/io.cpp
+/home/hengliy/codeHW2/codeHW/ecs/io.cpp
 stdio.h
 -
 stdlib.h
@@ -138,31 +142,33 @@ unistd.h
 signal.h
 -
 
-/home/hengliy/codeHW/final/codeHW/ecs/lib/lib_io.h
+/home/hengliy/codeHW2/codeHW/ecs/lib/lib_io.h
 
-/home/hengliy/codeHW/final/codeHW/ecs/lib/lib_time.h
+/home/hengliy/codeHW2/codeHW/ecs/lib/lib_time.h
 
-/home/hengliy/codeHW/final/codeHW/ecs/predict.cpp
+/home/hengliy/codeHW2/codeHW/ecs/predict.cpp
 predict.h
-/home/hengliy/codeHW/final/codeHW/ecs/predict.h
+/home/hengliy/codeHW2/codeHW/ecs/predict.h
 stdio.h
 -
 iostream
 -
 ExponentialSmooth.h
-/home/hengliy/codeHW/final/codeHW/ecs/ExponentialSmooth.h
+/home/hengliy/codeHW2/codeHW/ecs/ExponentialSmooth.h
 fit.h
-/home/hengliy/codeHW/final/codeHW/ecs/fit.h
+/home/hengliy/codeHW2/codeHW/ecs/fit.h
 date.h
-/home/hengliy/codeHW/final/codeHW/ecs/date.h
+/home/hengliy/codeHW2/codeHW/ecs/date.h
 init.h
-/home/hengliy/codeHW/final/codeHW/ecs/init.h
+/home/hengliy/codeHW2/codeHW/ecs/init.h
 PolynomialCurveFitting.h
-/home/hengliy/codeHW/final/codeHW/ecs/PolynomialCurveFitting.h
+/home/hengliy/codeHW2/codeHW/ecs/PolynomialCurveFitting.h
 sstream
 -
+numeric
+-
 
-/home/hengliy/codeHW/final/codeHW/ecs/predict.h
+/home/hengliy/codeHW2/codeHW/ecs/predict.h
 lib_io.h
 -
 vector

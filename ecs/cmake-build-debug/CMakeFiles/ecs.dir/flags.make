@@ -6,5 +6,5 @@ CXX_FLAGS =  -O0 -Wall -g -ggdb -std=c++11
 
 CXX_DEFINES = -D_DEBUG
 
-CXX_INCLUDES = -I/home/hengliy/codeHW/final/codeHW/ecs/lib 
+CXX_INCLUDES = -I/home/hengliy/codeHW2/codeHW/ecs/lib 
 
